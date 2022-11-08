@@ -48,7 +48,7 @@ public class Util{
         Scanner input = new Scanner(System.in);
         float toReturn;
         while(true){
-            System.out.println("Digite o número inteiro:");
+            System.out.println("Digite o número real:");
             try{
                 toReturn = Float.parseFloat(input.nextLine());
                 break;
