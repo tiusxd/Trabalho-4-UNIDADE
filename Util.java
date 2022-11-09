@@ -40,7 +40,7 @@ public class Util{
                 continue;
             }
         }
-
+        input.close();
         return toReturn;
     }
 
@@ -60,7 +60,7 @@ public class Util{
                 continue;
             }
         }
-
+        input.close();
         return toReturn;
     }
 }
