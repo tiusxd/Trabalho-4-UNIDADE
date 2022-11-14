@@ -4,6 +4,10 @@ public abstract class Entidade{
 
     public Entidade(){
 
+    	System.out.println("Nome: ");
+    	this.nome = Util.lerString();
+    	System.out.println("Código: ");
+    	this.codigo = Util.lerInteger();
     }
     public Entidade(String base){
 
