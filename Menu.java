@@ -67,7 +67,12 @@ public class Menu{
 					System.out.println(escola.mapearAlunos());
 					System.out.println("Qual quer editar? Digite o código");
 					//Isso vai gerar uma exceção não-tratada se pedir pra editar um aluno inexistente
+					try{
 					escola.editarAluno(Util.lerInteger());
+					} catch (NoSuchKeyException ex){
+						System.out.println("Esse aluno não existe. Digite um código válido.");
+						continue;
+					}
 					break;
 				case 3:
 					System.out.println("Escolha qual aluno remover dentre os disponíveis: ");
@@ -77,7 +82,12 @@ public class Menu{
 					System.out.println("Ctz? 1 = Sim");
 					if(Util.lerInteger() == 1){
 					//Isso gera uma exceção não-tratada se pedir pra remove rum que não existe
+					try{
 					escola.removerAluno(codigo);
+					} catch (NoSuchKeyException ex){
+						System.out.println("Esse aluno não existe. Digite um código válido.");
+						continue;
+					}
 					break;
 					} else{
 						System.out.println("OK. Retornando ao menu de alunos");
@@ -115,7 +125,12 @@ public class Menu{
 				    System.out.println(escola.mapearDocentes());
 					System.out.println("Digite o código: ");
 					//Isso gera uma exceção não-tratada
-					escola.editarDocente(Util.lerInteger());
+					try {
+						escola.editarDocente(Util.lerInteger());
+					} catch (NoSuchKeyException e) {
+						System.out.println("Esse docente não existe. Digite um código válido");
+						continue;
+					}
 					break;
 				case 3:
 					System.out.println("Escolha qual Docente remover dentre os disponíveis:");
@@ -124,7 +139,12 @@ public class Menu{
 					int codigo = Util.lerInteger();
 					System.out.println("Ctz? 1 = Sim");
 					if(Util.lerInteger() == 1){
-						escola.removerDocente(codigo);
+						try {
+							escola.removerDocente(codigo);
+						} catch (NoSuchKeyException e) {
+							System.out.println("Esse docente não existe. Digite um código válido");
+							continue;
+						}
 						break;
 					} else {
 						System.out.println("OK. Retornando ao menu anterior");
@@ -163,7 +183,13 @@ public class Menu{
 				    System.out.println(escola.mapearDisciplinas());
 					System.out.println("Digite o código: ");
 					//Isso gera uma exceção não-tratada
-					escola.editarDisciplina(Util.lerInteger());
+					try {
+						escola.editarDisciplina(Util.lerInteger());
+					} catch (NoSuchKeyException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Essa disciplina não existe. Digite um código válido");
+						continue;
+					}
 					break;
 				case 3:
 					System.out.println("Escolha qual remover dentre os disponíveis:");
@@ -172,7 +198,13 @@ public class Menu{
 					int codigo = Util.lerInteger();
 					System.out.println("Ctz? 1 = Sim");
 					if(Util.lerInteger() == 1){
-						escola.removerDisciplina(codigo);
+						try {
+							escola.removerDisciplina(codigo);
+						} catch (NoSuchKeyException e) {
+							// TODO Auto-generated catch block
+							System.out.println("Essa disciplina não existe. Digite um código válido");
+							continue;
+						}
 						break;
 					} else {
 						System.out.println("OK. Retornando ao menu anterior");
@@ -211,7 +243,13 @@ public class Menu{
 				    System.out.println(escola.mapearTurmas());
 					System.out.println("Digite o código: ");
 					//Isso gera uma exceção não-tratada
-					escola.editarTurma(Util.lerInteger());
+					try {
+						escola.editarTurma(Util.lerInteger());
+					} catch (NoSuchKeyException e) {
+						// TODO Auto-generated catch block
+						System.out.println("Essa turma não existe. Digite um código válido");
+						continue;
+					}
 					break;
 				case 3:
 					System.out.println("Escolha qual remover dentre os disponíveis:");
@@ -220,7 +258,13 @@ public class Menu{
 					int codigo = Util.lerInteger();
 					System.out.println("Ctz? 1 = Sim");
 					if(Util.lerInteger() == 1){
-						escola.removerTurma(codigo);
+						try {
+							escola.removerTurma(codigo);
+						} catch (NoSuchKeyException e) {
+							// TODO Auto-generated catch block
+							System.out.println("Essa turma não existe. Digite um código válido");
+							continue;
+						}
 						break;
 					} else {
 						System.out.println("OK. Retornando ao menu anterior");
