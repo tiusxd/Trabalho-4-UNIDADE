@@ -1,3 +1,5 @@
+package teste_trabalho;
+
 import java.util.Scanner;
 
 public class Util{

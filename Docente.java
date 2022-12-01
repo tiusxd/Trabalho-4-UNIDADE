@@ -1,3 +1,5 @@
+package teste_trabalho;
+
 import java.util.ArrayList;
 
 public class Docente extends Entidade{
