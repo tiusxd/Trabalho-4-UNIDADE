@@ -17,10 +17,10 @@ public class Util{
             break;
             } catch (Exception ex){
                 System.out.println("Ocorreu um erro. Por favor, digite novamente");
+                System.out.println();
                 continue;
             }
         }
-        input.close();
         return toReturn;
     }
 
@@ -41,27 +41,27 @@ public class Util{
                 continue;
             }
         }
-        input.close();
         return toReturn;
     }
 
     public static float lerFloat(){
         Scanner input = new Scanner(System.in);
-        float toReturn;
+        float toReturn = -99f;
         while(true){
             System.out.println("Digite o número real:");
             try{
-                toReturn = Float.parseFloat(input.nextLine());
+                String buffer = input.nextLine();
+                toReturn = Float.parseFloat(buffer);
                 break;
             } catch (NumberFormatException nf){
                  System.out.println("Número inválido. Digite um número real, utilizando PONTO como separador do decimal.");
                  continue;
             } catch (Exception ex){
                 System.out.println("Ocorreu um erro. Por favor, digite novamente.");
+                System.out.println(ex);
                 continue;
             }
         }
-        input.close();
         return toReturn;
     }
 }
