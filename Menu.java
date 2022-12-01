@@ -54,7 +54,7 @@ public class Menu{
 					System.out.println("Informe os dados do aluno: ");
 					Aluno aluno = new Aluno();
 					System.out.println("Tem ctz q quer adicionar esse aluno? 0 = sim, qqr outra coisa  = não");
-					if(Util.lerInteger() == 1){
+					if(Util.lerInteger() == 0){
 					escola.adicionarAluno(aluno);
 					System.out.println("Cadastrado!");
 					break;
