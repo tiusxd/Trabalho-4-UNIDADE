@@ -1,59 +1,61 @@
-package teste_trabalho;
-
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.Scanner;
 
 public class Escola{
-	Scanner sc = new Scanner(System.in);
-	Scanner scn = new Scanner(System.in);
-
-	
     public LinkedHashMap<Integer,Docente> docentes = new LinkedHashMap<Integer,Docente>();
     public LinkedHashMap<Integer,Disciplina> disciplinas = new LinkedHashMap<Integer,Disciplina>();
     public LinkedHashMap<Integer,Aluno> alunos = new LinkedHashMap<Integer,Aluno>();
     public LinkedHashMap<Integer,Turma> turmas = new LinkedHashMap<Integer,Turma>();
+    private int maiorAluno,maiorDocente,maiorDisciplina,maiorTurma;
     private GerenteDeArquivo ga = new GerenteDeArquivo();
 
-    public void adicionarAluno(){
-    	Aluno a = new Aluno();
-    	int i = 0;
-		alunos.put(a.codigo, a);
-		i++;
+    //Metódos
+    //TODO fazer os métodos de adição e adição darem throws qnd acessar um item q nao existem
+    public void adicionarAluno(Aluno toAdd){
+        alunos.put(maiorAluno, toAdd);
+        maiorAluno++;
     }
-    
 
     public void removerAluno(int codigo) throws NoSuchKeyException{
-        if (!alunos.containsKey(codigo)) {
+        if (!alunos.containsKey(codigo))
             throw new NoSuchKeyException();
-        }else {
-        	System.out.println("Codigo de aluno à ser apagado: ");
-    		int x = scn.nextInt();
-    		alunos.remove(x);
-        }
-        
+        else
+            alunos.remove(codigo);
     }
 
-    public void adicionarDocente(Docente toAdd){}
+    public void adicionarDocente(Docente toAdd){
+        docentes.put(maiorDocente, toAdd);
+        maiorDisciplina++;
+    }
 
     public void removerDocente(int codigo) throws NoSuchKeyException{
         if (!docentes.containsKey(codigo))
             throw new NoSuchKeyException();
+        else
+            docentes.remove(codigo);
     }
 
-    public void adicionarDisciplina(Disciplina toAdd){}
+    public void adicionarDisciplina(Disciplina toAdd){
+        disciplinas.put(maiorDisciplina, toAdd);
+        maiorDisciplina++;
+    }
 
     public void removerDisciplina(int codigo) throws NoSuchKeyException{
         if (!disciplinas.containsKey(codigo))
             throw new NoSuchKeyException();
+        else
+            disciplinas.remove(codigo);
     }
 
-    public void adicionarTurma(Turma toAdd){}
+    public void adicionarTurma(Turma toAdd){
+        turmas.put(maiorTurma, toAdd);
+        maiorTurma++;
+    }
 
     public void removerTurma(int codigo) throws NoSuchKeyException{
         if (!turmas.containsKey(codigo))
             throw new NoSuchKeyException();
+        else
+            turmas.remove(codigo);
     }
 
     //Os métodos abaixo estão retornando null enquanto não são devidamente implementados, pra não dar erro no java
@@ -69,6 +71,7 @@ public class Escola{
     public void editarDocente(int codigo) throws NoSuchKeyException{
         if (!docentes.containsKey(codigo))
             throw new NoSuchKeyException();
+        //int key = docentes.get(codigo).getCodigo();
     }//Permite mudar informações de um docente, incluindo disciplinas.
 
     public void editarDisciplina(int codigo) throws NoSuchKeyException{

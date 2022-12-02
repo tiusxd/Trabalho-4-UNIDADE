@@ -1,12 +1,7 @@
-package teste_trabalho;
-
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Menu{
-	Scanner sc = new Scanner(System.in);
-	Scanner scn = new Scanner(System.in);
-    Escola escola = new Escola();
+    private Escola escola;
 
     //Métodos
 	//Número 9 = retornar
@@ -53,14 +48,14 @@ public class Menu{
 		while(stay){
 			System.out.println("1 - cadastrar aluno\n 2 - Editar Aluno \n3 - Remover Aluno\n 9 = Sair \n "+
 			"Digite: ");
-			int op = scn.nextInt();
+			int op = Util.lerInteger();
 			switch(op) {
 				case 1:
 					System.out.println("Informe os dados do aluno: ");
 					Aluno aluno = new Aluno();
 					System.out.println("Tem ctz q quer adicionar esse aluno? 0 = sim, qqr outra coisa  = não");
-					if(Util.lerInteger() == 1){
-					escola.adicionarAluno();
+					if(Util.lerInteger() == 0){
+					escola.adicionarAluno(aluno);
 					System.out.println("Cadastrado!");
 					break;
 					} else {

@@ -1,5 +1,3 @@
-package teste_trabalho;
-
 public class NoSuchKeyException extends Exception {
     @Override
     public String toString() {
