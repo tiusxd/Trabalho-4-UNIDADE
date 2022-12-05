@@ -10,8 +10,27 @@ public class Turma extends Entidade{
     public Turma(String base) {
         super(base);
     }
-    public void adicionarAluno(Aluno aluno){}
-    public void removerAluno(Aluno aluno){}
+    public boolean adicionarAluno(Aluno aluno){
+        if (alunos.contains(aluno))
+            return false;
+        alunos.add(aluno);
+        return true;
+    }
+    public boolean removerAluno(Aluno aluno){
+        if (!alunos.contains(aluno))
+            return false;
+        alunos.remove(aluno);
+        return true;
+    }
+
+    public String mapearAlunos(){
+        String toReturn = "";
+        for (Aluno aluno : alunos) {
+            toReturn = toReturn + "Código: "+aluno.getCodigo()+" Nome: " + aluno.getNome();
+        }
+
+        return toReturn;
+    }
 
     @Override
     public String toCsv() {
