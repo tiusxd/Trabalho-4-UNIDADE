@@ -1,5 +1,5 @@
 public class Aluno extends Entidade{
-
+    //TODO adicionar um HashMap para um aluno ver suas notas
     private int turma;
 
     public Aluno(){

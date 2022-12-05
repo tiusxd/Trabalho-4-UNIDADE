@@ -4,7 +4,7 @@ import java.util.HashMap;
 public class Disciplina extends Entidade{
     
     private ArrayList<Docente> docentes;
-    private HashMap<Aluno,Float> notas;
+    private HashMap<Aluno,Float[]> notas;
     private int ano;
     
     public Disciplina() {
@@ -13,13 +13,51 @@ public class Disciplina extends Entidade{
     public Disciplina(String base) {
         super(base);
     }
-    public void adicionarAluno(Aluno aluno){}
+    public boolean adicionarAluno(Aluno aluno){
+        if (notas.containsKey(aluno))
+            return false;
+        notas.put(aluno, new Float[4]);
+        return true;
+    }
 
-    public void removerAluno(Aluno aluno){}
+    public boolean removerAluno(Aluno aluno){
+        if (!notas.containsKey(aluno))
+            return false;
+        notas.remove(aluno);
+        return true;
+    }
 
-    public void adicionarDocente(Docente docente){}
+    public boolean adicionarDocente(Docente docente){
+        if (docentes.contains(docente))
+            return false;
+        docentes.add(docente);
+        return true;
+    }
 
-    public void removerDocente(Docente docente){}
+    public boolean removerDocente(Docente docente){
+        if (!docentes.contains(docente))
+            return false;
+        docentes.remove(docente);
+        return true;
+    }
+
+    public String mapearDocentes(){
+        String toReturn = "";
+        for (Docente docente : docentes) {
+            toReturn = toReturn + "Código: "+docente.getCodigo()+" Nome: " + docente.getNome();
+        }
+
+        return toReturn;
+    }
+
+    public String mapearAlunos(){
+        String toReturn = "";
+        for (Aluno aluno : notas.keySet()) {
+            toReturn = toReturn + "Código: "+aluno.getCodigo()+" Nome: " + aluno.getNome();
+        }
+
+        return toReturn;
+    }
 
     @Override
     public String toCsv() {
@@ -35,4 +73,7 @@ public class Disciplina extends Entidade{
         ano = novo;
     }
     
+    public int getDocentesSize(){
+        return docentes.size();
+    }
 }
