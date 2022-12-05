@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Docente extends Entidade{
-    private ArrayList<Integer> turmas;
+    private ArrayList<Integer> disciplinas;
     public Docente() {
     }
 

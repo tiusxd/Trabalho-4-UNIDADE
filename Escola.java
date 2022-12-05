@@ -1,4 +1,5 @@
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class Escola{
     public LinkedHashMap<Integer,Docente> docentes = new LinkedHashMap<Integer,Docente>();
@@ -60,13 +61,37 @@ public class Escola{
 
     //Os métodos abaixo estão retornando null enquanto não são devidamente implementados, pra não dar erro no java
 
-    public String mapearDocentes(){return null;} //Retorna o nome dos docentes e seus códigos.
+    public String mapearDocentes(){
+        String toReturn = "";
+        for (Map.Entry<Integer, Docente> pair:docentes.entrySet()){
+            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
+        } 
+        return toReturn;
+    } //Retorna o nome dos docentes e seus códigos.
 
-    public String mapearDisciplinas(){return null;}//Retorna o nome das disciplinas e seus códigos.
+    public String mapearDisciplinas(){        
+        String toReturn = "";
+        for (Map.Entry<Integer, Disciplina> pair:disciplinas.entrySet()){
+            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
+        } 
+        return toReturn;
+    }//Retorna o nome das disciplinas e seus códigos.
 
-    public String mapearAlunos(){return null;}//Retorna o nome dos alunos e seus códigos.
+    public String mapearAlunos(){
+        String toReturn = "";
+        for (Map.Entry<Integer, Aluno> pair:alunos.entrySet()){
+            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
+        } 
+        return toReturn;
+    }//Retorna o nome dos alunos e seus códigos.
 
-    public String mapearTurmas(){return null;}//Retorna o nome das turmas e seus códigos.
+    public String mapearTurmas(){
+        String toReturn = "";
+        for (Map.Entry<Integer, Turma> pair:turmas.entrySet()){
+            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
+        } 
+        return toReturn;
+    }//Retorna o nome das turmas e seus códigos.
 
     public void editarDocente(int codigo) throws NoSuchKeyException{
         if (!docentes.containsKey(codigo))
