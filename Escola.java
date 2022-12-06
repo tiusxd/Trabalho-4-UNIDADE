@@ -149,6 +149,7 @@ public class Escola{
                     if (!d.adicionarDocente(docentes.get(toAdd))){
                         System.out.println("Esse docente já ta nessa disciplina");
                     } else {
+                        docentes.get(toAdd).addDisciplina(d);
                         System.out.println("Feito");
                     }
 
@@ -163,6 +164,7 @@ public class Escola{
                         if(!d.removerDocente(docentes.get(toRemove))){
                             System.out.println("Esse docente não tá nessa disciplina");
                         }else {
+                            docentes.get(toRemove).removeDisciplina(d);
                             System.out.println("Feito");
                         }
                     }
@@ -196,7 +198,7 @@ public class Escola{
                 }
                 break;
             case 4:
-            //Botar isso na classe Disciplina. Vai ficar poluido pra krl aq.
+                d.editarNotas(this);
                 break;
             default:
                 System.out.println("Digite uma opção valida");
@@ -260,6 +262,7 @@ public class Escola{
                     if (!t.adicionarAluno(alunos.get(toAdd))){
                         System.out.println("Esse aluno já ta nessa turma");
                     } else {
+                        alunos.get(toAdd).setTurma(codigo);
                         System.out.println("Feito");
                     }
                     //TODO adicionar a possibilidade de adicionar a turma toda de vez.
@@ -270,6 +273,7 @@ public class Escola{
                     if(!t.removerAluno(alunos.get(toRemove))){
                         System.out.println("Esse aluno não tá nessa turma");
                     }else {
+                        alunos.get(toRemove).setTurma(-99);
                         System.out.println("Feito");
                     }
                     
@@ -278,10 +282,35 @@ public class Escola{
                 default:
                     System.out.println("Digite uma opção valida");
             }
-    }//Permite mudar informações de um docente, incluindo alunos.
+    }//Permite mudar informações de um docente.
 
     public void gerarRelatórios(int tipo){}//Gerar relatórios com o GeradorDeRelatorio e passar pro arquivo com o GerenteDeArquivos.
 
-    public void carregar(){}//Inicializar dados a partir de informações de arquivos.
+    public void carregar(){
+        Aluno a;
+        for (String base : ga.carregarAlunos()) {
+            a = new Aluno(base);
+            alunos.put(a.getCodigo(), a); 
+        }
+        Docente doc;
+        for (String base : ga.carregarDocentes()) {
+            doc = new Docente(base);
+            docentes.put(doc.getCodigo(), doc); 
+        }
+        Turma t;
+        for (String base : ga.carregarTurmas()) {
+            t = new Turma(base);
+            turmas.put(t.getCodigo(), t); 
+        }
+        Disciplina dic;
+        for (String base : ga.carregarDisciplinas()) {
+            dic = new Disciplina(base);
+            disciplinas.put(dic.getCodigo(), dic); 
+        }
+    }
+
+    public void salvar(){
+        ga.escrever(this);
+    }
     
-}
+}   
