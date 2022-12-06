@@ -1,6 +1,9 @@
+import java.util.HashMap;
+
 public class Aluno extends Entidade{
     //TODO adicionar um HashMap para um aluno ver suas notas
     private int turma;
+    private HashMap<Integer,Float[]> notas;
 
     public Aluno(){
 
@@ -21,5 +24,9 @@ public class Aluno extends Entidade{
 
     public void setTurma(int novo){
         turma = novo;
+    }
+
+    public HashMap<Integer, Float[]> getNotas() {
+        return notas;
     }
 }

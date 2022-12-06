@@ -2,6 +2,10 @@ import java.util.ArrayList;
 
 public class Turma extends Entidade{
     private ArrayList<Aluno> alunos;
+    public ArrayList<Aluno> getAlunos() {
+        return alunos;
+    }
+
     private int ano;
 
     public Turma() {
