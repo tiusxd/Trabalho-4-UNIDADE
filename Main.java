@@ -1,7 +1,7 @@
 import java.security.Principal;
 
 public class Main {
-    public static void main(String[] args) {
+    //public static void main(String[] args) {
         /*
          * if (primeiraInicialização){
          * inicializaçãoPura();
@@ -26,5 +26,5 @@ public class Main {
 			case 1: menu.alunoMenu();
 		
 		}*/
-    }
+    //}
 }
