@@ -26,7 +26,11 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        try{
         toReturn.remove(toReturn.size()-1);
+        } catch (IndexOutOfBoundsException ex){
+            return toReturn;
+        }
         return toReturn;
     }
 
@@ -39,7 +43,11 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        toReturn.remove(toReturn.size()-1);
+        try{
+            toReturn.remove(toReturn.size()-1);
+            } catch (IndexOutOfBoundsException ex){
+                return toReturn;
+            }
         return toReturn;
     }
 
@@ -52,7 +60,11 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        toReturn.remove(toReturn.size()-1);
+        try{
+            toReturn.remove(toReturn.size()-1);
+            } catch (IndexOutOfBoundsException ex){
+                return toReturn;
+            }
         return toReturn;
     }
 
@@ -65,7 +77,11 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        toReturn.remove(toReturn.size()-1);
+        try{
+            toReturn.remove(toReturn.size()-1);
+            } catch (IndexOutOfBoundsException ex){
+                return toReturn;
+            }
         return toReturn;
     }
     public void adicionarLinha(int list, String add){}// Bota a string add na lista list (códigos definidos na classe Util).
