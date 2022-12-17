@@ -8,9 +8,11 @@ public class Turma extends Entidade{
 
     private int ano;
 
-    public Turma() {
-    }
+    
 
+    public Turma(String nome, int codigo) {
+        super(nome, codigo);
+    }
     public Turma(String base) {
         super(base);
     }

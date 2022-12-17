@@ -24,15 +24,15 @@ public class Tela extends javax.swing.JFrame {
 
     int x = 210;
 
-    String[] nomesAlunos = new String[100];
+    /*String[] nomesAlunos = new String[100];
     String[] nomesDisciplinas = new String[100];
     String[] nomesDocentes = new String[100];
     String[] nomesTurmas = new String[100];
 
     
     Docente docente = new Docente(nomesDeDocentes);
-    Object[] docentesParaDeletar={docente.getNome()};
-    DefaultTableModel dtmExcluirDocentes;
+    Object[] docentesParaDeletar={docente.getNome()};*/
+    static DefaultTableModel modelDocentes, modelAlunos, modelTurmas, modelDisciplinas;
     
     
     
@@ -43,10 +43,7 @@ public class Tela extends javax.swing.JFrame {
         initComponents();
         TelaDocente.setVisible(false);
         TelaEstudante.setVisible(false);
-      
-        dtmExcluirDocentes = (DefaultTableModel) TabelaRemoverDocentes.getModel();
        
-               
     }
 
     @SuppressWarnings("unchecked")
@@ -1752,14 +1749,7 @@ public class Tela extends javax.swing.JFrame {
         RemoverDisciplina.setMaximumSize(new java.awt.Dimension(590, 470));
         RemoverDisciplina.setPreferredSize(new java.awt.Dimension(590, 470));
 
-        TabelaRemoverDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Disciplinas "
-            }
-        ));
+        TabelaRemoverDisciplinas.setModel(modelDisciplinas);
         TabelaDisc2.setViewportView(TabelaRemoverDisciplinas);
 
         BotãoRemoverDisciplinasDoSistema.setText("Remover");
@@ -1797,14 +1787,7 @@ public class Tela extends javax.swing.JFrame {
         RemoverAluno.setMaximumSize(new java.awt.Dimension(590, 470));
         RemoverAluno.setMinimumSize(new java.awt.Dimension(590, 470));
 
-        TabelaRemoverAlunos.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Alunos"
-            }
-        ));
+        TabelaRemoverAlunos.setModel(modelAlunos);
         jScrollPane6.setViewportView(TabelaRemoverAlunos);
 
         jLabel75.setText("Para remover um aluno, selecione.");
@@ -1847,14 +1830,7 @@ public class Tela extends javax.swing.JFrame {
         RemoverDocente.setMaximumSize(new java.awt.Dimension(590, 470));
         RemoverDocente.setMinimumSize(new java.awt.Dimension(590, 470));
 
-        TabelaRemoverDocentes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Docentes "
-            }
-        ));
+        TabelaRemoverDocentes.setModel(modelDocentes);
         jScrollPane7.setViewportView(TabelaRemoverDocentes);
 
         jLabel76.setText("Para remover um docente, selecione.");
@@ -1897,14 +1873,7 @@ public class Tela extends javax.swing.JFrame {
         RemoverTurma.setMaximumSize(new java.awt.Dimension(590, 470));
         RemoverTurma.setMinimumSize(new java.awt.Dimension(590, 470));
 
-        TabelaRemoverTurmas.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Turmas"
-            }
-        ));
+        TabelaRemoverTurmas.setModel(modelTurmas);
         jScrollPane4.setViewportView(TabelaRemoverTurmas);
 
         jLabel74.setText("Para remover uma turma, selecione-a e aperte del.");
@@ -2620,13 +2589,10 @@ public class Tela extends javax.swing.JFrame {
                 break;
             }
         }*/
-        Aluno aluno = new Aluno(nomesdealunos);
-        aluno.setNome(CaixaDeTextoCadastroNomeAluno.getText());
-
-       
-        DefaultTableModel dtmExcluirAlunos = (DefaultTableModel) TabelaRemoverAlunos.getModel();
-        Object[] alunosparadeletar = {aluno.getNome()};
-        dtmExcluirAlunos.addRow(alunosparadeletar);
+        //CONSTRUTOR
+        Aluno aluno = escola.adicionarAluno(CaixaDeTextoCadastroNomeAluno.getText());
+        String[] s = {aluno.getCodigo() + " - " + aluno.getNome()};
+        modelAlunos.addRow(s);
 
     }//GEN-LAST:event_BotaoConcluirCadastroAlunoActionPerformed
 
@@ -2719,36 +2685,30 @@ public class Tela extends javax.swing.JFrame {
     }
 
     private void BotaoConcluirCadastroDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoConcluirCadastroDisciplinasActionPerformed
-
-        Disciplina disciplina = new Disciplina(nomesdedisciplinas);
-        disciplina.setNome(CaixaDeTextoDisciplina.getText());
-
-        for (int i = 0; i < nomesDisciplinas.length; i++) {
+        //CONSTRUTOR
+        Disciplina disciplina = escola.adicionarDisciplina(CaixaDeTextoDisciplina.getText());
+        String[] s = {disciplina.getCodigo() + " - " + disciplina.getNome()};
+        modelDocentes.addRow(s);
+        /*for (int i = 0; i < nomesDisciplinas.length; i++) {
             if (nomesDisciplinas[i] == null) {
                 nomesDisciplinas[i] = CaixaDeTextoDisciplina.getText();
                 ListaDiciplinasCadastrarDisciplinas.setListData(nomesDisciplinas);
                 
                 JOptionPane.showMessageDialog(null, "Cadastro realizado");
 
-                /*DefaultTableModel dtmExcluirDisciplinas = (DefaultTableModel) TabelaRemoverDisciplinas.getModel();
+                DefaultTableModel dtmExcluirDisciplinas = (DefaultTableModel) TabelaRemoverDisciplinas.getModel();
                 Object[] disciplinasParaDeletar = {CaixaDeTextoDisciplina.getText()};
                 dtmExcluirDisciplinas.addRow(disciplinasParaDeletar);
-*/
+                
                 CaixaDeTextoDisciplina.setText(null);
                 break;
             }
             if (nomesDisciplinas[i] != null && nomesDisciplinas[i].equals(CaixaDeTextoDisciplina.getText())) {
                 JOptionPane.showMessageDialog(null, "Já existe uma disciplina com este nome");
                 break;
-            }
+            }*/
             //System.out.println(ListaAlunosCadastrarDisciplinas.getSelectedValuesList());
     }//GEN-LAST:event_BotaoConcluirCadastroDisciplinasActionPerformed
-    
-       
-        DefaultTableModel dtmExcluirDisciplinas = (DefaultTableModel) TabelaRemoverDisciplinas.getModel();
-        Object[] disciplinasParaDeletar = {disciplina.getNome()};
-        dtmExcluirDisciplinas.addRow(disciplinasParaDeletar);
-    }
 
     private void ClickNoBotaoMenuCadastro(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoMenuCadastro
 
@@ -2784,21 +2744,10 @@ public class Tela extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, "Cadastro realizado");
         
-        //Docente docente = new Docente(nomesDeDocentes);
-        docente.setNome(CaixaDeTextoCadastroNomeDocente.getText());
-        
-       /* ArrayList<String> lista = new ArrayList<>();
-        for ( Docente d : escola.docentes.values()) {
-           lista.add(d.getNome());
-        }
-*/
-        //DefaultTableModel dtmExcluirDocentes = (DefaultTableModel) TabelaRemoverDocentes.getModel();
-        //Object[] 
-        //docentesParaDeletar.;docente.getNome()
-        dtmExcluirDocentes.addRow(docentesParaDeletar);
-        
-        TabelaRemoverDocentes.getSelectedRow();
-        //docentesParaDeletar.equals(docente.getNome());
+        //CONSTRUTOR
+        Docente docente = escola.adicionarDocente(CaixaDeTextoCadastroNomeDocente.getText());
+        String[] s = {docente.getCodigo() + " - " + docente.getNome()};
+        modelDocentes.addRow(s);
     }//GEN-LAST:event_BotaoConcluirCadastroDocenteActionPerformed
 
     private void BotaoProcurarDocumentacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoProcurarDocumentacao1ActionPerformed
@@ -2885,16 +2834,21 @@ public class Tela extends javax.swing.JFrame {
     }
     private void BotãoRemoverTurmaDoSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoRemoverTurmaDoSistemaActionPerformed
 
-        DefaultTableModel dtmExcluirTurmas = (DefaultTableModel) TabelaRemoverTurmas.getModel();
-
-        if (dtmExcluirTurmas.getRowCount() == 0) {
+        if (modelTurmas.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Não contém turmas para excluir.");
         }
         if (TabelaRemoverTurmas.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
         }
-        if (TabelaRemoverTurmas.getSelectedRow() != -1) {
-            dtmExcluirTurmas.removeRow(TabelaRemoverTurmas.getSelectedRow());
+        else {
+            ArrayList<Integer> buffer = new ArrayList<Integer>(escola.turmas.keySet());
+            try {
+                escola.removerTurma(buffer.get(TabelaRemoverTurmas.getSelectedRow()));
+            } catch (NoSuchKeyException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            modelTurmas.removeRow(TabelaRemoverTurmas.getSelectedRow());
         }
         
     }//GEN-LAST:event_BotãoRemoverTurmaDoSistemaActionPerformed
@@ -2907,32 +2861,45 @@ public class Tela extends javax.swing.JFrame {
 
     private void BotãoRemoverAlunoDoSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoRemoverAlunoDoSistemaActionPerformed
 
-        DefaultTableModel dtmExcluirAlunos = (DefaultTableModel) TabelaRemoverAlunos.getModel();
+        
 
-        if (dtmExcluirAlunos.getRowCount() == 0) {
+        if (modelAlunos.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Não contém alunos para excluir.");
         }
         if (TabelaRemoverAlunos.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
         }
-        if (TabelaRemoverAlunos.getSelectedRow() != -1) {
-            dtmExcluirAlunos.removeRow(TabelaRemoverAlunos.getSelectedRow());
-    }//GEN-LAST:event_BotãoRemoverAlunoDoSistemaActionPerformed
+        else {
+            ArrayList<Integer> buffer = new ArrayList<Integer>(escola.alunos.keySet());
+            try {
+                escola.removerAluno(buffer.get(TabelaRemoverAlunos.getSelectedRow()));
+            } catch (NoSuchKeyException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            modelAlunos.removeRow(TabelaRemoverAlunos.getSelectedRow());
+        }//GEN-LAST:event_BotãoRemoverAlunoDoSistemaActionPerformed
 
         
     }
     private void BotãoRemoverDocentesDoSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoRemoverDocentesDoSistemaActionPerformed
 
-        DefaultTableModel dtmExcluirDocentes = (DefaultTableModel) TabelaRemoverDocentes.getModel();
 
-        if (dtmExcluirDocentes.getRowCount() == 0) {
+        if (modelDocentes.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Não contém docentes para excluir.");
         }
         if (TabelaRemoverDocentes.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
         }
-        if (TabelaRemoverDocentes.getSelectedRow() != -1) {
-            dtmExcluirDocentes.removeRow(TabelaRemoverDocentes.getSelectedRow());
+        else {
+            ArrayList<Integer> buffer = new ArrayList<Integer>(escola.docentes.keySet());
+            try {
+                escola.removerDocente(buffer.get(TabelaRemoverDocentes.getSelectedRow()));
+            } catch (NoSuchKeyException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            modelDocentes.removeRow(TabelaRemoverDocentes.getSelectedRow());
         }
 
         
@@ -2940,23 +2907,33 @@ public class Tela extends javax.swing.JFrame {
 
     private void BotãoRemoverDisciplinasDoSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotãoRemoverDisciplinasDoSistemaActionPerformed
 
-        DefaultTableModel dtmExcluirDiciplinas = (DefaultTableModel) TabelaRemoverDisciplinas.getModel();
-
-        if (dtmExcluirDiciplinas.getRowCount() == 0) {
+        //NÃO DA PRA REMOVER MAIS DE UM, CONSERTAR ISSO
+        if (modelDisciplinas.getRowCount() == 0) {
             JOptionPane.showMessageDialog(null, "Não contém disciplinas para excluir.");
         }
         if (TabelaRemoverDisciplinas.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
         }
-        if (TabelaRemoverDisciplinas.getSelectedRow() != -1) {
-            dtmExcluirDiciplinas.removeRow(TabelaRemoverDisciplinas.getSelectedRow());
+        else {
+            ArrayList<Integer> buffer = new ArrayList<Integer>(escola.disciplinas.keySet());
+            try {
+                escola.removerDisciplina(buffer.get(TabelaRemoverDisciplinas.getSelectedRow()));
+            } catch (NoSuchKeyException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+            modelDisciplinas.removeRow(TabelaRemoverDisciplinas.getSelectedRow());
         }
         
     }//GEN-LAST:event_BotãoRemoverDisciplinasDoSistemaActionPerformed
 
     private void BotaoConcluirCadastroTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoConcluirCadastroTurmaActionPerformed
-        
-        JOptionPane.showMessageDialog(null, "Cadastro realizado");
+        //CONSTRUTOR
+        Turma turma = escola.adicionarTurma(CaixaDeTextoCadastroTurma.getText());
+        String[] s = {turma.getCodigo() + " - " + turma.getNome()};
+        modelDocentes.addRow(s);
+    }
+        /*JOptionPane.showMessageDialog(null, "Cadastro realizado");
         
         for (int i = 0; i < nomesTurmas.length; i++) {
 
@@ -2964,9 +2941,9 @@ public class Tela extends javax.swing.JFrame {
                 nomesTurmas[i] = CaixaDeTextoCadastroTurma.getText();
                 ListaTurmasCadastrarTurma.setListData(nomesTurmas);
 
-                /*DefaultTableModel dtmExcluirTurmas = (DefaultTableModel) TabelaRemoverTurmas.getModel();
+                DefaultTableModel dtmExcluirTurmas = (DefaultTableModel) TabelaRemoverTurmas.getModel();
                 Object[] turmasParaDeletar = {CaixaDeTextoCadastroTurma.getText()};
-                dtmExcluirTurmas.addRow(turmasParaDeletar);*/
+                dtmExcluirTurmas.addRow(turmasParaDeletar);
                 CaixaDeTextoCadastroTurma.setText(null);
                 
                 break;
@@ -2984,7 +2961,7 @@ public class Tela extends javax.swing.JFrame {
         DefaultTableModel dtmExcluirTurmas = (DefaultTableModel) TabelaRemoverTurmas.getModel();
         Object[] turmasParaDeletar = {turmas.getNome()};
         dtmExcluirTurmas.addRow(turmasParaDeletar);
-    }//GEN-LAST:event_BotaoConcluirCadastroTurmaActionPerformed
+    }*///GEN-LAST:event_BotaoConcluirCadastroTurmaActionPerformed
 
     private void ClickNoBotaoEditarTurmas1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoEditarTurmas1
         // TODO add your handling code here:
@@ -3028,6 +3005,46 @@ public class Tela extends javax.swing.JFrame {
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
+
+         //INICIALIZAR A ESCOLA A PARTIR DE ARQUIVO.
+         escola = new Escola();
+         escola.carregar();
+         //INICIALIZAR AS TABLEMODELS
+         //TEM Q VER SE O MAIN É CHAMADO PRIMEIRO, SE NÃO PASSAR PRO INITCOMPONENTS
+         String[] toAdd = new String[1];
+         String buffer;
+         modelAlunos = new DefaultTableModel();
+         modelDisciplinas = new DefaultTableModel();
+         modelDocentes = new DefaultTableModel();
+         modelTurmas = new DefaultTableModel();
+         modelAlunos.addColumn("Alunos");
+         modelDisciplinas.addColumn("Disciplinas");
+         modelDocentes.addColumn("Docentes");
+         modelTurmas.addColumn("Turmas");
+         for (Aluno a: escola.alunos.values()){
+            buffer = a.getCodigo() + " - ";
+            buffer += a.getNome();
+            toAdd[0] = buffer;
+            modelAlunos.addRow(toAdd);
+         }
+         for (Docente a: escola.docentes.values()){
+            buffer = a.getCodigo() + " - ";
+            buffer += a.getNome();
+            toAdd[0] = buffer;
+            modelDocentes.addRow(toAdd);
+         }
+         for (Turma a: escola.turmas.values()){
+            buffer = a.getCodigo() + " - ";
+            buffer += a.getNome();
+            toAdd[0] = buffer;
+            modelTurmas.addRow(toAdd);
+         }
+         for (Disciplina a: escola.disciplinas.values()){
+            buffer = a.getCodigo() + " - ";
+            buffer += a.getNome();
+            toAdd[0] = buffer;
+            modelDisciplinas.addRow(toAdd);
+         }
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -3155,19 +3172,19 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JPanel SubmenuEditarDadosDaDisciplina;
     private javax.swing.JPanel SubmenuRelatorio;
     private javax.swing.JPanel SubmenuRemocao;
-    private javax.swing.JScrollPane TabelaDisc;
-    private javax.swing.JScrollPane TabelaDisc1;
-    private javax.swing.JScrollPane TabelaDisc2;
-    private javax.swing.JScrollPane TabelaDisc3;
+    private javax.swing.JScrollPane TabelaDisc; //
+    private javax.swing.JScrollPane TabelaDisc1; //
+    private javax.swing.JScrollPane TabelaDisc2; //
+    private javax.swing.JScrollPane TabelaDisc3; //
     private javax.swing.JTable TabelaDisciplinas;
-    private javax.swing.JScrollPane TabelaDoc;
-    private javax.swing.JScrollPane TabelaDoc1;
-    private javax.swing.JScrollPane TabelaDoc2;
+    private javax.swing.JScrollPane TabelaDoc; //
+    private javax.swing.JScrollPane TabelaDoc1; //
+    private javax.swing.JScrollPane TabelaDoc2; //
     private javax.swing.JTable TabelaDocentes;
     private javax.swing.JTable TabelaDocentes1;
     private javax.swing.JTable TabelaDocentes2;
-    private javax.swing.JScrollPane TabelaDocumentosAnexados;
-    private javax.swing.JScrollPane TabelaDocumentosAnexados1;
+    private javax.swing.JScrollPane TabelaDocumentosAnexados; //
+    private javax.swing.JScrollPane TabelaDocumentosAnexados1; //
     private javax.swing.JTable TabelaEditarDisciplinas;
     private javax.swing.JTable TabelaEditarDisciplinas1;
     private javax.swing.JTable TabelaRemoverAlunos;

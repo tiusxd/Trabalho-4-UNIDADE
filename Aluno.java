@@ -5,8 +5,8 @@ public class Aluno extends Entidade{
     private int turma;
     private HashMap<Integer,Float[]> notas;
 
-    public Aluno(){
-
+    public Aluno(String nome, int codigo){
+        super(nome, codigo);
     }
     
     public Aluno(String base){

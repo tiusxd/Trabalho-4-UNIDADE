@@ -3,15 +3,17 @@ import java.util.spi.ToolProvider;
 
 public class Docente extends Entidade{
     private ArrayList<Disciplina> disciplinas;
-    public ArrayList<Disciplina> getDisciplinas() {
-        return disciplinas;
-    }
-
-    public Docente() {
+    
+    public Docente(String nome, int codigo) {
+        super(nome, codigo);
     }
 
     public Docente(String base) {
         super(base);
+    }
+
+    public ArrayList<Disciplina> getDisciplinas() {
+        return disciplinas;
     }
 
     @Override
