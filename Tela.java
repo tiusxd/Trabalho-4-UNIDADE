@@ -3223,7 +3223,7 @@ public class Tela extends javax.swing.JFrame {
                 } catch (Exception ex){
                     FileWriter fw = null;
                     try {
-                        fw = new FileWriter("Trabalho-4-UNIDADE/Dados/Alunos.txt", true);
+                        fw = new FileWriter("Trabalho-4-UNIDADE/Dados/ErrorLog.txt", true);
                         fw.write("LOCAL: " + System.getProperty("user.dir") + "\n");
                         Calendar c = Calendar.getInstance();
                         fw.write("DIA: " + c.DAY_OF_MONTH + " HORA: " + String.valueOf(c.HOUR_OF_DAY) + String.valueOf(c.MINUTE) + "\n");
