@@ -12,9 +12,15 @@ public class Turma extends Entidade{
 
     public Turma(String nome, int codigo) {
         super(nome, codigo);
+        alunos = new ArrayList<Aluno>();
     }
-    public Turma(String base) {
+    public Turma(String base, Escola escola) {
         super(base);
+        alunos = new ArrayList<Aluno>();
+        var tierOne = base.split(";");
+        for (String tTwo : tierOne[2].split(",")){
+            alunos.add(escola.alunos.get(Integer.parseInt(tTwo)));
+        }
     }
     public boolean adicionarAluno(Aluno aluno){
         if (alunos.contains(aluno))
@@ -40,8 +46,13 @@ public class Turma extends Entidade{
 
     @Override
     public String toCsv() {
-        // TODO Auto-generated method stub
-        return null;
+        String toReturn = "";
+        toReturn = toReturn + getCodigo() + ";"+ getNome() +";";
+        for(Aluno a : alunos){
+            toReturn+=a.getCodigo();
+            toReturn+=",";
+        }
+        return toReturn;
     }
     public int getAno() {
         return ano;

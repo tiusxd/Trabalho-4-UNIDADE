@@ -121,12 +121,12 @@ public class Escola{
         }
         Turma t;
         for (String base : ga.carregarTurmas()) {
-            t = new Turma(base);
+            t = new Turma(base,this);
             turmas.put(t.getCodigo(), t); 
         }
         Disciplina dic;
         for (String base : ga.carregarDisciplinas()) {
-            dic = new Disciplina(base);
+            dic = new Disciplina(base,this);
             disciplinas.put(dic.getCodigo(), dic); 
         }
     }
