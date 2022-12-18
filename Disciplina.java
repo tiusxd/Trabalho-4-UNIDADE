@@ -5,6 +5,10 @@ import java.util.Map;
 public class Disciplina extends Entidade{
     
     private ArrayList<Docente> docentes;
+    public ArrayList<Docente> getDocentes() {
+        return docentes;
+    }
+
     private HashMap<Aluno,Float[]> notas;
     //ADCIONAR INIT
     public HashMap<Aluno, Float[]> getNotas() {

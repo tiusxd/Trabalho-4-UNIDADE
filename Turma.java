@@ -34,6 +34,10 @@ public class Turma extends Entidade{
         alunos.remove(aluno);
         return true;
     }
+    public boolean removerAluno(int aluno){
+        alunos.remove(aluno);
+        return true;
+    }
 
     public String mapearAlunos(){
         String toReturn = "";
