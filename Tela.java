@@ -2580,15 +2580,6 @@ public class Tela extends javax.swing.JFrame {
          */
         JOptionPane.showMessageDialog(null, "Cadastro realizado");
 
-        /*for (int i = 0; i < nomesAlunos.length; i++) {
-
-            if (nomesAlunos[i] == null) {
-                nomesAlunos[i] = nomesdealunos;
-                ListaAlunosCadastrarDisciplinas.setListData(nomesAlunos);
-                ListaAlunosCadastrarTurma.setListData(nomesAlunos);
-                break;
-            }
-        }*/
         //CONSTRUTOR
         Aluno aluno = escola.adicionarAluno(CaixaDeTextoCadastroNomeAluno.getText());
         String[] s = {aluno.getCodigo() + " - " + aluno.getNome()};
@@ -2689,25 +2680,6 @@ public class Tela extends javax.swing.JFrame {
         Disciplina disciplina = escola.adicionarDisciplina(CaixaDeTextoDisciplina.getText());
         String[] s = {disciplina.getCodigo() + " - " + disciplina.getNome()};
         modelDocentes.addRow(s);
-        /*for (int i = 0; i < nomesDisciplinas.length; i++) {
-            if (nomesDisciplinas[i] == null) {
-                nomesDisciplinas[i] = CaixaDeTextoDisciplina.getText();
-                ListaDiciplinasCadastrarDisciplinas.setListData(nomesDisciplinas);
-                
-                JOptionPane.showMessageDialog(null, "Cadastro realizado");
-
-                DefaultTableModel dtmExcluirDisciplinas = (DefaultTableModel) TabelaRemoverDisciplinas.getModel();
-                Object[] disciplinasParaDeletar = {CaixaDeTextoDisciplina.getText()};
-                dtmExcluirDisciplinas.addRow(disciplinasParaDeletar);
-                
-                CaixaDeTextoDisciplina.setText(null);
-                break;
-            }
-            if (nomesDisciplinas[i] != null && nomesDisciplinas[i].equals(CaixaDeTextoDisciplina.getText())) {
-                JOptionPane.showMessageDialog(null, "Já existe uma disciplina com este nome");
-                break;
-            }*/
-            //System.out.println(ListaAlunosCadastrarDisciplinas.getSelectedValuesList());
     }//GEN-LAST:event_BotaoConcluirCadastroDisciplinasActionPerformed
 
     private void ClickNoBotaoMenuCadastro(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoMenuCadastro

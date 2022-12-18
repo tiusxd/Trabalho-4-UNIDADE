@@ -67,10 +67,10 @@ public class Escola{
             turmas.remove(codigo);
     }
 
-    public void editarAluno(){}
-    public void editarTurma(){}
-    public void editarDisciplina(){}
-    public void editarDocente(){}
+    public void editarAluno(){};
+    public void editarTurma(){};
+    public void editarDisciplina(){};
+    public void editarDocente(){};
 
     //Os métodos abaixo estão retornando null enquanto não são devidamente implementados, pra não dar erro no java
 
