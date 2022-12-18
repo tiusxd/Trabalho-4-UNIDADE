@@ -4,8 +4,10 @@ import java.awt.Image;
 import java.awt.List;
 import java.awt.event.ActionEvent;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
@@ -15,6 +17,7 @@ import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import java.awt.event.WindowEvent;
 
 public class Tela extends javax.swing.JFrame {
 
@@ -31,9 +34,16 @@ public class Tela extends javax.swing.JFrame {
         initComponents();
         TelaDocente.setVisible(false);
         TelaEstudante.setVisible(false);
+        
 
     }
 
+    protected void processWindowEvent(WindowEvent e) {
+        if(e.getID() == WindowEvent.WINDOW_CLOSING) {
+            escola.salvar();
+        }
+        super.processWindowEvent(e);
+    }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -3153,11 +3163,8 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoSalvarEditacaoDisciplinaActionPerformed
 
     public static void main(String args[]) {
-        System.out.println("Penis");
-          escola = new Escola();
+        escola = new Escola();
          escola.carregar();
-         //INICIALIZAR AS TABLEMODELS
-         //TEM Q VER SE O MAIN É CHAMADO PRIMEIRO, SE NÃO PASSAR PRO INITCOMPONENTS
          String[] toAdd = new String[1];
          String buffer;
          modelAlunos = new DefaultTableModel();
@@ -3211,7 +3218,24 @@ public class Tela extends javax.swing.JFrame {
         
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                try{
                 new Tela().setVisible(true);
+                } catch (Exception ex){
+                    FileWriter fw = null;
+                    try {
+                        fw = new FileWriter("Trabalho-4-UNIDADE/Dados/Alunos.txt", true);
+                        fw.write("LOCAL: " + System.getProperty("user.dir") + "\n");
+                        Calendar c = Calendar.getInstance();
+                        fw.write("DIA: " + c.DAY_OF_MONTH + " HORA: " + String.valueOf(c.HOUR_OF_DAY) + String.valueOf(c.MINUTE) + "\n");
+                        fw.write("TIPO: " + ex.toString() +"\n");
+                        fw.write("TRACE:" + ex.getStackTrace().toString());
+                        fw.write("\n");
+                        fw.close();
+                    } catch (IOException e) {
+                        // TODO Auto-generated catch block
+                        e.printStackTrace();
+                    }
+                }
             }
         });
     }
