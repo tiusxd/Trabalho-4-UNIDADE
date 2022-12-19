@@ -98,7 +98,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Alunos.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Alunos.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -111,7 +111,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Docentes.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Docentes.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -124,7 +124,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Turmas.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Turmas.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -137,7 +137,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Disciplinas.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Disciplinas.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {

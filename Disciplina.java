@@ -41,7 +41,12 @@ public class Disciplina extends Entidade{
         }
     }
 
-    public void editarNotas(Escola escola){
+    public void editarNotas(Aluno aluno, Float[] nota){
+        notas.put(aluno, nota);
+    }
+    public void adicionarAluno(Aluno aluno){
+        notas.put(aluno, new Float[]{0f,0f,0f,0f});
+        aluno.getNotas().put(getCodigo(), new Float[]{0f,0f,0f,0f});
     }
 
     public ArrayList<Docente> getDocentes() {
