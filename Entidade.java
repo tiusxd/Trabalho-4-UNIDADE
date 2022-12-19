@@ -8,8 +8,8 @@ public abstract class Entidade{
     }
     public Entidade(String base){
         String[] array = base.split(";");
-        this.nome = array[0];
-        this.codigo = Integer.parseInt(array[1]);
+        this.nome = array[1];
+        this.codigo = Integer.parseInt(array[0]);
     }
 
     public abstract String toCsv();

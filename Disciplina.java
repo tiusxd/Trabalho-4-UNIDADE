@@ -16,7 +16,7 @@ public class Disciplina extends Entidade{
         docentes = new ArrayList<Docente>();
         notas = new HashMap<Aluno,Float[]>();
     }
-
+//TODO #18 adicionar formas de o carregar do arquivo nao quebrar se o bgl n for inicializado todo antes de salvar
     public Disciplina(String base, Escola escola) {
         super(base);
         docentes = new ArrayList<Docente>();
@@ -52,11 +52,11 @@ public class Disciplina extends Entidade{
         return notas;
     }
 
-    public boolean removerAluno(Aluno aluno){
-        if (!notas.containsKey(aluno))
-            return false;
-        notas.remove(aluno);
-        aluno.getNotas().remove(getCodigo());
+    public boolean removerAluno(int aluno){
+        ArrayList<Aluno> buffer = new ArrayList<Aluno>(notas.keySet());
+        Aluno a = buffer.get(aluno);
+        a.getNotas().remove(this.getCodigo());
+        notas.remove(a);
         return true;
     }
 
@@ -67,9 +67,7 @@ public class Disciplina extends Entidade{
         return true;
     }
 
-    public boolean removerDocente(Docente docente){
-        if (!docentes.contains(docente))
-            return false;
+    public boolean removerDocente(int docente){
         docentes.remove(docente);
         return true;
     }

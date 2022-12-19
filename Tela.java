@@ -27,10 +27,17 @@ public class Tela extends javax.swing.JFrame {
     ImageIcon imagem = null;
     static Escola escola;
     static int counterForPrevention = 0;
+    static int counterForPreventionBX = 0;
 
     int x = 0;
     static DefaultTableModel modelDocentes, modelAlunos, modelTurmas, modelDisciplinas;
     static ArrayList<Integer> bufferForRemoval = new ArrayList<Integer>();
+    static ArrayList<Integer> bufferForAdition = new ArrayList<Integer>();
+    static ArrayList<Integer> bufferForRemovalBX = new ArrayList<Integer>();
+    static ArrayList<Integer> bufferForAditionBX = new ArrayList<Integer>();
+    //static DefaultTableModel bufferTable = new DefaultTableModel();
+    //static DefaultTableModel bufferTableBX = new DefaultTableModel();
+    static boolean isToListen = false;
 
     public Tela() {
         initComponents();
@@ -230,6 +237,7 @@ public class Tela extends javax.swing.JFrame {
             buffer += a.getNome();
             BarraDisciplinasCadastradas.addItem(buffer);
         }
+
         jLabel55 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaEditarAlunosEmTurma = new javax.swing.JTable();
@@ -1485,6 +1493,12 @@ public class Tela extends javax.swing.JFrame {
 
         jButton3.setText("Remover");
 
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoRemoverCoisasDaDisciplinaActionPerformed(evt);
+            }
+        });
+
         TabelaEditarDisciplinasAluno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -2315,6 +2329,33 @@ public class Tela extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
+        BarraAlunosCadastrados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if(isToListen){
+                String [] buffer = new String [1];
+                buffer[0] = (String) BarraAlunosCadastrados1.getSelectedItem();
+                DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+                dtm.addRow(buffer);
+                System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+                bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+                TabelaEditarDisciplinasAluno.setModel(dtm);
+            }
+        }
+        });
+
+        BarraDocentesCadastrados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (isToListen){
+                String [] buffer = new String [1];
+                buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
+                DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+                dtm.addRow(buffer);
+                System.out.println("kkkkkk");
+                bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+                TabelaEditarDisciplinasAluno.setModel(dtm);
+            }
+        }
+        });
         TelaEstudante.add(BotaoDadosPessoais);
         BotaoDadosPessoais.setBounds(70, 180, 150, 50);
 
@@ -2530,6 +2571,7 @@ public class Tela extends javax.swing.JFrame {
         //TODO #16 inicializar essas porra dessas barra e linkar elas com as tabela e botar actionperformed pra inicializar a lista dela
         BarraTurmasCadastradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (isToListen){
                 DefaultTableModel toAdd = new DefaultTableModel();
                 toAdd.addColumn("Alunos");
                 String[] buffer = new String [1];
@@ -2541,10 +2583,12 @@ public class Tela extends javax.swing.JFrame {
 
                 TabelaEditarAlunosEmTurma.setModel(toAdd);
             }
+        }
         });
 
         BarraDisciplinasCadastradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
+                if (isToListen){
                 DefaultTableModel toAdd = new DefaultTableModel();
                 toAdd.addColumn("Docentes");
                 String[] buffer = new String [1];
@@ -2578,6 +2622,7 @@ public class Tela extends javax.swing.JFrame {
 
                 for (Map.Entry<Integer,Aluno> pair : escola.alunos.entrySet()){
                     if (!bufferForRemoval.contains(pair.getKey())){
+                        System.out.println(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
                         BarraAlunosCadastrados1.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
                     }
                 }
@@ -2586,6 +2631,7 @@ public class Tela extends javax.swing.JFrame {
 
                 TabelaEditarDisciplinasAluno.setModel(toAddBravo);
             }
+        }
         });
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2699,7 +2745,10 @@ public class Tela extends javax.swing.JFrame {
         TelaDocente.setVisible(false);
         TelaLogin.setVisible(true);
         bufferForRemoval.clear();
+        bufferForRemovalBX.clear();
         counterForPrevention = 0;
+        counterForPreventionBX = 0;
+        isToListen = false;
 
     }//GEN-LAST:event_BotaoSairActionPerformed
 
@@ -2728,7 +2777,9 @@ public class Tela extends javax.swing.JFrame {
         TelaEstudante.setVisible(false);
         TelaLogin.setVisible(true);
         bufferForRemoval.clear();
+        bufferForRemovalBX.clear();
         counterForPrevention = 0;
+        counterForPreventionBX = 0;
         
     }//GEN-LAST:event_BotaoSair1ActionPerformed
 
@@ -2756,11 +2807,10 @@ public class Tela extends javax.swing.JFrame {
         Aluno aluno = escola.adicionarAluno(CaixaDeTextoCadastroNomeAluno.getText());
         String[] s = {aluno.getCodigo() + " - " + aluno.getNome()};
         modelAlunos.addRow(s);
-        BarraAlunosCadastrados.addItem(s[0]);
-        BarraAlunosCadastrados1.addItem(s[0]);
-
-        //BarraAlunosCadastrados.addItem(aluno.getNome());
-        //BarraAlunosCadastrados1.addItem(aluno.getNome());
+        //BarraAlunosCadastrados.addItem(s[0]);
+        //BarraAlunosCadastrados1.addItem(s[0]);
+        BarraAlunosCadastrados.addItem(aluno.getCodigo() + " - " + aluno.getNome());
+        BarraAlunosCadastrados1.addItem(aluno.getCodigo() + " - " + aluno.getNome());
         x += 1;
     }//GEN-LAST:event_BotaoConcluirCadastroAlunoActionPerformed
 
@@ -2784,20 +2834,22 @@ public class Tela extends javax.swing.JFrame {
         LimparMiniTela();
         LimparCaixasDeTextos();
         CadastrarAluno.setVisible(true);
-        
+        isToListen = false;
 
     }//GEN-LAST:event_ClickBotaoCadastrarAluno
 
     private void ClickNoBotaoCadastrarTurmas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoCadastrarTurmas
         LimparMiniTela();
         CadastrarTurma.setVisible(true);
+        isToListen = false;
         
     }//GEN-LAST:event_ClickNoBotaoCadastrarTurmas
 
     private void ClickBotaoCadastrarDocentes(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoCadastrarDocentes
         LimparMiniTela();
         LimparCaixasDeTextos();
-                CadastrarDocente.setVisible(true);
+        CadastrarDocente.setVisible(true);
+        isToListen = false;
     }//GEN-LAST:event_ClickBotaoCadastrarDocentes
 
     private void DeslizarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DeslizarMenuMouseClicked
@@ -2882,7 +2934,7 @@ public class Tela extends javax.swing.JFrame {
         LimparMiniTela();
         LimparCaixasDeTextos();
         CadastrarDisciplina.setVisible(true);
-
+        isToListen = false;
     }//GEN-LAST:event_BotaoCadastrarDisciplinasMouseClicked
 
     private void BotaoProcurarImagem3x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoProcurarImagem3x5ActionPerformed
@@ -2908,62 +2960,73 @@ public class Tela extends javax.swing.JFrame {
     private void ClickNoBotaoEditarTurmas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoEditarTurmas
         LimparMiniTela();
         EditarTurma.setVisible(true);
+        isToListen = true;
     }//GEN-LAST:event_ClickNoBotaoEditarTurmas
 
     private void ClickBotaoEditarDocentes(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoEditarDocentes
         LimparMiniTela();
         EditarDocente.setVisible(true);
-
+        isToListen = true;
     }//GEN-LAST:event_ClickBotaoEditarDocentes
 
     private void ClickBotaoEditarAlunos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoEditarAlunos
         LimparMiniTela();
         EditarAluno.setVisible(true);// TODO add your handling code here:
+        isToListen = true;
     }//GEN-LAST:event_ClickBotaoEditarAlunos
 
     private void BotaoEditarDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotaoEditarDisciplinasMouseClicked
         LimparMiniTela();
         SubmenuEditarDadosDaDisciplina.setVisible(true);
+        isToListen = true;
     }//GEN-LAST:event_BotaoEditarDisciplinasMouseClicked
 
     private void ClickNoBotaoRemoverTurmas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoRemoverTurmas
         LimparMiniTela();
         RemoverTurma.setVisible(true);// TODO add your handling code here:
+        isToListen = false;
     }//GEN-LAST:event_ClickNoBotaoRemoverTurmas
 
     private void ClickBotaoRemoverAluno(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoRemoverAluno
         LimparMiniTela();
         RemoverAluno.setVisible(true);// TODO add your handling code here:
+        isToListen = false;
     }//GEN-LAST:event_ClickBotaoRemoverAluno
 
     private void BotaoRemoverDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotaoRemoverDisciplinasMouseClicked
         LimparMiniTela();
         RemoverDisciplina.setVisible(true);// TODO add your handling code here:
+        isToListen = false;
     }//GEN-LAST:event_BotaoRemoverDisciplinasMouseClicked
 
     private void ClickBotaoRemoverDocentes(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoRemoverDocentes
         LimparMiniTela();
         RemoverDocente.setVisible(true);// TODO add your handling code here:
+        isToListen = false;
     }//GEN-LAST:event_ClickBotaoRemoverDocentes
 
     private void ClickNoBotaoRelatorioTurmas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoRelatorioTurmas
         LimparMiniTela();
         RelatorioTurma.setVisible(true);// TODO add your handling code here:
+        isToListen = false;
     }//GEN-LAST:event_ClickNoBotaoRelatorioTurmas
 
     private void ClickBotaoRelatorioDocentes(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoRelatorioDocentes
         LimparMiniTela();
         RelatorioDocente.setVisible(true);// TODO add your handling code here:
+        isToListen = false;
     }//GEN-LAST:event_ClickBotaoRelatorioDocentes
 
     private void ClickBotaoRelatorioAluno(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoRelatorioAluno
         LimparMiniTela();
         RelatorioAluno.setVisible(true);// TODO add your handling code here:
+        isToListen = false;
     }//GEN-LAST:event_ClickBotaoRelatorioAluno
 
     private void BotaoRelatorioDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotaoRelatorioDisciplinasMouseClicked
         LimparMiniTela();
         RelatorioDisciplina.setVisible(true);
+        isToListen = false;
     }//GEN-LAST:event_BotaoRelatorioDisciplinasMouseClicked
 
     private void BotãoRetornarMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotãoRetornarMenuMouseClicked
@@ -3107,6 +3170,25 @@ public class Tela extends javax.swing.JFrame {
         CaixaDeTextoCadastroTurma.setText(null);
     }//GEN-LAST:event_BotaoConcluirCadastroTurmaActionPerformed
 
+    private void BotaoRemoverCoisasDaDisciplinaActionPerformed(java.awt.event.ActionEvent evt){
+        DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+        DefaultTableModel dtmB = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+        //bufferTable = dtm;
+        //bufferTableBX = dtmB;
+        while (TabelaEditarDisciplinasAluno.getSelectedRow()!=-1){
+            bufferForRemoval.add(TabelaEditarDisciplinasAluno.getSelectedRow()+counterForPrevention);
+            dtm.removeRow(TabelaEditarDisciplinasAluno.getSelectedRow());
+            counterForPrevention++;
+        }
+        while (TabelaEditarDisciplinasDocente.getSelectedRow()!=-1){
+            bufferForRemoval.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
+            dtmB.removeRow(TabelaEditarDisciplinasDocente.getSelectedRow());
+            counterForPreventionBX++;
+        }
+
+        TabelaEditarDisciplinasAluno.setModel(dtm);
+        TabelaEditarDisciplinasDocente.setModel(dtmB);
+    }
     private void ClickNoBotaoEditarTurmas1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoEditarTurmas1
         // TODO add your handling code here:
     }//GEN-LAST:event_ClickNoBotaoEditarTurmas1
@@ -3126,11 +3208,13 @@ public class Tela extends javax.swing.JFrame {
     private void ClickBotaoEditarGeralDisciplinas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoEditarGeralDisciplinas
         LimparMiniTela();
         EditarDisciplina.setVisible(true);
+        isToListen = true;
     }//GEN-LAST:event_ClickBotaoEditarGeralDisciplinas
 
     private void ClickBotaoEditarNotas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoEditarNotas
         LimparMiniTela();
         EditarNotas.setVisible(true);
+        isToListen = true;
     }//GEN-LAST:event_ClickBotaoEditarNotas
 
     //TODO #14 actionperformed editar aluno
@@ -3143,6 +3227,10 @@ public class Tela extends javax.swing.JFrame {
         for (int i : bufferForRemoval){
             t.removerAluno(i);
         }
+        bufferForRemoval.clear();
+        bufferForRemovalBX.clear();
+        counterForPrevention = 0;
+        counterForPreventionBX = 0;
     }//GEN-LAST:event_BotaoSalvarEditacaoTurmaActionPerformed
 
     private void BotaoRemoverAlunoDaTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoRemoverAlunoDaTurmaActionPerformed
@@ -3181,9 +3269,20 @@ public class Tela extends javax.swing.JFrame {
 
     private void BotaoSalvarEditacaoDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarEditacaoDisciplinaActionPerformed
         ArrayList<Integer> buffer = new ArrayList<>(escola.disciplinas.keySet()); 
-        escola.disciplinas.get(buffer.get(BarraDisciplinasCadastradas.getSelectedIndex())).setNome(CaixaDeTextoEditarNomeDisciplina.getText());
-       //TabelaEditarDisciplinasDocente;
-       //TabelaEditarDisciplinasAluno;
+        Disciplina d = escola.disciplinas.get(buffer.get(BarraDisciplinasCadastradas.getSelectedIndex()));
+        d.setNome(CaixaDeTextoEditarNomeDisciplina.getText());
+        for(int i : bufferForRemoval){
+            d.removerDocente(i);
+        }
+
+        for (int i : bufferForRemovalBX){
+            d.removerAluno(i);
+        }
+
+        bufferForRemoval.clear();
+        bufferForRemovalBX.clear();
+        counterForPrevention = 0;
+        counterForPreventionBX = 0;
     }//GEN-LAST:event_BotaoSalvarEditacaoDisciplinaActionPerformed
 
     public static void main(String args[]) {
