@@ -8,10 +8,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
 import javax.swing.JOptionPane;
@@ -2546,11 +2548,23 @@ public class Tela extends javax.swing.JFrame {
                 DefaultTableModel toAdd = new DefaultTableModel();
                 toAdd.addColumn("Docentes");
                 String[] buffer = new String [1];
+                BarraDocentesCadastrados1.removeAllItems();
+                BarraAlunosCadastrados1.removeAllItems();
+                bufferForRemoval.clear();
                 for(Docente a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getDocentes()){
                     buffer[0] = String.valueOf(a.getCodigo());
                     buffer[0] = buffer[0] + " - " + a.getNome();
+                    bufferForRemoval.add(a.getCodigo());
                     toAdd.addRow(buffer);
                 }
+
+                for (Map.Entry<Integer,Docente> pair : escola.docentes.entrySet()){
+                    if (!bufferForRemoval.contains(pair.getKey())){
+                        BarraDocentesCadastrados1.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
+                    }
+                }
+
+                bufferForRemoval.clear();
 
                 TabelaEditarDisciplinasDocente.setModel(toAdd);
                 DefaultTableModel toAddBravo = new DefaultTableModel();
@@ -2558,8 +2572,17 @@ public class Tela extends javax.swing.JFrame {
                 for(Aluno a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet()){
                     buffer[0] = String.valueOf(a.getCodigo());
                     buffer[0] = buffer[0] + " - " + a.getNome();
+                    bufferForRemoval.add(a.getCodigo());
                     toAddBravo.addRow(buffer);
                 }
+
+                for (Map.Entry<Integer,Aluno> pair : escola.alunos.entrySet()){
+                    if (!bufferForRemoval.contains(pair.getKey())){
+                        BarraAlunosCadastrados1.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
+                    }
+                }
+
+                bufferForRemoval.clear();
 
                 TabelaEditarDisciplinasAluno.setModel(toAddBravo);
             }
