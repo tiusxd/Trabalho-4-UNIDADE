@@ -2691,6 +2691,7 @@ public class Tela extends javax.swing.JFrame {
     }
 
     private void BotaoSairTelaLogin(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSairTelaLogin
+        escola.salvar();
         System.exit(0);
     }//GEN-LAST:event_BotaoSairTelaLogin
 

@@ -8,6 +8,7 @@ public class Aluno extends Entidade{
 
     public Aluno(String nome, int codigo){
         super(nome, codigo);
+        notas = new HashMap<Integer,Float[]>();
     }
     
     public Aluno(String base){

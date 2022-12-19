@@ -5,15 +5,8 @@ import java.util.Map;
 public class Disciplina extends Entidade{
     
     private ArrayList<Docente> docentes;
-    public ArrayList<Docente> getDocentes() {
-        return docentes;
-    }
 
     private HashMap<Aluno,Float[]> notas;
-    //ADCIONAR INIT
-    public HashMap<Aluno, Float[]> getNotas() {
-        return notas;
-    }
 
     private int ano;
 
@@ -49,6 +42,14 @@ public class Disciplina extends Entidade{
     }
 
     public void editarNotas(Escola escola){
+    }
+
+    public ArrayList<Docente> getDocentes() {
+        return docentes;
+    }
+
+    public HashMap<Aluno, Float[]> getNotas() {
+        return notas;
     }
 
     public boolean removerAluno(Aluno aluno){

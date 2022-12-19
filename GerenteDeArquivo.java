@@ -98,8 +98,9 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/AlunosSalvos.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Alunos.txt");
             writer.write(toWrite);
+            writer.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -110,8 +111,9 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/DocentesSalvos.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Docentes.txt");
             writer.write(toWrite);
+            writer.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -122,8 +124,9 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/TurmasSalvos.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Turmas.txt");
             writer.write(toWrite);
+            writer.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -134,8 +137,9 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/DisciplinasSalvos.txt");
+            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Disciplinas.txt");
             writer.write(toWrite);
+            writer.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
