@@ -9,16 +9,13 @@ import java.util.List;
 public class GerenteDeArquivo{
     //TODO remover essa merda se n precisa pra UI
     public ArrayList<String> metaDados;// Proveniente do metadados.txt
-    public ArrayList<String> alunos;// Proveniente do alunos.txt
-    public ArrayList<String> docentes;// Proveniente do docentes.txt
-    public ArrayList<String> disciplinas;// Proveniente do disciplinas.txt
-    public ArrayList<String> turmas;// Proveniente do turmas.txt
-    public ArrayList<String> relatorios;
+    //COLOQUE UM ENDERÇO Q FUNCIONE PRA VC 
+    public String baseAdress = "Trabalho-4-UNIDADE";
 
     public void carregarMeta(){} // Carrega o arquivo metadados.txt e bota na lista metaDados;
 
     public List<String> carregarAlunos(){
-        Path path = FileSystems.getDefault().getPath("Trabalho-4-UNIDADE/Dados/Alunos.txt");
+        Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Alunos.txt");
         List<String> toReturn = null;
         try {
             toReturn = Files.readAllLines(path);
@@ -35,7 +32,7 @@ public class GerenteDeArquivo{
     }
 
     public List<String> carregarDocentes(){
-        Path path = FileSystems.getDefault().getPath("Trabalho-4-UNIDADE/Dados/Docentes.txt");
+        Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Docentes.txt");
         List<String> toReturn = null;
         try {
             toReturn = Files.readAllLines(path);
@@ -52,7 +49,7 @@ public class GerenteDeArquivo{
     }
 
     public List<String> carregarTurmas(){
-        Path path = FileSystems.getDefault().getPath("Trabalho-4-UNIDADE/Dados/Turmas.txt");
+        Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Turmas.txt");
         List<String> toReturn = null;
         try {
             toReturn = Files.readAllLines(path);
@@ -69,7 +66,7 @@ public class GerenteDeArquivo{
     }
 
     public List<String> carregarDisciplinas(){
-        Path path = FileSystems.getDefault().getPath("Trabalho-4-UNIDADE/Dados/Disciplinas.txt");
+        Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Disciplinas.txt");
         List<String> toReturn = null;
         try {
             toReturn = Files.readAllLines(path);
@@ -98,7 +95,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Alunos.txt",true);
+            writer = new FileWriter(baseAdress+"/Dados/Alunos.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -111,7 +108,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Docentes.txt",true);
+            writer = new FileWriter(baseAdress+"/Dados/Docentes.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -124,7 +121,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Turmas.txt",true);
+            writer = new FileWriter(baseAdress+"/Dados/Turmas.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -137,7 +134,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter("Trabalho-4-UNIDADE/Dados/Disciplinas.txt",true);
+            writer = new FileWriter(baseAdress+"/Dados/Disciplinas.txt",true);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
