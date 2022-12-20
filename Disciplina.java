@@ -25,6 +25,7 @@ public class Disciplina extends Entidade{
         for (String tTwo : tierOne[2].split(",")){
             docentes.add(escola.docentes.get(Integer.parseInt(tTwo)));
         }
+        try{
         for (String tTwo : tierOne[3].split("/")){
             var tierThree = tTwo.split("-");
             Aluno key = escola.alunos.get(Integer.parseInt(tierThree[0]));
@@ -35,6 +36,9 @@ public class Disciplina extends Entidade{
                 i++;
             }
             notas.put(key, value);
+        }
+        } catch (Exception ex){
+            ex.printStackTrace();
         }
         for (Docente d: docentes){
             d.addDisciplina(this);

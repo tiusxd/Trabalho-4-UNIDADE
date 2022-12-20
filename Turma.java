@@ -18,9 +18,13 @@ public class Turma extends Entidade{
         super(base);
         alunos = new ArrayList<Aluno>();
         var tierOne = base.split(";");
+        try{
         for (String tTwo : tierOne[2].split(",")){
             alunos.add(escola.alunos.get(Integer.parseInt(tTwo)));
         }
+    } catch (Exception ex){
+        ex.printStackTrace();
+    }
     }
     public boolean adicionarAluno(Aluno aluno){
         if (alunos.contains(aluno))

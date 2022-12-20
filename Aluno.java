@@ -16,6 +16,7 @@ public class Aluno extends Entidade{
         var tierOne = base.split(";");
         turma = Integer.parseInt(tierOne[2]);
         notas = new HashMap<Integer,Float[]>();
+        try{
         for (String tTwo : tierOne[3].split("/")){
             var tierThree = tTwo.split("-");
             int key = Integer.parseInt(tierThree[0]);
@@ -26,7 +27,11 @@ public class Aluno extends Entidade{
                 i++;
             }
             notas.put(key, value);
-        } 
+        }
+        } catch (Exception ex){
+            ex.printStackTrace();
+        }
+        //#795E26"
     }
     @Override
     public String toCsv() {

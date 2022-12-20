@@ -3206,6 +3206,10 @@ public class Tela extends javax.swing.JFrame {
             counterForPrevention++;
         }
         while (TabelaEditarDisciplinasDocente.getSelectedRow()!=-1){
+            if(TabelaEditarDisciplinasDocente.getModel().getRowCount() == 1){
+                //Mensagem de não pode
+                break;
+            }
             bufferForRemoval.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
             dtmB.removeRow(TabelaEditarDisciplinasDocente.getSelectedRow());
             counterForPreventionBX++;
