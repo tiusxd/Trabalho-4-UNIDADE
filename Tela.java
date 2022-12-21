@@ -2341,7 +2341,7 @@ public class Tela extends javax.swing.JFrame {
                 System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
                 bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
                 isToListen = false;
-                BarraAlunosCadastrados.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex()+1);//
+                BarraAlunosCadastrados.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
                 isToListen = true;
                 TabelaEditarDisciplinasAluno.setModel(dtm);
             }
