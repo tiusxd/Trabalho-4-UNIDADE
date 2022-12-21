@@ -2333,6 +2333,7 @@ public class Tela extends javax.swing.JFrame {
         BarraAlunosCadastrados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if(isToListen){
+                System.out.println("CHAMADO");
                 String [] buffer = new String [1];
                 buffer[0] = BarraAlunosCadastrados1.getSelectedItem().toString();
                 DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
@@ -2340,7 +2341,7 @@ public class Tela extends javax.swing.JFrame {
                 System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
                 bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
                 isToListen = false;
-                BarraAlunosCadastrados.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
+                BarraAlunosCadastrados.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex()+1);//
                 isToListen = true;
                 TabelaEditarDisciplinasAluno.setModel(dtm);
             }
@@ -2350,6 +2351,7 @@ public class Tela extends javax.swing.JFrame {
         BarraDocentesCadastrados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (isToListen){
+                System.out.println("CHAMADO");
                 String [] buffer = new String [1];
                 buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
                 DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
@@ -2594,14 +2596,13 @@ public class Tela extends javax.swing.JFrame {
         BarraDisciplinasCadastradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (isToListen){
+                isToListen = false;
                 DefaultTableModel toAdd = new DefaultTableModel();
                 toAdd.addColumn("Docentes");
                 TabelaEditarDisciplinasDocente.setModel(toAdd);
                 String[] buffer = new String [1];
-                isToListen = !isToListen;
                 BarraDocentesCadastrados1.removeAllItems();
                 BarraAlunosCadastrados1.removeAllItems();
-                isToListen = !isToListen;
                 bufferForRemoval.clear();
                 for(Docente a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getDocentes()){
                     buffer[0] = String.valueOf(a.getCodigo());
@@ -2623,6 +2624,7 @@ public class Tela extends javax.swing.JFrame {
                 TabelaEditarDisciplinasAluno.setModel(toAddBravo);
                 toAddBravo.addColumn("Alunos");
                 for(Aluno a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet()){
+                    System.out.println("TAMAHO" + escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet().size());
                     buffer[0] = String.valueOf(a.getCodigo());
                     buffer[0] = buffer[0] + " - " + a.getNome();
                     bufferForRemoval.add(a.getCodigo());
@@ -2639,6 +2641,7 @@ public class Tela extends javax.swing.JFrame {
                 bufferForRemoval.clear();
 
                 TabelaEditarDisciplinasAluno.setModel(toAddBravo);
+                isToListen = true;
             }
         }
         });

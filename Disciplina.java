@@ -22,8 +22,12 @@ public class Disciplina extends Entidade{
         docentes = new ArrayList<Docente>();
         notas = new HashMap<Aluno,Float[]>();
         var tierOne = base.split(";");
+        try{
         for (String tTwo : tierOne[2].split(",")){
             docentes.add(escola.docentes.get(Integer.parseInt(tTwo)));
+        }
+        } catch (Exception ex){
+
         }
         try{
         for (String tTwo : tierOne[3].split("/")){

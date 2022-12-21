@@ -132,7 +132,7 @@ public class Escola{
     }
 
     public void salvar(){
-        ga.escrever(this);
+       // ga.escrever(this);
     }
     
 }   
