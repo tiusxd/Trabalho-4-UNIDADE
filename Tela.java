@@ -2352,11 +2352,11 @@ public class Tela extends javax.swing.JFrame {
                 if (isToListen){
                 String [] buffer = new String [1];
                 buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
-                DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+                DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
                 dtm.addRow(buffer);
                 System.out.println("kkkkkk");
                 bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
-                TabelaEditarDisciplinasAluno.setModel(dtm);
+                TabelaEditarDisciplinasDocente.setModel(dtm);
             }
         }
         });
@@ -2577,6 +2577,7 @@ public class Tela extends javax.swing.JFrame {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (isToListen){
                 DefaultTableModel toAdd = new DefaultTableModel();
+                TabelaEditarAlunosEmTurma.setModel(toAdd);
                 toAdd.addColumn("Alunos");
                 String[] buffer = new String [1];
                 for(Aluno a: escola.turmas.get(BarraTurmasCadastradas.getSelectedIndex()).getAlunos()){
@@ -2595,6 +2596,7 @@ public class Tela extends javax.swing.JFrame {
                 if (isToListen){
                 DefaultTableModel toAdd = new DefaultTableModel();
                 toAdd.addColumn("Docentes");
+                TabelaEditarDisciplinasDocente.setModel(toAdd);
                 String[] buffer = new String [1];
                 isToListen = !isToListen;
                 BarraDocentesCadastrados1.removeAllItems();
@@ -2618,6 +2620,7 @@ public class Tela extends javax.swing.JFrame {
 
                 TabelaEditarDisciplinasDocente.setModel(toAdd);
                 DefaultTableModel toAddBravo = new DefaultTableModel();
+                TabelaEditarDisciplinasAluno.setModel(toAddBravo);
                 toAddBravo.addColumn("Alunos");
                 for(Aluno a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet()){
                     buffer[0] = String.valueOf(a.getCodigo());
