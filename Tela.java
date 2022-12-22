@@ -2341,7 +2341,7 @@ public class Tela extends javax.swing.JFrame {
                 System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
                 bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
                 isToListen = false;
-                BarraAlunosCadastrados.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
+                BarraAlunosCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
                 isToListen = true;
                 TabelaEditarDisciplinasAluno.setModel(dtm);
             }
@@ -2358,6 +2358,7 @@ public class Tela extends javax.swing.JFrame {
                 dtm.addRow(buffer);
                 System.out.println("kkkkkk");
                 bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+                BarraDocentesCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());
                 TabelaEditarDisciplinasDocente.setModel(dtm);
             }
         }
@@ -2578,6 +2579,7 @@ public class Tela extends javax.swing.JFrame {
         BarraTurmasCadastradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (isToListen){
+                isToListen = false;
                 DefaultTableModel toAdd = new DefaultTableModel();
                 TabelaEditarAlunosEmTurma.setModel(toAdd);
                 toAdd.addColumn("Alunos");
@@ -2587,8 +2589,8 @@ public class Tela extends javax.swing.JFrame {
                     buffer[0] = buffer[0] + " - " + a.getNome();
                     toAdd.addRow(buffer);
                 }
-
                 TabelaEditarAlunosEmTurma.setModel(toAdd);
+                isToListen = true;
             }
         }
         });
@@ -2657,13 +2659,14 @@ public class Tela extends javax.swing.JFrame {
                     toAdd.addColumn("3ª U");
                     toAdd.addColumn("4ª U");
                     toAddBravo.addColumn("Alunos");
-                    for(Aluno a: escola.disciplinas.get(BarraDiciplinasEditarNota.getSelectedIndex()).getNotas().keySet()){
+                    String str = (String)BarraDiciplinasEditarNota.getSelectedItem();
+                    for(Aluno a: escola.disciplinas.get(Integer.parseInt(String.valueOf(str.charAt(0)))).getNotas().keySet()){
                         buffer = new String[1];
                         buffer[0] = String.valueOf(a.getCodigo());
                         buffer[0] = buffer[0] + " - " + a.getNome();
                         toAddBravo.addRow(buffer);
-                        toAdd.addRow(escola.disciplinas.get(BarraDiciplinasEditarNota.getSelectedIndex()).getNotas().get(a));
-                        
+                        Float[] teste = escola.disciplinas.get(Integer.parseInt(String.valueOf(str.charAt(0)))).getNotas().get(a);
+                        toAdd.addRow(teste);    
                     }
     
                     bufferForRemoval.clear();
@@ -2850,6 +2853,7 @@ public class Tela extends javax.swing.JFrame {
         //BarraAlunosCadastrados1.addItem(s[0]);
         BarraAlunosCadastrados.addItem(aluno.getCodigo() + " - " + aluno.getNome());
         BarraAlunosCadastrados1.addItem(aluno.getCodigo() + " - " + aluno.getNome());
+        CaixaDeTextoCadastroNomeAluno.setText("");
         x += 1;
     }//GEN-LAST:event_BotaoConcluirCadastroAlunoActionPerformed
 
@@ -2952,6 +2956,7 @@ public class Tela extends javax.swing.JFrame {
         BarraDisciplinasCadastradas.addItem(s[0]);
         BarraDiciplinasEditarNota.addItem(s[0]);
         isToListen = bufferBool;
+        CaixaDeTextoDisciplina.setText("");
     }
 
     private void ClickNoBotaoMenuCadastro(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoMenuCadastro
@@ -2993,6 +2998,7 @@ public class Tela extends javax.swing.JFrame {
         modelDocentes.addRow(s);
         BarraDocentesCadastrados.addItem(s[0]);
         BarraDocentesCadastrados1.addItem(s[0]);
+        CaixaDeTextoCadastroNomeDocente.setText("");
         //
     }//GEN-LAST:event_BotaoConcluirCadastroDocenteActionPerformed
 
@@ -3298,10 +3304,15 @@ public class Tela extends javax.swing.JFrame {
         GeradorDeRelatorio.relatorioMediasDisciplinas(escola);
     }//GEN-LAST:event_BotaoGerarRelatorioDisciplinasActionPerformed
 
-    //TODO fazer um try catch q mande o usuario dar enter noq digitou ou popular a tabela previamente
+    //TODO #19 #20 botar minimo e maxima de nota e try catch
     private void BotaoSalvarEditacaoNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarEditacaoNotasActionPerformed
         var modelAlunos = TabelaAlunosEditarNotas.getModel();
         var modelNotas = TebelaParaEditarNotas.getModel();
+        DefaultTableModel odeioOSwing = new DefaultTableModel();
+        odeioOSwing.addColumn("1ª U");
+        odeioOSwing.addColumn("2ª U");
+        odeioOSwing.addColumn("3ª U");
+        odeioOSwing.addColumn("4ª U");
 
         if (modelNotas.getRowCount() == 0){
             return;
@@ -3312,12 +3323,17 @@ public class Tela extends javax.swing.JFrame {
         a = 0;
         Float[] toAdd =  new Float[4];
         for (Map.Entry<Aluno,Float[]> pair : disc.getNotas().entrySet()){
+            System.out.println(pair.getKey().getNome());;
+            toAdd = new Float[4];
             for(int i = 0; i<=3; i++){
                 toAdd[i] = Float.parseFloat((String) modelNotas.getValueAt(a, i)); 
+                System.out.println((String) modelNotas.getValueAt(a, i));
             }
             disc.editarNotas(pair.getKey(), toAdd);
             a++;
+            odeioOSwing.addRow(toAdd);
         }
+        TebelaParaEditarNotas.setModel(odeioOSwing);
     }//GEN-LAST:event_BotaoSalvarEditacaoNotasActionPerformed
 
     private void BotaoSalvarEditacaoDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarEditacaoDisciplinaActionPerformed
