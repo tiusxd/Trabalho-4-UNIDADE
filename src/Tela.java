@@ -58,6 +58,7 @@ public class Tela extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         TelaLogin = new javax.swing.JPanel();
         loginUsuario = new javax.swing.JTextField();
         loginSenha = new javax.swing.JTextField();
@@ -191,7 +192,7 @@ public class Tela extends javax.swing.JFrame {
         BarraAlunosCadastrados1 = new javax.swing.JComboBox<>();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        BotaoRemoverCoisasDaDisciplina = new javax.swing.JButton();
         TabelaDisc4 = new javax.swing.JScrollPane();
         TabelaEditarDisciplinasAluno = new javax.swing.JTable();
         EditarNotas = new javax.swing.JPanel();
@@ -216,31 +217,6 @@ public class Tela extends javax.swing.JFrame {
         BotaoSalvarEditacaoDocente = new javax.swing.JButton();
         EditarTurma = new javax.swing.JPanel();
         BarraTurmasCadastradas = new javax.swing.JComboBox<>();
-        String buffer;
-        for (Aluno a: escola.alunos.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraAlunosCadastrados.addItem(buffer);
-            BarraAlunosCadastrados1.addItem(buffer);
-        }
-        for (Docente a: escola.docentes.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraDocentesCadastrados.addItem(buffer);
-            BarraDocentesCadastrados1.addItem(buffer);
-        }
-        for (Turma a: escola.turmas.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraTurmasCadastradas.addItem(buffer);
-        }
-        for (Disciplina a: escola.disciplinas.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraDisciplinasCadastradas.addItem(buffer);
-            BarraDiciplinasEditarNota.addItem(buffer);
-        }
-
         jLabel55 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaEditarAlunosEmTurma = new javax.swing.JTable();
@@ -248,6 +224,8 @@ public class Tela extends javax.swing.JFrame {
         CaixaDeTextoNomeTurmaEditado = new javax.swing.JTextField();
         BotaoSalvarEditacaoTurma = new javax.swing.JButton();
         BotaoRemoverAlunoDaTurma = new javax.swing.JButton();
+        BarraAlunosCadastrados2 = new javax.swing.JComboBox<>();
+        jLabel23 = new javax.swing.JLabel();
         RemoverDisciplina = new javax.swing.JPanel();
         TabelaDisc2 = new javax.swing.JScrollPane();
         TabelaRemoverDisciplinas = new javax.swing.JTable();
@@ -1490,13 +1468,24 @@ public class Tela extends javax.swing.JFrame {
 
         jLabel56.setText("Nome:");
 
+        BarraDocentesCadastrados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BarraDocentesTelaEditarDiscplinasActionPerformed(evt);
+            }
+        });
+
+        BarraAlunosCadastrados1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BarraAlunosCadastradosActionPerformed(evt);
+            }
+        });
+
         jLabel57.setText("Professores Disponiveis");
 
         jLabel58.setText("Alunos Disponíveis");
 
-        jButton3.setText("Remover");
-
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        BotaoRemoverCoisasDaDisciplina.setText("Remover");
+        BotaoRemoverCoisasDaDisciplina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BotaoRemoverCoisasDaDisciplinaActionPerformed(evt);
             }
@@ -1538,7 +1527,7 @@ public class Tela extends javax.swing.JFrame {
                                 .addComponent(BarraDocentesCadastrados1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel58)))
                     .addGroup(EditarDisciplinaLayout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(BotaoRemoverCoisasDaDisciplina)
                         .addGap(18, 18, 18)
                         .addComponent(BotaoSalvarEditacaoDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EditarDisciplinaLayout.createSequentialGroup()
@@ -1572,7 +1561,7 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(TabelaDisc4, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(EditarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(BotaoRemoverCoisasDaDisciplina)
                     .addComponent(BotaoSalvarEditacaoDisciplina))
                 .addContainerGap())
         );
@@ -1658,11 +1647,6 @@ public class Tela extends javax.swing.JFrame {
         jLabel60.setText("Nome:");
 
         BotaoSalvarEditacaoAluno.setText("Salvar");
-        BotaoSalvarEditacaoAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoSalvarEditacaoAlunoActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout EditarAlunoLayout = new javax.swing.GroupLayout(EditarAluno);
         EditarAluno.setLayout(EditarAlunoLayout);
@@ -1779,6 +1763,14 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        BarraAlunosCadastrados2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BarraAlunosCadastrados2ActionPerformed(evt);
+            }
+        });
+
+        jLabel23.setText("Alunos");
+
         javax.swing.GroupLayout EditarTurmaLayout = new javax.swing.GroupLayout(EditarTurma);
         EditarTurma.setLayout(EditarTurmaLayout);
         EditarTurmaLayout.setHorizontalGroup(
@@ -1793,8 +1785,14 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(jLabel55)
                     .addComponent(BarraTurmasCadastradas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EditarTurmaLayout.createSequentialGroup()
+                        .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel23)
+                            .addComponent(BarraAlunosCadastrados2, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(179, Short.MAX_VALUE))
         );
         EditarTurmaLayout.setVerticalGroup(
@@ -1805,9 +1803,13 @@ public class Tela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BarraTurmasCadastradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel66)
+                .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel66)
+                    .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BarraAlunosCadastrados2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -1835,6 +1837,11 @@ public class Tela extends javax.swing.JFrame {
         TabelaDisc2.setViewportView(TabelaRemoverDisciplinas);
 
         BotãoRemoverDisciplinasDoSistema.setText("Remover");
+        BotãoRemoverDisciplinasDoSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotãoRemoverDisciplinasDoSistemaActionPerformed(evt);
+            }
+        });
 
         jLabel80.setText("Para remover uma disciplina, selecione-a(as).");
 
@@ -2332,17 +2339,6 @@ public class Tela extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        BarraAlunosCadastrados1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BarraAlunosTelaEditarDisciplinasActionPerformed();
-        }
-        });
-
-        BarraDocentesCadastrados1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-               BarraDocentesTelaEditarDiscplinasActionPerformed();
-        }
-        });
         TelaEstudante.add(BotaoDadosPessoais);
         BotaoDadosPessoais.setBounds(70, 180, 150, 50);
 
@@ -2547,61 +2543,7 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(TelaEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        //TODO #16 inicializar essas porra dessas barra e linkar elas com as tabela e botar actionperformed pra inicializar a lista dela
-        BarraTurmasCadastradas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isToListen){
-                isToListen = false;
-                DefaultTableModel toAdd = new DefaultTableModel();
-                TabelaEditarAlunosEmTurma.setModel(toAdd);
-                toAdd.addColumn("Alunos");
-                String[] buffer = new String [1];
-                for(Aluno a: escola.turmas.get(BarraTurmasCadastradas.getSelectedIndex()).getAlunos()){
-                    buffer[0] = String.valueOf(a.getCodigo());
-                    buffer[0] = buffer[0] + " - " + a.getNome();
-                    toAdd.addRow(buffer);
-                }
-                TabelaEditarAlunosEmTurma.setModel(toAdd);
-                isToListen = true;
-            }
-        }
-        });
 
-        BarraDisciplinasCadastradas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isToListen){
-                    RefreshEditarDisciplina();
-                }
-        }
-        });
-        BarraDiciplinasEditarNota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isToListen){
-                    bufferForRemoval.clear();
-                    String[] buffer = new String[1];
-                    DefaultTableModel toAdd = new DefaultTableModel();
-                    DefaultTableModel toAddBravo = new DefaultTableModel();
-                    toAdd.addColumn("1ª U");
-                    toAdd.addColumn("2ª U");
-                    toAdd.addColumn("3ª U");
-                    toAdd.addColumn("4ª U");
-                    toAddBravo.addColumn("Alunos");
-                    String str = (String)BarraDiciplinasEditarNota.getSelectedItem();
-                    for(Aluno a: escola.disciplinas.get(Integer.parseInt(String.valueOf(str.charAt(0)))).getNotas().keySet()){
-                        buffer = new String[1];
-                        buffer[0] = String.valueOf(a.getCodigo());
-                        buffer[0] = buffer[0] + " - " + a.getNome();
-                        toAddBravo.addRow(buffer);
-                        Float[] teste = escola.disciplinas.get(Integer.parseInt(String.valueOf(str.charAt(0)))).getNotas().get(a);
-                        toAdd.addRow(teste);    
-                    }
-    
-                    bufferForRemoval.clear();
-                    TabelaAlunosEditarNotas.setModel(toAddBravo);
-                    TebelaParaEditarNotas.setModel(toAdd);
-                }
-        }
-        });
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -2784,6 +2726,7 @@ public class Tela extends javax.swing.JFrame {
         //BarraAlunosCadastrados1.addItem(s[0]);
         BarraAlunosCadastrados.addItem(aluno.getCodigo() + " - " + aluno.getNome());
         BarraAlunosCadastrados1.addItem(aluno.getCodigo() + " - " + aluno.getNome());
+        BarraAlunosCadastrados2.addItem(aluno.getCodigo() + " - " + aluno.getNome());
         CaixaDeTextoCadastroNomeAluno.setText("");
         x += 1;
     }//GEN-LAST:event_BotaoConcluirCadastroAlunoActionPerformed
@@ -2992,17 +2935,17 @@ public class Tela extends javax.swing.JFrame {
         String buffer;
         isToListen = false;
         BarraDocentesCadastrados1.removeAllItems();
-        // for (Docente a: escola.docentes.values()){
-        //     buffer = a.getCodigo() + " - ";
-        //     buffer += a.getNome();
-        //     BarraDocentesCadastrados1.addItem(buffer);
-        // }
+         for (Docente a: escola.docentes.values()){
+             buffer = a.getCodigo() + " - ";
+             buffer += a.getNome();
+             BarraDocentesCadastrados1.addItem(buffer);
+        }
         BarraAlunosCadastrados1.removeAllItems();
-        // for (Aluno a: escola.alunos.values()){
-        //     buffer = a.getCodigo() + " - ";
-        //     buffer += a.getNome();
-        //     BarraAlunosCadastrados1.addItem(buffer);
-        // }
+         for (Aluno a: escola.alunos.values()){
+             buffer = a.getCodigo() + " - ";
+             buffer += a.getNome();
+             BarraAlunosCadastrados1.addItem(buffer);
+         }
         TabelaEditarDisciplinasAluno.setModel(new DefaultTableModel(null, new String[]{"Alunos"}));
         TabelaEditarDisciplinasDocente.setModel(new DefaultTableModel(null, new String[]{"Docentes"}));
         SubmenuEditarDadosDaDisciplina.setVisible(true);
@@ -3122,7 +3065,9 @@ public class Tela extends javax.swing.JFrame {
             boolean bufferBool = isToListen;
             isToListen = false;
             BarraAlunosCadastrados.removeItemAt(TabelaRemoverAlunos.getSelectedRow());
-            isToListen = bufferBool;
+            BarraAlunosCadastrados1.removeItemAt(TabelaRemoverAlunos.getSelectedRow());
+            BarraAlunosCadastrados2.removeItemAt(TabelaRemoverAlunos.getSelectedRow());
+            isToListen = true;
             modelAlunos.removeRow(TabelaRemoverAlunos.getSelectedRow());
         }
     }//GEN-LAST:event_BotãoRemoverAlunoDoSistemaActionPerformed
@@ -3187,37 +3132,7 @@ public class Tela extends javax.swing.JFrame {
         CaixaDeTextoCadastroTurma.setText(null);
     }//GEN-LAST:event_BotaoConcluirCadastroTurmaActionPerformed
 
-    private void BotaoRemoverCoisasDaDisciplinaActionPerformed(java.awt.event.ActionEvent evt){
-      DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
-        DefaultTableModel dtmB = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
-        //bufferTable = dtm;
-        //bufferTableBX = dtmB;
-        
-         if (TabelaEditarDisciplinasAluno.getRowCount() == 0 && TabelaEditarDisciplinasDocente.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Não contém itens para excluir.");
-        }
-        if(TabelaEditarDisciplinasAluno.getSelectedRow() ==-1 && TabelaEditarDisciplinasDocente.getSelectedRow()==-1){
-        JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
-        }
-        
-           while(TabelaEditarDisciplinasAluno.getSelectedRow() >-1){
-            bufferForRemoval.add(TabelaEditarDisciplinasAluno.getSelectedRow()+counterForPrevention);
-            dtm.removeRow(TabelaEditarDisciplinasAluno.getSelectedRow());
-            counterForPrevention++;
-       
-        }   
-           while(TabelaEditarDisciplinasDocente.getSelectedRow() >-1){
-         bufferForRemovalBX.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
-            dtmB.removeRow(TabelaEditarDisciplinasDocente.getSelectedRow());
-            counterForPreventionBX++;
-       
-      
-// =0 tabela vazia =1 um item selecionado =-1 nenhum item selecionado
-             
-    }
-        TabelaEditarDisciplinasDocente.setModel(dtmB);
-        TabelaEditarDisciplinasAluno.setModel(dtm); 
-    }
+    
     private void ClickNoBotaoEditarTurmas1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoEditarTurmas1
         // TODO add your handling code here:
     }//GEN-LAST:event_ClickNoBotaoEditarTurmas1
@@ -3266,19 +3181,22 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoSalvarEditacaoTurmaActionPerformed
 
     private void BotaoRemoverAlunoDaTurmaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoRemoverAlunoDaTurmaActionPerformed
-        DefaultTableModel dtmEditarAlunosEmTurma = (DefaultTableModel) TabelaEditarAlunosEmTurma.getModel();
+        DefaultTableModel dtmE = (DefaultTableModel) TabelaEditarAlunosEmTurma.getModel();
 
-        if (dtmEditarAlunosEmTurma.getRowCount() == 0) {
-            JOptionPane.showMessageDialog(null, "Não contém disciplinas para excluir.");
+        if (TabelaEditarAlunosEmTurma.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Não contém alunos para para remover.");
         }
         if (TabelaEditarAlunosEmTurma.getSelectedRow() == -1) {
-            JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
+            JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder remover.");
         }
-        else{
-            bufferForRemoval.add(TabelaEditarAlunosEmTurma.getSelectedRow());
-            dtmEditarAlunosEmTurma.removeRow(TabelaEditarAlunosEmTurma.getSelectedRow()+counterForPrevention);
+        if(TabelaEditarAlunosEmTurma.getSelectedRow() > -1){
+            while(TabelaEditarAlunosEmTurma.getSelectedRow() >-1){
+            bufferForRemoval.add(TabelaEditarAlunosEmTurma.getSelectedRow()+counterForPrevention);
+            dtmE.removeRow(TabelaEditarAlunosEmTurma.getSelectedRow());
             counterForPrevention++;
         }
+        }
+       TabelaEditarAlunosEmTurma.setModel(dtmE);
     }//GEN-LAST:event_BotaoRemoverAlunoDaTurmaActionPerformed
     //TODO #17 fazer os botoes de sair e voltar apagarem os bufferes e elementos de prevencao
 
@@ -3368,6 +3286,83 @@ public class Tela extends javax.swing.JFrame {
         counterForPreventionBX = 0;
         RefreshEditarDisciplina();
     }//GEN-LAST:event_BotaoSalvarEditacaoDisciplinaActionPerformed
+
+    private void BarraDocentesTelaEditarDiscplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BarraDocentesTelaEditarDiscplinasActionPerformed
+      if (isToListen){
+            System.out.println("CHAMADO");
+            String [] buffer = new String [1];
+            buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
+            DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
+            dtm.addRow(buffer);
+            bufferForAditionBX.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            isToListen = false;
+            BarraDocentesCadastrados1.removeItemAt(BarraDocentesCadastrados1.getSelectedIndex());
+            isToListen = true;
+            TabelaEditarDisciplinasDocente.setModel(dtm);
+        }  
+    }//GEN-LAST:event_BarraDocentesTelaEditarDiscplinasActionPerformed
+
+    private void BarraAlunosCadastradosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BarraAlunosCadastradosActionPerformed
+       if(isToListen){
+            System.out.println("CHAMADO");
+            String [] buffer = new String [1];
+            buffer[0] = (String) BarraAlunosCadastrados1.getSelectedItem();
+            DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+            dtm.addRow(buffer);
+            System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            isToListen = false;
+            BarraAlunosCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
+            isToListen = true;
+            TabelaEditarDisciplinasAluno.setModel(dtm);
+        }
+    }//GEN-LAST:event_BarraAlunosCadastradosActionPerformed
+
+    private void BotaoRemoverCoisasDaDisciplinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoRemoverCoisasDaDisciplinaActionPerformed
+DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+        DefaultTableModel dtmB = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
+        //bufferTable = dtm;
+        //bufferTableBX = dtmB;
+        
+         if (TabelaEditarDisciplinasAluno.getRowCount() == 0 && TabelaEditarDisciplinasDocente.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Não contém itens para excluir.");
+        }
+        if(TabelaEditarDisciplinasAluno.getSelectedRow() ==-1 && TabelaEditarDisciplinasAluno.getSelectedRow() !=0 && TabelaEditarDisciplinasDocente.getSelectedRow()==-1 && TabelaEditarDisciplinasDocente.getSelectedRow()!=0){
+        JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
+        }else{
+                   while(TabelaEditarDisciplinasAluno.getSelectedRow() >-1){
+            bufferForRemoval.add(TabelaEditarDisciplinasAluno.getSelectedRow()+counterForPrevention);
+            dtm.removeRow(TabelaEditarDisciplinasAluno.getSelectedRow());
+            counterForPrevention++;
+       
+        }   
+           while(TabelaEditarDisciplinasDocente.getSelectedRow() >0){
+         bufferForRemovalBX.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
+            dtmB.removeRow(TabelaEditarDisciplinasDocente.getSelectedRow());
+            counterForPreventionBX++; 
+// =0 tabela vazia =1 um item selecionado =-1 nenhum item selecionado
+           }     
+    }
+      
+        TabelaEditarDisciplinasDocente.setModel(dtmB);
+        TabelaEditarDisciplinasAluno.setModel(dtm);        
+    }//GEN-LAST:event_BotaoRemoverCoisasDaDisciplinaActionPerformed
+
+    private void BarraAlunosCadastrados2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BarraAlunosCadastrados2ActionPerformed
+      if(isToListen){
+            System.out.println("CHAMADO");
+            String [] buffer = new String [1];
+            buffer[0] = (String) BarraAlunosCadastrados2.getSelectedItem();
+            DefaultTableModel dtm = (DefaultTableModel) TabelaEditarAlunosEmTurma.getModel();
+            dtm.addRow(buffer);
+            System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            isToListen = false;
+            BarraAlunosCadastrados2.removeItemAt(BarraAlunosCadastrados2.getSelectedIndex());//
+            isToListen = true;
+            TabelaEditarAlunosEmTurma.setModel(dtm);
+        }  
+    }//GEN-LAST:event_BarraAlunosCadastrados2ActionPerformed
 
     public static void main(String args[]) {
         escola = new Escola();
@@ -3499,41 +3494,13 @@ public class Tela extends javax.swing.JFrame {
             
     }
 
-    private void BarraDocentesTelaEditarDiscplinasActionPerformed(){
-        if (isToListen){
-            System.out.println("CHAMADO");
-            String [] buffer = new String [1];
-            buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
-            DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
-            dtm.addRow(buffer);
-            System.out.println("kkkkkk");
-            bufferForAditionBX.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
-            BarraDocentesCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());
-            TabelaEditarDisciplinasDocente.setModel(dtm);
-        }
-    }
-
-    private void BarraAlunosTelaEditarDisciplinasActionPerformed(){
-        if(isToListen){
-            System.out.println("CHAMADO");
-            String [] buffer = new String [1];
-            buffer[0] = (String) BarraAlunosCadastrados1.getSelectedItem();
-            DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
-            dtm.addRow(buffer);
-            System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
-            bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
-            isToListen = false;
-            BarraAlunosCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
-            isToListen = true;
-            TabelaEditarDisciplinasAluno.setModel(dtm);
-        }
-    }
+     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnoLetivoDoAluno;
     private javax.swing.JComboBox<String> BarraAlunosCadastrados;
     private javax.swing.JComboBox<String> BarraAlunosCadastrados1;
-    //oq é isso?
+    private javax.swing.JComboBox<String> BarraAlunosCadastrados2;
     private javax.swing.JComboBox<String> BarraDiciplinasEditarNota;
     private javax.swing.JComboBox<String> BarraDisciplinasCadastradas;
     private javax.swing.JComboBox<String> BarraDocentesCadastrados;
@@ -3573,6 +3540,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JPanel BotaoRelatorioTurmas;
     private javax.swing.JPanel BotaoRemoverAluno;
     private javax.swing.JButton BotaoRemoverAlunoDaTurma;
+    private javax.swing.JButton BotaoRemoverCoisasDaDisciplina;
     private javax.swing.JPanel BotaoRemoverDisciplinas;
     private javax.swing.JPanel BotaoRemoverDocentes;
     private javax.swing.JPanel BotaoRemoverTurmas;
@@ -3681,7 +3649,6 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel Título;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox9;
@@ -3700,6 +3667,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
