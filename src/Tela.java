@@ -3188,27 +3188,35 @@ public class Tela extends javax.swing.JFrame {
     }//GEN-LAST:event_BotaoConcluirCadastroTurmaActionPerformed
 
     private void BotaoRemoverCoisasDaDisciplinaActionPerformed(java.awt.event.ActionEvent evt){
-        DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+      DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
         DefaultTableModel dtmB = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
         //bufferTable = dtm;
         //bufferTableBX = dtmB;
-        while (TabelaEditarDisciplinasAluno.getSelectedRow()!=-1){
+        
+         if (TabelaEditarDisciplinasAluno.getRowCount() == 0 && TabelaEditarDisciplinasDocente.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(null, "Não contém itens para excluir.");
+        }
+        if(TabelaEditarDisciplinasAluno.getSelectedRow() ==-1 && TabelaEditarDisciplinasDocente.getSelectedRow()==-1){
+        JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
+        }
+        
+           while(TabelaEditarDisciplinasAluno.getSelectedRow() >-1){
             bufferForRemoval.add(TabelaEditarDisciplinasAluno.getSelectedRow()+counterForPrevention);
             dtm.removeRow(TabelaEditarDisciplinasAluno.getSelectedRow());
             counterForPrevention++;
-        }
-        while (TabelaEditarDisciplinasDocente.getSelectedRow()!=-1){
-            if(TabelaEditarDisciplinasDocente.getModel().getRowCount() == 1){
-                //Mensagem de não pode
-                break;
-            }
-            bufferForRemovalBX.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
+       
+        }   
+           while(TabelaEditarDisciplinasDocente.getSelectedRow() >-1){
+         bufferForRemovalBX.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
             dtmB.removeRow(TabelaEditarDisciplinasDocente.getSelectedRow());
             counterForPreventionBX++;
-        }
-
-        TabelaEditarDisciplinasAluno.setModel(dtm);
+       
+      
+// =0 tabela vazia =1 um item selecionado =-1 nenhum item selecionado
+             
+    }
         TabelaEditarDisciplinasDocente.setModel(dtmB);
+        TabelaEditarDisciplinasAluno.setModel(dtm); 
     }
     private void ClickNoBotaoEditarTurmas1(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoEditarTurmas1
         // TODO add your handling code here:
