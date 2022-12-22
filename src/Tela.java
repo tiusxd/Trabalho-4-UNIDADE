@@ -3308,7 +3308,16 @@ public class Tela extends javax.swing.JFrame {
             System.out.println(pair.getKey().getNome());;
             toAdd = new Float[4];
             for(int i = 0; i<=3; i++){
-                toAdd[i] = Float.parseFloat((String) modelNotas.getValueAt(a, i)); 
+                try{
+                toAdd[i] = Float.parseFloat((String) modelNotas.getValueAt(a, i));
+                } catch (NumberFormatException ex){
+                    toAdd[i] = 0f;
+                } 
+                if(toAdd[i] <0f){
+                    toAdd[i] = 0f;
+                } else if (toAdd[i]>10f){
+                    toAdd[i] = 10f;
+                }
                 System.out.println((String) modelNotas.getValueAt(a, i));
             }
             disc.editarNotas(pair.getKey(), toAdd);
