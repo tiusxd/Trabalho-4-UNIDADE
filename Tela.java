@@ -2357,7 +2357,7 @@ public class Tela extends javax.swing.JFrame {
                 DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
                 dtm.addRow(buffer);
                 System.out.println("kkkkkk");
-                bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+                bufferForAditionBX.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
                 BarraDocentesCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());
                 TabelaEditarDisciplinasDocente.setModel(dtm);
             }
@@ -2598,53 +2598,8 @@ public class Tela extends javax.swing.JFrame {
         BarraDisciplinasCadastradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 if (isToListen){
-                isToListen = false;
-                DefaultTableModel toAdd = new DefaultTableModel();
-                toAdd.addColumn("Docentes");
-                TabelaEditarDisciplinasDocente.setModel(toAdd);
-                String[] buffer = new String [1];
-                BarraDocentesCadastrados1.removeAllItems();
-                BarraAlunosCadastrados1.removeAllItems();
-                bufferForRemoval.clear();
-                for(Docente a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getDocentes()){
-                    buffer[0] = String.valueOf(a.getCodigo());
-                    buffer[0] = buffer[0] + " - " + a.getNome();
-                    bufferForRemoval.add(a.getCodigo());
-                    toAdd.addRow(buffer);
+                    RefreshEditarDisciplina();
                 }
-
-                for (Map.Entry<Integer,Docente> pair : escola.docentes.entrySet()){
-                    if (!bufferForRemoval.contains(pair.getKey())){
-                        BarraDocentesCadastrados1.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
-                    }
-                }
-
-                bufferForRemoval.clear();
-
-                TabelaEditarDisciplinasDocente.setModel(toAdd);
-                DefaultTableModel toAddBravo = new DefaultTableModel();
-                TabelaEditarDisciplinasAluno.setModel(toAddBravo);
-                toAddBravo.addColumn("Alunos");
-                for(Aluno a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet()){
-                    System.out.println("TAMAHO" + escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet().size());
-                    buffer[0] = String.valueOf(a.getCodigo());
-                    buffer[0] = buffer[0] + " - " + a.getNome();
-                    bufferForRemoval.add(a.getCodigo());
-                    toAddBravo.addRow(buffer);
-                }
-
-                for (Map.Entry<Integer,Aluno> pair : escola.alunos.entrySet()){
-                    if (!bufferForRemoval.contains(pair.getKey())){
-                        System.out.println(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
-                        BarraAlunosCadastrados1.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
-                    }
-                }
-
-                bufferForRemoval.clear();
-
-                TabelaEditarDisciplinasAluno.setModel(toAddBravo);
-                isToListen = true;
-            }
         }
         });
         BarraDiciplinasEditarNota.addActionListener(new java.awt.event.ActionListener() {
@@ -2820,6 +2775,8 @@ public class Tela extends javax.swing.JFrame {
         TelaLogin.setVisible(true);
         bufferForRemoval.clear();
         bufferForRemovalBX.clear();
+        bufferForAdition.clear();
+        bufferForAditionBX.clear();
         counterForPrevention = 0;
         counterForPreventionBX = 0;
         
@@ -3008,24 +2965,64 @@ public class Tela extends javax.swing.JFrame {
 
     private void ClickNoBotaoEditarTurmas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoEditarTurmas
         LimparMiniTela();
+        String buffer;
+        isToListen = false;
+        BarraTurmasCadastradas.removeAllItems();
+        for (Turma a: escola.turmas.values()){
+            buffer = a.getCodigo() + " - ";
+            buffer += a.getNome();
+            BarraTurmasCadastradas.addItem(buffer);
+        }
         EditarTurma.setVisible(true);
         isToListen = true;
     }//GEN-LAST:event_ClickNoBotaoEditarTurmas
 
     private void ClickBotaoEditarDocentes(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoEditarDocentes
         LimparMiniTela();
+        String buffer;
+        isToListen = false;
+        BarraDocentesCadastrados.removeAllItems();
+        for (Docente a: escola.docentes.values()){
+            buffer = a.getCodigo() + " - ";
+            buffer += a.getNome();
+            BarraDocentesCadastrados.addItem(buffer);
+        }
         EditarDocente.setVisible(true);
         isToListen = true;
     }//GEN-LAST:event_ClickBotaoEditarDocentes
 
     private void ClickBotaoEditarAlunos(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoEditarAlunos
         LimparMiniTela();
+        String buffer;
+        isToListen = false;
+        BarraAlunosCadastrados.removeAllItems();
+        for (Aluno a: escola.alunos.values()){
+            buffer = a.getCodigo() + " - ";
+            buffer += a.getNome();
+            BarraAlunosCadastrados.addItem(buffer);
+        }
         EditarAluno.setVisible(true);// TODO add your handling code here:
         isToListen = true;
     }//GEN-LAST:event_ClickBotaoEditarAlunos
 
     private void BotaoEditarDisciplinasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BotaoEditarDisciplinasMouseClicked
         LimparMiniTela();
+        String buffer;
+        isToListen = false;
+        BarraDocentesCadastrados1.removeAllItems();
+        // for (Docente a: escola.docentes.values()){
+        //     buffer = a.getCodigo() + " - ";
+        //     buffer += a.getNome();
+        //     BarraDocentesCadastrados1.addItem(buffer);
+        // }
+        BarraAlunosCadastrados1.removeAllItems();
+        // for (Aluno a: escola.alunos.values()){
+        //     buffer = a.getCodigo() + " - ";
+        //     buffer += a.getNome();
+        //     BarraAlunosCadastrados1.addItem(buffer);
+        // }
+        TabelaEditarDisciplinasAluno.setModel(new DefaultTableModel(null, new String[]{"Alunos"}));
+        TabelaEditarDisciplinasDocente.setModel(new DefaultTableModel(null, new String[]{"Docentes"}));
         SubmenuEditarDadosDaDisciplina.setVisible(true);
         BarraAlunosCadastrados1.setSelectedIndex(-1);
         isToListen = true;
@@ -3265,11 +3262,14 @@ public class Tela extends javax.swing.JFrame {
         ArrayList<Integer> buffer = new ArrayList<>(escola.turmas.keySet()); 
         Turma t = escola.turmas.get(buffer.get(BarraTurmasCadastradas.getSelectedIndex()));
         t.setNome(CaixaDeTextoNomeTurmaEditado.getText());
+        CaixaDeTextoNomeTurmaEditado.setText("");
         for (int i : bufferForRemoval){
             t.removerAluno(i);
         }
         bufferForRemoval.clear();
         bufferForRemovalBX.clear();
+        bufferForAdition.clear();
+        bufferForAditionBX.clear();
         counterForPrevention = 0;
         counterForPreventionBX = 0;
     }//GEN-LAST:event_BotaoSalvarEditacaoTurmaActionPerformed
@@ -3340,6 +3340,7 @@ public class Tela extends javax.swing.JFrame {
         ArrayList<Integer> buffer = new ArrayList<>(escola.disciplinas.keySet()); 
         Disciplina d = escola.disciplinas.get(buffer.get(BarraDisciplinasCadastradas.getSelectedIndex()));
         d.setNome(CaixaDeTextoEditarNomeDisciplina.getText());
+        CaixaDeTextoEditarNomeDisciplina.setText("");
         for(int i : bufferForRemoval){
             d.removerDocente(i);
         }
@@ -3352,11 +3353,17 @@ public class Tela extends javax.swing.JFrame {
             d.adicionarAluno(escola.alunos.get(i));
         }
 
+        for (int i: bufferForAditionBX){
+            d.adicionarDocente(escola.docentes.get(i));
+        }
+
         bufferForAdition.clear();
+        bufferForAditionBX.clear();
         bufferForRemoval.clear();
         bufferForRemovalBX.clear();
         counterForPrevention = 0;
         counterForPreventionBX = 0;
+        RefreshEditarDisciplina();
     }//GEN-LAST:event_BotaoSalvarEditacaoDisciplinaActionPerformed
 
     public static void main(String args[]) {
@@ -3435,6 +3442,58 @@ public class Tela extends javax.swing.JFrame {
                 }
             }
         });
+    }
+
+    private void RefreshEditarDisciplina(){
+        isToListen = false;
+                DefaultTableModel toAdd = new DefaultTableModel();
+                toAdd.addColumn("Docentes");
+                TabelaEditarDisciplinasDocente.setModel(toAdd);
+                String[] buffer = new String [1];
+                BarraDocentesCadastrados1.removeAllItems();
+                BarraAlunosCadastrados1.removeAllItems();
+                bufferForRemoval.clear();
+                for(Docente a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getDocentes()){
+                    buffer[0] = String.valueOf(a.getCodigo());
+                    buffer[0] = buffer[0] + " - " + a.getNome();
+                    bufferForRemoval.add(a.getCodigo());
+                    toAdd.addRow(buffer);
+                }
+
+                for (Map.Entry<Integer,Docente> pair : escola.docentes.entrySet()){
+                    if (!bufferForRemoval.contains(pair.getKey())){
+                        BarraDocentesCadastrados1.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
+                    }
+                }
+
+                bufferForRemoval.clear();
+
+                TabelaEditarDisciplinasDocente.setModel(toAdd);
+                DefaultTableModel toAddBravo = new DefaultTableModel();
+                TabelaEditarDisciplinasAluno.setModel(toAddBravo);
+                toAddBravo.addColumn("Alunos");
+                for(Aluno a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet()){
+                    System.out.println("TAMAHO" + escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet().size());
+                    buffer[0] = String.valueOf(a.getCodigo());
+                    buffer[0] = buffer[0] + " - " + a.getNome();
+                    bufferForRemoval.add(a.getCodigo());
+                    toAddBravo.addRow(buffer);
+                }
+
+                for (Map.Entry<Integer,Aluno> pair : escola.alunos.entrySet()){
+                    if (!bufferForRemoval.contains(pair.getKey())){
+                        System.out.println(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
+                        BarraAlunosCadastrados1.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
+                    }
+                }
+
+                bufferForRemoval.clear();
+                bufferForRemovalBX.clear();
+                bufferForAdition.clear();
+                bufferForAditionBX.clear();
+                TabelaEditarDisciplinasAluno.setModel(toAddBravo);
+                isToListen = true;
+            
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
