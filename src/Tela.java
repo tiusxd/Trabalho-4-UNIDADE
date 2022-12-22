@@ -30,7 +30,7 @@ public class Tela extends javax.swing.JFrame {
     static int counterForPrevention = 0;
     static int counterForPreventionBX = 0;
 
-    int x = 0, m = 12345;
+    int x = 0, m = 1;
     static DefaultTableModel modelDocentes, modelAlunos, modelTurmas, modelDisciplinas;
     static DefaultListModel listTurmas, listDisciplinas;
     static ArrayList<Integer> bufferForRemoval = new ArrayList<Integer>();
