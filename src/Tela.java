@@ -2777,8 +2777,9 @@ public class Tela extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Cadastro realizado");
         Aluno aluno = escola.adicionarAluno(CaixaDeTextoCadastroNomeAluno.getText());
         String[] s = {aluno.getCodigo() + " - " + aluno.getNome()};
-        modelAlunos= (DefaultTableModel) TabelaRemoverAlunos.getModel();
+        modelAlunos = (DefaultTableModel) TabelaRemoverAlunos.getModel();
         modelAlunos.addRow(s);
+        TabelaRemoverAlunos.setModel(modelAlunos);
         //BarraAlunosCadastrados.addItem(s[0]);
         //BarraAlunosCadastrados1.addItem(s[0]);
         BarraAlunosCadastrados.addItem(aluno.getCodigo() + " - " + aluno.getNome());
@@ -2931,6 +2932,7 @@ public class Tela extends javax.swing.JFrame {
         String[] s = {docente.getCodigo() + " - " + docente.getNome()};
         modelDocentes = (DefaultTableModel) TabelaRemoverDocentes.getModel();
         modelDocentes.addRow(s);
+        TabelaRemoverDocentes.setModel(modelDocentes);
         BarraDocentesCadastrados.addItem(s[0]);
         BarraDocentesCadastrados1.addItem(s[0]);
         CaixaDeTextoCadastroNomeDocente.setText("");
