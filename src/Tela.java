@@ -2334,35 +2334,13 @@ public class Tela extends javax.swing.JFrame {
 
         BarraAlunosCadastrados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if(isToListen){
-                System.out.println("CHAMADO");
-                String [] buffer = new String [1];
-                buffer[0] = (String) BarraAlunosCadastrados1.getSelectedItem();
-                DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
-                dtm.addRow(buffer);
-                System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
-                bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
-                isToListen = false;
-                BarraAlunosCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
-                isToListen = true;
-                TabelaEditarDisciplinasAluno.setModel(dtm);
-            }
+                BarraAlunosTelaEditarDisciplinasActionPerformed();
         }
         });
 
         BarraDocentesCadastrados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isToListen){
-                System.out.println("CHAMADO");
-                String [] buffer = new String [1];
-                buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
-                DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
-                dtm.addRow(buffer);
-                System.out.println("kkkkkk");
-                bufferForAditionBX.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
-                BarraDocentesCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());
-                TabelaEditarDisciplinasDocente.setModel(dtm);
-            }
+               BarraDocentesTelaEditarDiscplinasActionPerformed();
         }
         });
         TelaEstudante.add(BotaoDadosPessoais);
@@ -2569,14 +2547,6 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(TelaEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        //private javax.swing.JComboBox<String> BarraAlunosCadastrados;
-    //private javax.swing.JComboBox<String> BarraAlunosCadastrados1;
-    //oq é isso?
-    //private javax.swing.JComboBox<String> BarraDiciplinasEditarNota;
-    //private javax.swing.JComboBox<String> BarraDisciplinasCadastradas;
-    //private javax.swing.JComboBox<String> BarraDocentesCadastrados;
-    //private javax.swing.JComboBox<String> BarraDocentesCadastrados1;
-    //private javax.swing.JComboBox<String> BarraTurmasCadastradas;
         //TODO #16 inicializar essas porra dessas barra e linkar elas com as tabela e botar actionperformed pra inicializar a lista dela
         BarraTurmasCadastradas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -3380,7 +3350,7 @@ public class Tela extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         escola = new Escola();
-         escola.carregar();
+        //escola.carregar();
          String[] toAdd = new String[1];
          String buffer;
          modelAlunos = new DefaultTableModel();
@@ -3506,6 +3476,36 @@ public class Tela extends javax.swing.JFrame {
                 TabelaEditarDisciplinasAluno.setModel(toAddBravo);
                 isToListen = true;
             
+    }
+
+    private void BarraDocentesTelaEditarDiscplinasActionPerformed(){
+        if (isToListen){
+            System.out.println("CHAMADO");
+            String [] buffer = new String [1];
+            buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
+            DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
+            dtm.addRow(buffer);
+            System.out.println("kkkkkk");
+            bufferForAditionBX.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            BarraDocentesCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());
+            TabelaEditarDisciplinasDocente.setModel(dtm);
+        }
+    }
+
+    private void BarraAlunosTelaEditarDisciplinasActionPerformed(){
+        if(isToListen){
+            System.out.println("CHAMADO");
+            String [] buffer = new String [1];
+            buffer[0] = (String) BarraAlunosCadastrados1.getSelectedItem();
+            DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+            dtm.addRow(buffer);
+            System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
+            isToListen = false;
+            BarraAlunosCadastrados1.removeItemAt(BarraAlunosCadastrados1.getSelectedIndex());//
+            isToListen = true;
+            TabelaEditarDisciplinasAluno.setModel(dtm);
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
