@@ -10,7 +10,7 @@ public class GerenteDeArquivo{
     //TODO remover essa merda se n precisa pra UI
     public ArrayList<String> metaDados;// Proveniente do metadados.txt
     //COLOQUE UM ENDERÇO Q FUNCIONE PRA VC 
-    public String baseAdress = "Trabalho-4-UNIDADE";
+    public String baseAdress = "src";
 
     public void carregarMeta(){} // Carrega o arquivo metadados.txt e bota na lista metaDados;
 
