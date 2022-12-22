@@ -3188,7 +3188,7 @@ public class Tela extends javax.swing.JFrame {
 
     private void BotaoRemoverCoisasDaDisciplinaActionPerformed(java.awt.event.ActionEvent evt){
         DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
-        DefaultTableModel dtmB = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
+        DefaultTableModel dtmB = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
         //bufferTable = dtm;
         //bufferTableBX = dtmB;
         while (TabelaEditarDisciplinasAluno.getSelectedRow()!=-1){
@@ -3201,7 +3201,7 @@ public class Tela extends javax.swing.JFrame {
                 //Mensagem de não pode
                 break;
             }
-            bufferForRemoval.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
+            bufferForRemovalBX.add(TabelaEditarDisciplinasDocente.getSelectedRow()+counterForPreventionBX);
             dtmB.removeRow(TabelaEditarDisciplinasDocente.getSelectedRow());
             counterForPreventionBX++;
         }
@@ -3309,10 +3309,13 @@ public class Tela extends javax.swing.JFrame {
             toAdd = new Float[4];
             for(int i = 0; i<=3; i++){
                 try{
-                toAdd[i] = Float.parseFloat((String) modelNotas.getValueAt(a, i));
+                toAdd[i] = Float.parseFloat(modelNotas.getValueAt(a, i).toString());
                 } catch (NumberFormatException ex){
                     toAdd[i] = 0f;
-                } 
+                } catch (ClassCastException ex){
+                   // toAdd[i] = Float.parseFloat(buffer)
+                   ex.printStackTrace();
+                }
                 if(toAdd[i] <0f){
                     toAdd[i] = 0f;
                 } else if (toAdd[i]>10f){
@@ -3333,11 +3336,11 @@ public class Tela extends javax.swing.JFrame {
         d.setNome(CaixaDeTextoEditarNomeDisciplina.getText());
         CaixaDeTextoEditarNomeDisciplina.setText("");
         for(int i : bufferForRemoval){
-            d.removerDocente(i);
+            d.removerAluno(i);
         }
 
         for (int i : bufferForRemovalBX){
-            d.removerAluno(i);
+            d.removerDocente(i);
         }
 
         for(int i : bufferForAdition){
@@ -3434,7 +3437,7 @@ public class Tela extends javax.swing.JFrame {
             }
         });
     }
-
+//TODO fazer refreshar as outras coaisas qnd salva tbm
     private void RefreshEditarDisciplina(){
         isToListen = false;
                 DefaultTableModel toAdd = new DefaultTableModel();
