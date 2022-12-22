@@ -3122,7 +3122,6 @@ public class Tela extends javax.swing.JFrame {
             boolean bufferBool = isToListen;
             isToListen = false;
             BarraAlunosCadastrados.removeItemAt(TabelaRemoverAlunos.getSelectedRow());
-            BarraAlunosCadastrados1.removeItemAt(TabelaRemoverAlunos.getSelectedRow());
             isToListen = bufferBool;
             modelAlunos.removeRow(TabelaRemoverAlunos.getSelectedRow());
         }
@@ -3311,11 +3310,11 @@ public class Tela extends javax.swing.JFrame {
             toAdd = new Float[4];
             for(int i = 0; i<=3; i++){
                 try{
-                toAdd[i] = Float.parseFloat(modelNotas.getValueAt(a, i).toString());
+                toAdd[i] = Float.parseFloat((String)modelNotas.getValueAt(a, i));
                 } catch (NumberFormatException ex){
                     toAdd[i] = 0f;
                 } catch (ClassCastException ex){
-                   // toAdd[i] = Float.parseFloat(buffer)
+                   toAdd[i] = (Float) modelNotas.getValueAt(a, i);
                    ex.printStackTrace();
                 }
                 if(toAdd[i] <0f){

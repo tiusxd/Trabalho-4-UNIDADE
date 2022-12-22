@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.print.Doc;
+
 public class Disciplina extends Entidade{
     
     private ArrayList<Docente> docentes;
@@ -72,6 +74,10 @@ public class Disciplina extends Entidade{
         notas.remove(a);
         return true;
     }
+    public boolean removerAluno(Aluno aluno){
+        notas.remove(aluno);
+        return true;
+    }
 
     public boolean adicionarDocente(Docente docente){
         if (docentes.contains(docente))
@@ -81,6 +87,11 @@ public class Disciplina extends Entidade{
     }
 
     public boolean removerDocente(int docente){
+        docentes.remove(docente);
+        return true;
+    }
+
+    public boolean removerDocente(Docente docente){
         docentes.remove(docente);
         return true;
     }

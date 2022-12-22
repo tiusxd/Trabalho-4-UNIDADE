@@ -22,6 +22,9 @@ public class Escola{
         if (!alunos.containsKey(codigo))
             throw new NoSuchKeyException();
         else
+            for(int i: alunos.get(codigo).getNotas().keySet()){
+                disciplinas.get(i).removerAluno(alunos.get(codigo));
+            }
             alunos.remove(codigo);
     }
 
@@ -36,6 +39,9 @@ public class Escola{
         if (!docentes.containsKey(codigo))
             throw new NoSuchKeyException();
         else
+            for(Disciplina d: docentes.get(codigo).getDisciplinas()){
+                d.removerDocente(docentes.get(codigo));
+            }
             docentes.remove(codigo);
     }
 
