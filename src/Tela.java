@@ -29,7 +29,7 @@ public class Tela extends javax.swing.JFrame {
     static int counterForPrevention = 0;
     static int counterForPreventionBX = 0;
 
-    int x = 0;
+    int x = 0, m = 12345;
     static DefaultTableModel modelDocentes, modelAlunos, modelTurmas, modelDisciplinas;
     static ArrayList<Integer> bufferForRemoval = new ArrayList<Integer>();
     static ArrayList<Integer> bufferForAdition = new ArrayList<Integer>();
@@ -2946,7 +2946,7 @@ public class Tela extends javax.swing.JFrame {
         }
     }
 
-    private void BotaoConcluirCadastroDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoConcluirCadastroDisciplinasActionPerformed
+    private void BotaoConcluirCadastroDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {                                                                 
 
         Disciplina disciplina = escola.adicionarDisciplina(CaixaDeTextoDisciplina.getText());
         String[] s = {disciplina.getCodigo() + " - " + disciplina.getNome()};
