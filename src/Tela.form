@@ -2317,9 +2317,6 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BarraDocentesTelaEditarDiscplinasActionPerformed"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -2330,9 +2327,6 @@
                       <StringArray count="0"/>
                     </Property>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BarraAlunosCadastradosActionPerformed"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
                   </AuxValues>
@@ -2351,9 +2345,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Remover"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotaoRemoverCoisasDaDisciplinaActionPerformed"/>
-                  </Events>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="TabelaDisc4">
                   <AuxValues>
@@ -2700,17 +2691,8 @@
                               <Component id="jLabel55" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="BarraTurmasCadastradas" alignment="0" min="-2" pref="108" max="-2" attributes="0"/>
                               <Component id="jScrollPane1" alignment="0" min="-2" pref="387" max="-2" attributes="0"/>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="CaixaDeTextoNomeTurmaEditado" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
-                                      <Component id="jLabel66" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                      <Component id="BarraAlunosCadastrados2" min="-2" pref="153" max="-2" attributes="0"/>
-                                  </Group>
-                              </Group>
+                              <Component id="jLabel66" alignment="0" min="-2" pref="77" max="-2" attributes="0"/>
+                              <Component id="CaixaDeTextoNomeTurmaEditado" alignment="0" min="-2" pref="149" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace pref="179" max="32767" attributes="0"/>
                       </Group>
@@ -2724,15 +2706,9 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="BarraTurmasCadastradas" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel66" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="CaixaDeTextoNomeTurmaEditado" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="BarraAlunosCadastrados2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="CaixaDeTextoNomeTurmaEditado" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="204" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
@@ -2801,24 +2777,6 @@
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BotaoRemoverAlunoDaTurmaActionPerformed"/>
                   </Events>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="BarraAlunosCadastrados2">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="0"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BarraAlunosCadastrados2ActionPerformed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JLabel" name="jLabel23">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="Alunos"/>
-                  </Properties>
                 </Component>
               </SubComponents>
             </Container>
@@ -2891,9 +2849,6 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Remover"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="Bot&#xe3;oRemoverDisciplinasDoSistemaActionPerformed"/>
-                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel80">
                   <Properties>
