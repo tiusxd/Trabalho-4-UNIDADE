@@ -135,10 +135,16 @@ public class Escola{
             dic = new Disciplina(base,this);
             disciplinas.put(dic.getCodigo(), dic); 
         }
+        System.out.println("PLACEHOLDER");
     }
 
     public void salvar(){
-       // ga.escrever(this);
+       ga.escrever(this);
     }
     
 }   
+
+//Nome da disciplina
+//Notas nos alunos
+//Disciplinas nos professores
+//Carregando um a menos
