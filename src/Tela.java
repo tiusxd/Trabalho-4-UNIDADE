@@ -1835,6 +1835,30 @@ public class Tela extends javax.swing.JFrame {
         TabelaDisc2.setViewportView(TabelaRemoverDisciplinas);
 
         BotãoRemoverDisciplinasDoSistema.setText("Remover");
+        BotãoRemoverDisciplinasDoSistema.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotãoRemoverDisciplinasDoSistemaActionPerformed(evt);
+        }
+        });
+
+        BotaoGerarRelatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GeradorDeRelatorio.relatorioAprovados(escola);
+                GeradorDeRelatorio.relatorioReprovados(escola);
+        }
+        });
+
+        BotaoGerarRelatorioDocentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GeradorDeRelatorio.relatorioDocentes(escola);
+        }
+        });
+
+        BotaoGerarRelatorioDocentes1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GeradorDeRelatorio.relatorioMediasTurmas(escola);
+        }
+        });
 
         jLabel80.setText("Para remover uma disciplina, selecione-a(as).");
 
@@ -2337,6 +2361,8 @@ public class Tela extends javax.swing.JFrame {
                 BarraAlunosTelaEditarDisciplinasActionPerformed();
         }
         });
+
+        //aq
 
         BarraDocentesCadastrados1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
