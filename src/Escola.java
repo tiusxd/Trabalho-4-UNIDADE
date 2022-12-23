@@ -98,47 +98,6 @@ public class Escola{
         }
     }
 
-    public void editarAluno(){};
-    public void editarTurma(){};
-    public void editarDisciplina(){};
-    public void editarDocente(){};
-
-    //Os métodos abaixo estão retornando null enquanto não são devidamente implementados, pra não dar erro no java
-
-    public String mapearDocentes(){
-        String toReturn = "";
-        for (Map.Entry<Integer, Docente> pair:docentes.entrySet()){
-            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
-        } 
-        return toReturn;
-    } //Retorna o nome dos docentes e seus códigos.
-
-    public String mapearDisciplinas(){        
-        String toReturn = "";
-        for (Map.Entry<Integer, Disciplina> pair:disciplinas.entrySet()){
-            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
-        } 
-        return toReturn;
-    }//Retorna o nome das disciplinas e seus códigos.
-
-    public String mapearAlunos(){
-        String toReturn = "";
-        for (Map.Entry<Integer, Aluno> pair:alunos.entrySet()){
-            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
-        } 
-        return toReturn;
-    }//Retorna o nome dos alunos e seus códigos.
-
-    public String mapearTurmas(){
-        String toReturn = "";
-        for (Map.Entry<Integer, Turma> pair:turmas.entrySet()){
-            toReturn = toReturn + pair.getKey() + " - " +pair.getValue().getNome() + "\n"; 
-        } 
-        return toReturn;
-    }//Retorna o nome das turmas e seus códigos.
-
-    public void gerarRelatórios(int tipo){}//Gerar relatórios com o GeradorDeRelatorio e passar pro arquivo com o GerenteDeArquivos.
-
     public void carregar(){
         Aluno a;
         for (String base : ga.carregarAlunos()) {

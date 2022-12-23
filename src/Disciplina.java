@@ -29,7 +29,7 @@ public class Disciplina extends Entidade{
             docentes.add(escola.docentes.get(Integer.parseInt(tTwo)));
         }
         } catch (Exception ex){
-
+            System.out.println("Discplina Incompleta sendo carregada");
         }
         try{
         for (String tTwo : tierOne[3].split("/")){
@@ -44,7 +44,7 @@ public class Disciplina extends Entidade{
             notas.put(key, value);
         }
         } catch (Exception ex){
-            ex.printStackTrace();
+            System.out.println("Discplina Incompleta sendo carregada");
         }
         for (Docente d: docentes){
             d.addDisciplina(this);

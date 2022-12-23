@@ -40,7 +40,7 @@ public class Aluno extends Entidade{
             notas.put(key, value);
         }
         } catch (Exception ex){
-            ex.printStackTrace();
+            System.out.println("Aluno Incompleto sendo carregado");
         }
         matricula = tierOne[4];
         dataNascimento = tierOne[5];

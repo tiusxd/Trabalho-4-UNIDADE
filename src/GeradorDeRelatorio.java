@@ -28,7 +28,9 @@ public class GeradorDeRelatorio{
             float media = 0;
             for(int a = 0; a<=3; a++){
                 media = 0;
+                a++;
                 toReturn = toReturn + a + " Unidade - ";
+                a--;
                 for (Float[] notas : disciplina.getNotas().values()) {
                     media += notas[a];
                 }

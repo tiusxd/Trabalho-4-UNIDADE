@@ -23,7 +23,7 @@ public class Turma extends Entidade{
             alunos.add(escola.alunos.get(Integer.parseInt(tTwo)));
         }
     } catch (Exception ex){
-        ex.printStackTrace();
+        System.out.println("Turma Incompleta sendo carregada");
     }
     }
     public boolean adicionarAluno(Aluno aluno,Escola escola){
