@@ -135,10 +135,11 @@ public class Escola{
             dic = new Disciplina(base,this);
             disciplinas.put(dic.getCodigo(), dic); 
         }
+        System.out.println("");
     }
 
     public void salvar(){
-       // ga.escrever(this);
+       ga.escrever(this);
     }
     
 }   
