@@ -1,3 +1,5 @@
+import java.nio.file.InvalidPathException;
+import java.nio.file.NoSuchFileException;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -98,28 +100,40 @@ public class Escola{
         }
     }
 
-    public void carregar(){
+    public void carregar() throws InvalidPathException, NoSuchFileException{
         Aluno a;
+        try{
         for (String base : ga.carregarAlunos()) {
             a = new Aluno(base);
             alunos.put(a.getCodigo(), a); 
         }
+        } catch (NullPointerException ex){
+        }
         Docente doc;
+        try{
         for (String base : ga.carregarDocentes()) {
             doc = new Docente(base);
             docentes.put(doc.getCodigo(), doc); 
         }
+        } catch (NullPointerException ex){
+        }
         Turma t;
+        try{
         for (String base : ga.carregarTurmas()) {
             t = new Turma(base,this);
             turmas.put(t.getCodigo(), t); 
         }
+        } catch (NullPointerException ex){
+        }
         Disciplina dic;
+        try{
         for (String base : ga.carregarDisciplinas()) {
             dic = new Disciplina(base,this);
             disciplinas.put(dic.getCodigo(), dic); 
         }
-
+        } catch(NullPointerException ex){
+        }
+        try{
         String[] meta = ga.carregarMeta().split(";");
         numeroRelatorios = Integer.parseInt(meta[0]);
         maiorAluno = Integer.parseInt(meta[1]);
@@ -127,6 +141,13 @@ public class Escola{
         maiorTurma = Integer.parseInt(meta[3]);
         maiorDisciplina = Integer.parseInt(meta[4]);
         System.out.println("");
+        } catch (Exception ex){
+        numeroRelatorios = 100;
+        maiorAluno = 100;
+        maiorDocente = 100;
+        maiorTurma = 100;
+        maiorDisciplina = 100;
+        }
     }
 
     public void salvar(){

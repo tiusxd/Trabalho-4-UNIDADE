@@ -6,6 +6,8 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.InvalidPathException;
+import java.nio.file.NoSuchFileException;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.List;
 public class GerenteDeArquivo{
     public String baseAdress = "Trabalho-4-UNIDADE/src";
 
-    public List<String> carregarAlunos(){
+    public List<String> carregarAlunos() throws InvalidPathException, NoSuchFileException{
         Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Alunos.txt");
         List<String> toReturn = null;
         try {
@@ -25,7 +27,7 @@ public class GerenteDeArquivo{
         return toReturn;
     }
 
-    public String carregarMeta(){
+    public String carregarMeta() throws InvalidPathException, NoSuchFileException{
         Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Meta.txt");
         String toReturn = null;
         try {
@@ -38,7 +40,7 @@ public class GerenteDeArquivo{
         return toReturn;
     }
 
-    public List<String> carregarDocentes(){
+    public List<String> carregarDocentes() throws InvalidPathException, NoSuchFileException{
         Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Docentes.txt");
         List<String> toReturn = null;
         try {
@@ -50,7 +52,7 @@ public class GerenteDeArquivo{
         return toReturn;
     }
 
-    public List<String> carregarTurmas(){
+    public List<String> carregarTurmas() throws InvalidPathException, NoSuchFileException{
         Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Turmas.txt");
         List<String> toReturn = null;
         try {
@@ -62,7 +64,7 @@ public class GerenteDeArquivo{
         return toReturn;
     }
 
-    public List<String> carregarDisciplinas(){
+    public List<String> carregarDisciplinas() throws InvalidPathException, NoSuchFileException{
         Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Disciplinas.txt");
         List<String> toReturn = null;
         try {

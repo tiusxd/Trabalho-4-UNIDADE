@@ -21,10 +21,14 @@ public class Docente extends Entidade{
 
     public Docente(String base) {
         super(base);
+        try{
         disciplinas = new ArrayList<Disciplina>();
         String[] tierOne = base.split(";");
         matricula = tierOne[2];
         dataNascimento = tierOne [3];
+        } catch (Exception ex){
+            
+        }
     }
 
     public ArrayList<Disciplina> getDisciplinas() {

@@ -6,6 +6,8 @@ import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.InvalidPathException;
+import java.nio.file.NoSuchFileException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Map;
@@ -20,13 +22,15 @@ import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.WindowEvent;
+
+import javax.sound.midi.Soundbank;
 import javax.swing.DefaultListModel;
 
 public class Tela extends javax.swing.JFrame {
 
     String Username = null, Password = null, senha = null, usuario = null, endereco = null, nomesdealunos = null, nomesdedisciplinas = null, nomesDeDocentes = null, nomesdeturmas = null;
     ImageIcon imagem = null;
-    static Escola escola;
+    public static Escola escola;
     static int counterForPrevention = 0;
     static int counterForPreventionBX = 0;
     public static String baseAdress = "Trabalho-4-UNIDADE/src";
@@ -3213,7 +3217,6 @@ public class Tela extends javax.swing.JFrame {
         a = 0;
         Float[] toAdd =  new Float[4];
         for (Map.Entry<Aluno,Float[]> pair : disc.getNotas().entrySet()){
-            System.out.println(pair.getKey().getNome());;
             toAdd = new Float[4];
             for(int i = 0; i<=3; i++){
                 try{
@@ -3222,14 +3225,12 @@ public class Tela extends javax.swing.JFrame {
                     toAdd[i] = 0f;
                 } catch (ClassCastException ex){
                    toAdd[i] = (Float) modelNotas.getValueAt(a, i);
-                   ex.printStackTrace();
                 }
                 if(toAdd[i] <0f){
                     toAdd[i] = 0f;
                 } else if (toAdd[i]>10f){
                     toAdd[i] = 10f;
                 }
-                System.out.println((String) modelNotas.getValueAt(a, i));
             }
             disc.editarNotas(pair.getKey(), toAdd);
             a++;
@@ -3302,7 +3303,27 @@ public class Tela extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         escola = new Escola();
+        try{
          escola.carregar();
+        }catch(InvalidPathException|NoSuchFileException e){
+            JOptionPane.showMessageDialog(null, "O ENDEREÇO DE CARREGAMENTO TA ERRADO. VERIFIQUE SE INTALOU O PROGRMA CORRETAMENE OU MUDE O ENDEREÇO EM GerenteDeArquivo.baseAdress");
+            return;
+        } catch (Exception ex){
+            System.out.println("Houve um problema inesperado com o carregamento. Realizando inicialização vazia.");
+        }
+        Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+            @Override
+            public void uncaughtException(Thread th, Throwable ex) {
+                ex.printStackTrace();
+                System.out.println("Houve um problema com o programa. Fechando o programa e  salvando");
+                try{
+                Tela.escola.salvar();
+                } catch(Exception ez){
+                }
+                System.exit(0);
+            }
+        };
+        Thread.setDefaultUncaughtExceptionHandler(h);
          String[] toAdd = new String[1];
          String buffer;
          listTurmas = new DefaultListModel<String>();
@@ -3363,20 +3384,7 @@ public class Tela extends javax.swing.JFrame {
                 try{
                 new Tela().setVisible(true);
                 } catch (Exception ex){
-                    FileWriter fw = null;
-                    try {
-                        fw = new FileWriter("Trabalho-4-UNIDADE/Dados/ErrorLog.txt", true);
-                        fw.write("LOCAL: " + System.getProperty("user.dir") + "\n");
-                        Calendar c = Calendar.getInstance();
-                        fw.write("DIA: " + c.DAY_OF_MONTH + " HORA: " + String.valueOf(c.HOUR_OF_DAY) + String.valueOf(c.MINUTE) + "\n");
-                        fw.write("TIPO: " + ex.toString() +"\n");
-                        fw.write("TRACE:" + ex.getStackTrace().toString());
-                        fw.write("\n");
-                        fw.close();
-                    } catch (IOException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
+                    
                 }
             }
         });
@@ -3412,7 +3420,6 @@ public class Tela extends javax.swing.JFrame {
                 TabelaEditarDisciplinasAluno.setModel(toAddBravo);
                 toAddBravo.addColumn("Alunos");
                 for(Aluno a: escola.disciplinas.get(keys.get(BarraDisciplinasCadastradas.getSelectedIndex())).getNotas().keySet()){
-                    System.out.println("TAMAHO" + escola.disciplinas.get(keys.get(BarraDisciplinasCadastradas.getSelectedIndex())).getNotas().keySet().size());
                     buffer[0] = String.valueOf(a.getCodigo());
                     buffer[0] = buffer[0] + " - " + a.getNome();
                     bufferForRemoval.add(a.getCodigo());
@@ -3421,7 +3428,6 @@ public class Tela extends javax.swing.JFrame {
 
                 for (Map.Entry<Integer,Aluno> pair : escola.alunos.entrySet()){
                     if (!bufferForRemoval.contains(pair.getKey())){
-                        System.out.println(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
                         BarraAlunosCadastradosDisciplinas.addItem(pair.getValue().getCodigo() + " - " + pair.getValue().getNome());
                     }
                 }
@@ -3461,12 +3467,10 @@ public class Tela extends javax.swing.JFrame {
 
     private void BarraDocentesTelaEditarDiscplinasActionPerformed(){
         if (isToListen){
-            System.out.println("CHAMADO");
             String [] buffer = new String [1];
             buffer[0] = (String) BarraDocentesCadastrados1.getSelectedItem();
             DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasDocente.getModel();
             dtm.addRow(buffer);
-            System.out.println("kkkkkk");
             bufferForAditionBX.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
             BarraDocentesCadastrados1.removeItemAt(BarraDocentesCadastrados1.getSelectedIndex());
             TabelaEditarDisciplinasDocente.setModel(dtm);
@@ -3475,12 +3479,10 @@ public class Tela extends javax.swing.JFrame {
 
     private void BarraAlunosTelaEditarDisciplinasActionPerformed(){
         if(isToListen){
-            System.out.println("CHAMADO");
             String [] buffer = new String [1];
             buffer[0] = (String) BarraAlunosCadastradosDisciplinas.getSelectedItem();
             DefaultTableModel dtm = (DefaultTableModel) TabelaEditarDisciplinasAluno.getModel();
             dtm.addRow(buffer);
-            System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
             bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
             isToListen = false;
             BarraAlunosCadastradosDisciplinas.removeItemAt(BarraAlunosCadastradosDisciplinas.getSelectedIndex());//
@@ -3495,7 +3497,6 @@ public class Tela extends javax.swing.JFrame {
             buffer[0] = (String) BarraAlunosCadastradosTurmas.getSelectedItem();
             DefaultTableModel dtm = (DefaultTableModel) TabelaEditarAlunosEmTurma.getModel();
             dtm.addRow(buffer);
-            System.out.println(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
             bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
             isToListen = false;
             BarraAlunosCadastradosTurmas.removeItemAt(BarraAlunosCadastradosDisciplinas.getSelectedIndex());//
