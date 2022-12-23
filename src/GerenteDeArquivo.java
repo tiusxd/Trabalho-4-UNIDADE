@@ -1,5 +1,9 @@
+import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -83,7 +87,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter(baseAdress+"/Dados/Alunos.txt");
+            writer = new FileWriter(baseAdress+"/Dados/Alunos.txt",StandardCharsets.UTF_8);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -96,7 +100,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter(baseAdress+"/Dados/Docentes.txt");
+            writer = new FileWriter(baseAdress+"/Dados/Docentes.txt",StandardCharsets.UTF_8);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -109,7 +113,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter(baseAdress+"/Dados/Turmas.txt");
+            writer = new FileWriter(baseAdress+"/Dados/Turmas.txt",StandardCharsets.UTF_8);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -122,7 +126,7 @@ public class GerenteDeArquivo{
         }
         
         try {
-            writer = new FileWriter(baseAdress+"/Dados/Disciplinas.txt");
+            writer = new FileWriter(baseAdress+"/Dados/Disciplinas.txt",StandardCharsets.UTF_8);
             writer.write(toWrite);
             writer.close();
         } catch (IOException e) {
@@ -131,7 +135,7 @@ public class GerenteDeArquivo{
         }
         toWrite = escola.getNumeroRelatorios() + ";"+escola.maiorAluno+";"+escola.maiorDocente+";"+escola.maiorTurma+";"+escola.maiorDisciplina;
         try{
-            writer = new FileWriter(baseAdress+"/Dados/Meta.txt");
+            writer = new FileWriter(baseAdress+"/Dados/Meta.txt",StandardCharsets.UTF_8);
             writer.write(toWrite);
             writer.close();
         } catch(IOException ex){

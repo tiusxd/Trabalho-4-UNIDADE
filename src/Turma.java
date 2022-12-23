@@ -26,19 +26,28 @@ public class Turma extends Entidade{
         ex.printStackTrace();
     }
     }
-    public boolean adicionarAluno(Aluno aluno){
+    public boolean adicionarAluno(Aluno aluno,Escola escola){
         if (alunos.contains(aluno))
             return false;
+        escola.turmas.get(aluno.getTurma()).removerAluno(aluno,escola);
         alunos.add(aluno);
+        aluno.setTurma(this.getCodigo());
+
         return true;
     }
-    public boolean removerAluno(Aluno aluno){
+    public boolean removerAluno(Aluno aluno,Escola escola){
         if (!alunos.contains(aluno))
             return false;
         alunos.remove(aluno);
+        if(this.getCodigo()!=0){
+        escola.turmas.get(0).getAlunos().add(aluno);
+        }
         return true;
     }
-    public boolean removerAluno(int aluno){
+    public boolean removerAluno(int aluno,Escola escola){
+        if(this.getCodigo()!=0){
+        escola.turmas.get(0).getAlunos().add(alunos.get(aluno));
+        }
         alunos.remove(aluno);
         return true;
     }

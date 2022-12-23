@@ -2639,6 +2639,8 @@ public class Tela extends javax.swing.JFrame {
         BarraAlunosCadastradosAlunos.addItem(aluno.getCodigo() + " - " + aluno.getNome());
         BarraAlunosCadastradosDisciplinas.addItem(aluno.getCodigo() + " - " + aluno.getNome());
         CaixaDeTextoCadastroNomeAluno.setText("");
+        CaixaDeTextoCadastroDataNascAluno.setText(null);
+        CaixaDeTextoMatriculaAluno.setText("");
         x += 1;
     }//GEN-LAST:event_BotaoConcluirCadastroAlunoActionPerformed
 
@@ -3089,10 +3091,10 @@ public class Tela extends javax.swing.JFrame {
         }
         CaixaDeTextoNomeTurmaEditado.setText("");
         for (int i : bufferForRemoval){
-            t.removerAluno(i);
+            t.removerAluno(i,escola);
         }
         for(int i: bufferForAdition){
-            t.adicionarAluno(escola.alunos.get(i));
+            t.adicionarAluno(escola.alunos.get(i),escola);
         }
         bufferForRemoval.clear();
         bufferForRemovalBX.clear();
@@ -3291,6 +3293,8 @@ public class Tela extends javax.swing.JFrame {
         BarraDocentesCadastrados.addItem(s[0]);
         BarraDocentesCadastrados1.addItem(s[0]);
         CaixaDeTextoCadastroNomeDocente.setText("");
+        CaixaDeTextoCadastroDataNascDocente.setText(null);
+        CaixaDeTextoMatriculaDocente.setText("");
         //modelTurmas = (DefaultTableModel)TabelaRemoverTurmas.getModel();
 
     }//GEN-LAST:event_BotaoConcluirCadastroDocenteActionPerformed
@@ -3433,6 +3437,7 @@ public class Tela extends javax.swing.JFrame {
     private void RefreshEditarTurmas(){
         isToListen = false;
         DefaultTableModel toAdd = new DefaultTableModel();
+        clearBuffersAndCounters();
         TabelaEditarAlunosEmTurma.setModel(toAdd);
         toAdd.addColumn("Alunos");
         String[] buffer = new String [1];

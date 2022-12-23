@@ -25,6 +25,7 @@ public class Escola{
     public Aluno adicionarAluno(String nome,String mat, String datNas){
         Aluno aluno = new Aluno(nome,maiorAluno,mat,datNas);
         alunos.put(maiorAluno, aluno);
+        turmas.get(0).adicionarAluno(aluno, this);
         maiorAluno++;
         return aluno;
     }
@@ -35,8 +36,9 @@ public class Escola{
         else
             for(int i: alunos.get(codigo).getNotas().keySet()){
                 disciplinas.get(i).removerAluno(alunos.get(codigo));
-                turmas.get(alunos.get(codigo).getTurma()).removerAluno(alunos.get(codigo));
+                turmas.get(alunos.get(codigo).getTurma()).removerAluno(alunos.get(codigo),this);
             }
+            alunos.get(codigo).setTurma(0);
             alunos.remove(codigo);
     }
 
