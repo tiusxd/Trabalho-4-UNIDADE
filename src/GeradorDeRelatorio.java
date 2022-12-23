@@ -3,12 +3,22 @@ import java.util.Map;
 
 public class GeradorDeRelatorio{
     public static String relatorioMediasTurmas(Escola escola){
-        //TODO perguntar a Hélio se é pras disciplinas terem turmas ou não
         String toReturn = "";
         for (Turma turma : escola.turmas.values()) {
-            
+            toReturn = toReturn + turma.getNome() + ": ";
+            float mediaAlunos = 0;
+            for(Aluno a: turma.getAlunos()){
+                float sum = 0;
+                for(Float[] notas : a.getNotas().values()){
+                    sum = sum + notas[0]+ notas[1]+ notas[2]+ notas[3];
+                }
+                sum = sum /a.getNotas().size();
+                mediaAlunos+=sum;
+            }
+            mediaAlunos = mediaAlunos/turma.getAlunos().size();
+            toReturn = toReturn + mediaAlunos +"\n";
         }
-        return null;
+        return toReturn;
     }
     public static String relatorioMediasDisciplinas(Escola escola){
         String toReturn = "";

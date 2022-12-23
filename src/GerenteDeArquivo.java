@@ -7,18 +7,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GerenteDeArquivo{
-    //TODO remover essa merda se n precisa pra UI
-    public ArrayList<String> metaDados;// Proveniente do metadados.txt
-    //COLOQUE UM ENDERÇO Q FUNCIONE PRA VC 
-    public String baseAdress = "Trabalho-4-Unidade/src";
-
-    public void carregarMeta(){} // Carrega o arquivo metadados.txt e bota na lista metaDados;
+    public String baseAdress = "Trabalho-4-UNIDADE/src";
 
     public List<String> carregarAlunos(){
         Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Alunos.txt");
         List<String> toReturn = null;
         try {
             toReturn = Files.readAllLines(path);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return toReturn;
+    }
+
+    public String carregarMeta(){
+        Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Meta.txt");
+        String toReturn = null;
+        try {
+            toReturn = Files.readString(path);
+            return toReturn;
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -121,5 +129,7 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        toWrite = escola.getNumeroRelatorios() + ";"+escola.maiorAluno+";"+escola.maiorDocente+";"+escola.maiorTurma+";"+escola.maiorDisciplina;
+        
     } 
 }

@@ -8,7 +8,16 @@ public class Escola{
     public LinkedHashMap<Integer,Disciplina> disciplinas = new LinkedHashMap<Integer,Disciplina>();
     public LinkedHashMap<Integer,Aluno> alunos = new LinkedHashMap<Integer,Aluno>();
     public LinkedHashMap<Integer,Turma> turmas = new LinkedHashMap<Integer,Turma>();
-    private int maiorAluno,maiorDocente,maiorDisciplina,maiorTurma;
+    public int maiorAluno,maiorDocente,maiorDisciplina,maiorTurma;
+    private int numeroRelatorios;
+    public void setNumeroRelatorios(int numeroRelatorios) {
+        this.numeroRelatorios = numeroRelatorios;
+    }
+
+    public int getNumeroRelatorios() {
+        return numeroRelatorios;
+    }
+
     private GerenteDeArquivo ga = new GerenteDeArquivo();
 
     //Metódos
@@ -26,6 +35,7 @@ public class Escola{
         else
             for(int i: alunos.get(codigo).getNotas().keySet()){
                 disciplinas.get(i).removerAluno(alunos.get(codigo));
+                turmas.get(alunos.get(codigo).getTurma()).removerAluno(alunos.get(codigo));
             }
             alunos.remove(codigo);
     }
@@ -148,6 +158,13 @@ public class Escola{
             dic = new Disciplina(base,this);
             disciplinas.put(dic.getCodigo(), dic); 
         }
+
+        String[] meta = ga.carregarMeta().split(";");
+        numeroRelatorios = Integer.parseInt(meta[0]);
+        maiorAluno = Integer.parseInt(meta[1]);
+        maiorDocente = Integer.parseInt(meta[2]);
+        maiorTurma = Integer.parseInt(meta[3]);
+        maiorDisciplina = Integer.parseInt(meta[4]);
         System.out.println("");
     }
 

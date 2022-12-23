@@ -29,6 +29,7 @@ public class Tela extends javax.swing.JFrame {
     static Escola escola;
     static int counterForPrevention = 0;
     static int counterForPreventionBX = 0;
+    public static String baseAdress = "Trabalho-4-UNIDADE/src";
 
     int x = 0, m = 12345;
     static DefaultTableModel modelDocentes, modelAlunos, modelTurmas, modelDisciplinas;
@@ -2497,6 +2498,24 @@ public class Tela extends javax.swing.JFrame {
            BarraDocentesCadastradosActionPerformed();
     }
     });
+
+    BotaoGerarRelatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+           BotaoGerarRelatorioAlunosActionPerfomed();
+    }
+    });
+
+    BotaoGerarRelatorioDocentes.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+           BotaoGerarRelatorioDocentesActionPerformed();
+    }
+    });
+
+    BotaoGerarRelatorioTurmas.addActionListener(new java.awt.event.ActionListener() {
+        public void actionPerformed(java.awt.event.ActionEvent evt) {
+           BotaoGerarRelatorioTurmasActionPerformed(evt);
+    }
+    });
     //Fim do init
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -2950,7 +2969,6 @@ public class Tela extends javax.swing.JFrame {
             boolean bufferBool = isToListen;
             isToListen = false;
             BarraDocentesCadastrados.removeItemAt(TabelaRemoverDocentes.getSelectedRow());
-            BarraDocentesCadastrados1.removeItemAt(TabelaRemoverDocentes.getSelectedRow());
             isToListen = true;
             modelDocentes.removeRow(TabelaRemoverDocentes.getSelectedRow());
             TabelaRemoverDocentes.setModel(modelDocentes);
@@ -3073,6 +3091,9 @@ public class Tela extends javax.swing.JFrame {
         for (int i : bufferForRemoval){
             t.removerAluno(i);
         }
+        for(int i: bufferForAdition){
+            t.adicionarAluno(escola.alunos.get(i));
+        }
         bufferForRemoval.clear();
         bufferForRemovalBX.clear();
         bufferForAdition.clear();
@@ -3116,9 +3137,61 @@ public class Tela extends javax.swing.JFrame {
         ClickBotaoEditarAlunos(null);
     }
     private void BotaoGerarRelatorioDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioDisciplinasActionPerformed
-        GeradorDeRelatorio.relatorioMediasDisciplinas(escola);
+       String toSave = GeradorDeRelatorio.relatorioMediasDisciplinas(escola);
+       try{
+        FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioMediasDisciplinas"+escola.getNumeroRelatorios()+".txt");
+        fw.write(toSave);
+        fw.close();
+        escola.setNumeroRelatorios(escola.getNumeroRelatorios() + 1);
+       } catch (IOException ex){
+
+       }
     }//GEN-LAST:event_BotaoGerarRelatorioDisciplinasActionPerformed
 
+    private void BotaoGerarRelatorioTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioTurmasActionPerformed
+        String toSave = GeradorDeRelatorio.relatorioMediasTurmas(escola);
+       try{
+        FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioMediasTurmas"+escola.getNumeroRelatorios()+".txt");
+        fw.write(toSave);
+        fw.close();
+        escola.setNumeroRelatorios(escola.getNumeroRelatorios()+1);
+       } catch (IOException ex){
+
+       }
+    }//GEN-LAST:event_BotaoGerarRelatorioTurmasActionPerformed
+
+    private void BotaoGerarRelatorioAlunosActionPerfomed(){
+        String toSave = GeradorDeRelatorio.relatorioAprovados(escola);
+        try{
+         FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioAprovadosPorTurma"+escola.getNumeroRelatorios()+".txt");
+         fw.write(toSave);
+         fw.close();
+         escola.setNumeroRelatorios(escola.getNumeroRelatorios()+1);
+        } catch (IOException ex){
+ 
+        }
+        toSave = GeradorDeRelatorio.relatorioReprovados(escola);
+        try{
+         FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioReprovadosPorTurma"+escola.getNumeroRelatorios()+".txt");
+         fw.write(toSave);
+         fw.close();
+         escola.setNumeroRelatorios(escola.getNumeroRelatorios()+1);
+        } catch (IOException ex){
+ 
+        }
+    }
+
+    private void BotaoGerarRelatorioDocentesActionPerformed(){
+        String toSave = GeradorDeRelatorio.relatorioDocentes(escola);
+        try{
+         FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioDocentes"+escola.getNumeroRelatorios()+".txt");
+         fw.write(toSave);
+         fw.close();
+         escola.setNumeroRelatorios(escola.getNumeroRelatorios()+1);
+        } catch (IOException ex){
+ 
+        }
+    }
     //TODO #19 #20 botar minimo e maxima de nota e try catch
     private void BotaoSalvarEditacaoNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarEditacaoNotasActionPerformed
         var modelAlunos = TabelaAlunosEditarNotas.getModel();
@@ -3222,9 +3295,6 @@ public class Tela extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BotaoConcluirCadastroDocenteActionPerformed
 
-    private void BotaoGerarRelatorioTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioTurmasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotaoGerarRelatorioTurmasActionPerformed
 
     public static void main(String args[]) {
         escola = new Escola();
