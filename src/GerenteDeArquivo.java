@@ -10,7 +10,7 @@ public class GerenteDeArquivo{
     //TODO remover essa merda se n precisa pra UI
     public ArrayList<String> metaDados;// Proveniente do metadados.txt
     //COLOQUE UM ENDERÇO Q FUNCIONE PRA VC 
-    public String baseAdress = "Trabalho-4-UNIDADE/src";
+    public String baseAdress = "src/Trabalho-4-Unidade";
 
     public void carregarMeta(){} // Carrega o arquivo metadados.txt e bota na lista metaDados;
 
@@ -22,6 +22,11 @@ public class GerenteDeArquivo{
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+        }
+        try{
+        toReturn.remove(toReturn.size()-1);
+        } catch (IndexOutOfBoundsException ex){
+            return toReturn;
         }
         return toReturn;
     }
@@ -35,6 +40,11 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        try{
+            toReturn.remove(toReturn.size()-1);
+            } catch (IndexOutOfBoundsException ex){
+                return toReturn;
+            }
         return toReturn;
     }
 
@@ -47,6 +57,11 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        try{
+            toReturn.remove(toReturn.size()-1);
+            } catch (IndexOutOfBoundsException ex){
+                return toReturn;
+            }
         return toReturn;
     }
 
@@ -59,6 +74,11 @@ public class GerenteDeArquivo{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        try{
+            toReturn.remove(toReturn.size()-1);
+            } catch (IndexOutOfBoundsException ex){
+                return toReturn;
+            }
         return toReturn;
     }
     public void adicionarLinha(int list, String add){}// Bota a string add na lista list (códigos definidos na classe Util).

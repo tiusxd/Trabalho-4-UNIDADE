@@ -53,7 +53,6 @@ public class Disciplina extends Entidade{
 
     public void editarNotas(Aluno aluno, Float[] nota){
         notas.put(aluno, nota);
-        aluno.getNotas().put(this.getCodigo(), nota);
     }
     public void adicionarAluno(Aluno aluno){
         notas.put(aluno, new Float[]{0f,0f,0f,0f});
@@ -77,7 +76,6 @@ public class Disciplina extends Entidade{
     }
     public boolean removerAluno(Aluno aluno){
         notas.remove(aluno);
-        aluno.getNotas().remove(this.getCodigo());
         return true;
     }
 
@@ -85,19 +83,16 @@ public class Disciplina extends Entidade{
         if (docentes.contains(docente))
             return false;
         docentes.add(docente);
-        docente.addDisciplina(this);
         return true;
     }
 
     public boolean removerDocente(int docente){
-        docentes.get(docente).removeDisciplina(this);
         docentes.remove(docente);
         return true;
     }
 
     public boolean removerDocente(Docente docente){
         docentes.remove(docente);
-        docente.removeDisciplina(this);
         return true;
     }
 
