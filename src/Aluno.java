@@ -5,8 +5,17 @@ public class Aluno extends Entidade{
     //TODO adicionar um HashMap para um aluno ver suas notas
     private int turma;
     private HashMap<Integer,Float[]> notas;
+    private String matricula,dataNascimento;
 
-    public Aluno(String nome, int codigo){
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public Aluno(String nome, int codigo, String mat, String dataNas){
         super(nome, codigo);
         notas = new HashMap<Integer,Float[]>();
     }
@@ -31,7 +40,8 @@ public class Aluno extends Entidade{
         } catch (Exception ex){
             ex.printStackTrace();
         }
-        //#795E26"
+        matricula = tierOne[3];
+        dataNascimento = tierOne[4];
     }
     @Override
     public String toCsv() {
@@ -45,6 +55,10 @@ public class Aluno extends Entidade{
             toReturn = toReturn + Float.toString(pair.getValue()[3])+",";
             toReturn+= "/";
         }
+        toReturn+=";";
+        toReturn+= matricula;
+        toReturn+= ";";
+        toReturn+= dataNascimento;
         return toReturn;
     }
     

@@ -1,6 +1,8 @@
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import javax.xml.crypto.Data;
+
 public class Escola{
     public LinkedHashMap<Integer,Docente> docentes = new LinkedHashMap<Integer,Docente>();
     public LinkedHashMap<Integer,Disciplina> disciplinas = new LinkedHashMap<Integer,Disciplina>();
@@ -11,8 +13,8 @@ public class Escola{
 
     //Metódos
     //TODO fazer os métodos de adição e adição darem throws qnd acessar um item q nao existem
-    public Aluno adicionarAluno(String nome){
-        Aluno aluno = new Aluno(nome,maiorAluno);
+    public Aluno adicionarAluno(String nome,String mat, String datNas){
+        Aluno aluno = new Aluno(nome,maiorAluno,mat,datNas);
         alunos.put(maiorAluno, aluno);
         maiorAluno++;
         return aluno;
@@ -28,8 +30,8 @@ public class Escola{
             alunos.remove(codigo);
     }
 
-    public Docente adicionarDocente(String nome){
-        Docente docente = new Docente(nome, maiorDocente);
+    public Docente adicionarDocente(String nome,String mat, String datNas){
+        Docente docente = new Docente(nome, maiorDocente,mat,datNas);
         docentes.put(maiorDocente, docente);
         maiorDocente++;
         return docente;
@@ -55,8 +57,15 @@ public class Escola{
     public void removerDisciplina(int codigo) throws NoSuchKeyException{
         if (!disciplinas.containsKey(codigo))
             throw new NoSuchKeyException();
-        else
+        else{
+            for(Docente d: disciplinas.get(codigo).getDocentes()){
+                d.removeDisciplina(disciplinas.get(codigo));
+            }
+            for (Aluno a: disciplinas.get(codigo).getNotas().keySet()){
+                a.getNotas().remove(disciplinas.get(codigo).getCodigo());
+            }
             disciplinas.remove(codigo);
+        }
     }
 
     public Turma adicionarTurma(String nome){
@@ -69,8 +78,12 @@ public class Escola{
     public void removerTurma(int codigo) throws NoSuchKeyException{
         if (!turmas.containsKey(codigo))
             throw new NoSuchKeyException();
-        else
+        else{
+            for (Aluno a: turmas.get(codigo).getAlunos()){
+                a.setTurma(0);
+            }
             turmas.remove(codigo);
+        }
     }
 
     public void editarAluno(){};

@@ -2,15 +2,29 @@ import java.util.ArrayList;
 
 public class Docente extends Entidade{
     private ArrayList<Disciplina> disciplinas;
+    private String matricula,dataNascimento;
     
-    public Docente(String nome, int codigo) {
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public Docente(String nome, int codigo,String mat, String dataNas) {
         super(nome, codigo);
         disciplinas = new ArrayList<Disciplina>();
+        matricula = mat;
+        dataNascimento = dataNas;
     }
 
     public Docente(String base) {
         super(base);
         disciplinas = new ArrayList<Disciplina>();
+        String[] tierOne = base.split(";");
+        matricula = tierOne[2];
+        dataNascimento = tierOne [3];
     }
 
     public ArrayList<Disciplina> getDisciplinas() {
@@ -20,7 +34,7 @@ public class Docente extends Entidade{
     @Override
     public String toCsv() {
         String toReturn = "";
-        toReturn = toReturn + getCodigo() + ";"+ getNome();
+        toReturn = toReturn + getCodigo() + ";"+ getNome()+";"+matricula+";"+dataNascimento;
         return toReturn;
     }
 
