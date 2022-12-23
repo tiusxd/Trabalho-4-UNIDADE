@@ -58,12 +58,10 @@ public class Tela extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+
         TelaLogin = new javax.swing.JPanel();
-        loginUsuario = new javax.swing.JTextField();
-        loginSenha = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jLabel14 = new javax.swing.JLabel();
+        BotaoAcessar = new javax.swing.JButton();
         Título = new javax.swing.JLabel();
         Imagem = new javax.swing.JLabel();
         TelaDocente = new javax.swing.JPanel();
@@ -135,43 +133,23 @@ public class Tela extends javax.swing.JFrame {
         ListaDiciplinasCadastrarDisciplinas = new javax.swing.JList<>();
         jLabel24 = new javax.swing.JLabel();
         CadastrarAluno = new javax.swing.JPanel();
-        Moldura3x4 = new javax.swing.JPanel();
-        Foto3x4 = new javax.swing.JLabel();
-        CaixaDeTextoCadastroSenhaAluno = new javax.swing.JTextField();
         CaixaDeTextoCadastroNomeAluno = new javax.swing.JTextField();
-        CaixaDeTextoCadastroUsuarioAluno = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        BotaoProcurarImagem3x4 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
         BotaoConcluirCadastroAluno = new javax.swing.JButton();
-        BotaoProcurarDocumentacao = new javax.swing.JButton();
-        EnderecoFotoAluno = new javax.swing.JTextField();
-        TabelaDocumentosAnexados = new javax.swing.JScrollPane();
-        ListaDocumentosAluno = new javax.swing.JTextPane();
         CaixaDeTextoCadastroDataNascAluno = new javax.swing.JFormattedTextField();
         jLabel1 = new javax.swing.JLabel();
         CaixaDeTextoMatriculaAluno = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
         CadastrarDocente = new javax.swing.JPanel();
-        Moldura3x5 = new javax.swing.JPanel();
-        Foto3x5 = new javax.swing.JLabel();
-        CaixaDeTextoCadastroSenhaDocente = new javax.swing.JTextField();
         CaixaDeTextoCadastroNomeDocente = new javax.swing.JTextField();
-        CaixaDeTextoCadastroUsuarioDocente = new javax.swing.JTextField();
         jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        BotaoProcurarImagem3x5 = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         BotaoConcluirCadastroDocente = new javax.swing.JButton();
-        BotaoProcurarDocumentacao1 = new javax.swing.JButton();
-        EnderecoFotoDocente = new javax.swing.JTextField();
-        TabelaDocumentosAnexados1 = new javax.swing.JScrollPane();
-        ListaDocumentosDocente = new javax.swing.JTextPane();
         CaixaDeTextoCadastroDataNascDocente = new javax.swing.JFormattedTextField();
         jLabel34 = new javax.swing.JLabel();
         CaixaDeTextoMatriculaDocente = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
         CadastrarTurma = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         CaixaDeTextoCadastroTurma = new javax.swing.JTextField();
@@ -188,10 +166,10 @@ public class Tela extends javax.swing.JFrame {
         jLabel56 = new javax.swing.JLabel();
         CaixaDeTextoEditarNomeDisciplina = new javax.swing.JTextField();
         BarraDocentesCadastrados1 = new javax.swing.JComboBox<>();
-        BarraAlunosCadastrados1 = new javax.swing.JComboBox<>();
+        BarraAlunosCadastradosDisciplinas = new javax.swing.JComboBox<>();
         jLabel57 = new javax.swing.JLabel();
         jLabel58 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        BotaoRemoverCoisasDaDisciplina = new javax.swing.JButton();
         TabelaDisc4 = new javax.swing.JScrollPane();
         TabelaEditarDisciplinasAluno = new javax.swing.JTable();
         EditarNotas = new javax.swing.JPanel();
@@ -203,44 +181,27 @@ public class Tela extends javax.swing.JFrame {
         jScrollPane8 = new javax.swing.JScrollPane();
         TebelaParaEditarNotas = new javax.swing.JTable();
         EditarAluno = new javax.swing.JPanel();
-        BarraAlunosCadastrados = new javax.swing.JComboBox<>();
+        BarraAlunosCadastradosAlunos = new javax.swing.JComboBox<>();
         jLabel53 = new javax.swing.JLabel();
         jLabel60 = new javax.swing.JLabel();
         CaixaDeTextoNomeAlunoEditado = new javax.swing.JTextField();
         BotaoSalvarEditacaoAluno = new javax.swing.JButton();
+        CaixaDeTextoEditarDataNascAluno = new javax.swing.JFormattedTextField();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
+        EditarAlunoMatricula = new javax.swing.JLabel();
         EditarDocente = new javax.swing.JPanel();
         BarraDocentesCadastrados = new javax.swing.JComboBox<>();
         jLabel62 = new javax.swing.JLabel();
         jLabel63 = new javax.swing.JLabel();
         CaixaDeTextoNomeDocenteEditado = new javax.swing.JTextField();
         BotaoSalvarEditacaoDocente = new javax.swing.JButton();
+        CaixaDeTextoEditarDataNascDocente = new javax.swing.JFormattedTextField();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel35 = new javax.swing.JLabel();
+        EditarDocentesMatricula = new javax.swing.JLabel();
         EditarTurma = new javax.swing.JPanel();
         BarraTurmasCadastradas = new javax.swing.JComboBox<>();
-        String buffer;
-        for (Aluno a: escola.alunos.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraAlunosCadastrados.addItem(buffer);
-            BarraAlunosCadastrados1.addItem(buffer);
-        }
-        for (Docente a: escola.docentes.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraDocentesCadastrados.addItem(buffer);
-            BarraDocentesCadastrados1.addItem(buffer);
-        }
-        for (Turma a: escola.turmas.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraTurmasCadastradas.addItem(buffer);
-        }
-        for (Disciplina a: escola.disciplinas.values()){
-            buffer = a.getCodigo() + " - ";
-            buffer += a.getNome();
-            BarraDisciplinasCadastradas.addItem(buffer);
-            BarraDiciplinasEditarNota.addItem(buffer);
-        }
-
         jLabel55 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         TabelaEditarAlunosEmTurma = new javax.swing.JTable();
@@ -248,6 +209,8 @@ public class Tela extends javax.swing.JFrame {
         CaixaDeTextoNomeTurmaEditado = new javax.swing.JTextField();
         BotaoSalvarEditacaoTurma = new javax.swing.JButton();
         BotaoRemoverAlunoDaTurma = new javax.swing.JButton();
+        BarraAlunosCadastradosTurmas = new javax.swing.JComboBox<>();
+        jLabel40 = new javax.swing.JLabel();
         RemoverDisciplina = new javax.swing.JPanel();
         TabelaDisc2 = new javax.swing.JScrollPane();
         TabelaRemoverDisciplinas = new javax.swing.JTable();
@@ -270,7 +233,7 @@ public class Tela extends javax.swing.JFrame {
         BotãoRemoverTurmaDoSistema = new javax.swing.JButton();
         RelatorioDisciplina = new javax.swing.JPanel();
         TabelaDisc = new javax.swing.JScrollPane();
-        TabelaDisciplinas = new javax.swing.JTable();
+        TabelaRelatorioDisciplinas = new javax.swing.JTable();
         jComboBox6 = new javax.swing.JComboBox<>();
         jLabel52 = new javax.swing.JLabel();
         BotaoGerarRelatorioDisciplinas = new javax.swing.JButton();
@@ -284,7 +247,7 @@ public class Tela extends javax.swing.JFrame {
         TabelaRelatorioDocentes = new javax.swing.JTable();
         BotaoGerarRelatorioDocentes = new javax.swing.JButton();
         RelatorioTurma = new javax.swing.JPanel();
-        BotaoGerarRelatorioDocentes1 = new javax.swing.JButton();
+        BotaoGerarRelatorioTurmas = new javax.swing.JButton();
         TabelaDoc1 = new javax.swing.JScrollPane();
         TabelaRelatorioTurma = new javax.swing.JTable();
         jComboBox5 = new javax.swing.JComboBox<>();
@@ -328,33 +291,6 @@ public class Tela extends javax.swing.JFrame {
         TelaLogin.setPreferredSize(new java.awt.Dimension(800, 600));
         TelaLogin.setLayout(null);
 
-        loginUsuario.setFont(new java.awt.Font("Gadugi", 2, 12)); // NOI18N
-        loginUsuario.setForeground(new java.awt.Color(204, 204, 204));
-        loginUsuario.setText("Usúario");
-        loginUsuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ClickMouseUsuario(evt);
-            }
-        });
-        TelaLogin.add(loginUsuario);
-        loginUsuario.setBounds(280, 244, 240, 30);
-
-        loginSenha.setFont(new java.awt.Font("Gadugi", 2, 12)); // NOI18N
-        loginSenha.setForeground(new java.awt.Color(204, 204, 204));
-        loginSenha.setText("Senha");
-        loginSenha.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ClickMouseSenha(evt);
-            }
-        });
-        loginSenha.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                loginSenhaKeyPressed(evt);
-            }
-        });
-        TelaLogin.add(loginSenha);
-        loginSenha.setBounds(280, 290, 240, 30);
-
         jButton2.setText("Sair");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -362,28 +298,23 @@ public class Tela extends javax.swing.JFrame {
             }
         });
         TelaLogin.add(jButton2);
-        jButton2.setBounds(360, 390, 72, 23);
+        jButton2.setBounds(370, 360, 72, 23);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 102));
-        jButton1.setFont(new java.awt.Font("Malgun Gothic", 0, 12)); // NOI18N
-        jButton1.setText("Acessar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        BotaoAcessar.setBackground(new java.awt.Color(255, 255, 102));
+        BotaoAcessar.setFont(new java.awt.Font("Malgun Gothic", 0, 12)); // NOI18N
+        BotaoAcessar.setText("Acessar");
+        BotaoAcessar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                BotaoAcessarActionPerformed(evt);
             }
         });
-        TelaLogin.add(jButton1);
-        jButton1.setBounds(360, 350, 72, 24);
-
-        jLabel14.setForeground(new java.awt.Color(0, 153, 255));
-        jLabel14.setText("Sign up(Teacher)");
-        TelaLogin.add(jLabel14);
-        jLabel14.setBounds(280, 330, 100, 16);
+        TelaLogin.add(BotaoAcessar);
+        BotaoAcessar.setBounds(350, 280, 120, 40);
 
         Título.setFont(new java.awt.Font("Algerian", 0, 65)); // NOI18N
-        Título.setText("LOGIN");
+        Título.setText("Bem Vindo(a)");
         TelaLogin.add(Título);
-        Título.setBounds(310, 140, 180, 60);
+        Título.setBounds(250, 170, 420, 60);
 
         Imagem.setFont(new java.awt.Font("Gadugi", 2, 12)); // NOI18N
         Imagem.setForeground(new java.awt.Color(204, 204, 204));
@@ -1163,28 +1094,7 @@ public class Tela extends javax.swing.JFrame {
         CadastrarAluno.setMaximumSize(new java.awt.Dimension(590, 470));
         CadastrarAluno.setPreferredSize(new java.awt.Dimension(520, 390));
 
-        Moldura3x4.setLayout(null);
-
-        Foto3x4.setBackground(new java.awt.Color(204, 204, 204));
-        Foto3x4.setMaximumSize(new java.awt.Dimension(100, 125));
-        Foto3x4.setMinimumSize(new java.awt.Dimension(100, 125));
-        Foto3x4.setPreferredSize(new java.awt.Dimension(100, 125));
-        Moldura3x4.add(Foto3x4);
-        Foto3x4.setBounds(0, 0, 90, 125);
-
         jLabel7.setText("Nome");
-
-        jLabel8.setText(" Usuario");
-
-        jLabel9.setText("Senha");
-
-        BotaoProcurarImagem3x4.setText("Adicionar Imagem.png (3x4)");
-        BotaoProcurarImagem3x4.setActionCommand("Adicionar Imagem (3x4)");
-        BotaoProcurarImagem3x4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoProcurarImagem3x4ActionPerformed(evt);
-            }
-        });
 
         jLabel11.setText("Data de Nascimento");
 
@@ -1195,17 +1105,6 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        BotaoProcurarDocumentacao.setText("Adiconar Documentação(até 10MB)");
-        BotaoProcurarDocumentacao.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoProcurarDocumentacaoActionPerformed(evt);
-            }
-        });
-
-        EnderecoFotoAluno.setText(" ");
-
-        TabelaDocumentosAnexados.setViewportView(ListaDocumentosAluno);
-
         try {
             CaixaDeTextoCadastroDataNascAluno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -1214,81 +1113,50 @@ public class Tela extends javax.swing.JFrame {
 
         jLabel1.setText("Matrícula");
 
+        jLabel9.setText("ALUNOS");
+
         javax.swing.GroupLayout CadastrarAlunoLayout = new javax.swing.GroupLayout(CadastrarAluno);
         CadastrarAluno.setLayout(CadastrarAlunoLayout);
         CadastrarAlunoLayout.setHorizontalGroup(
             CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarAlunoLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(CadastrarAlunoLayout.createSequentialGroup()
                 .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CaixaDeTextoCadastroNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel9)
-                    .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(CaixaDeTextoCadastroDataNascAluno, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel1)
-                    .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(CaixaDeTextoCadastroSenhaAluno, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(CaixaDeTextoMatriculaAluno, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(CaixaDeTextoCadastroUsuarioAluno, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarAlunoLayout.createSequentialGroup()
-                            .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(EnderecoFotoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(BotaoProcurarImagem3x4))
-                            .addGap(66, 66, 66))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarAlunoLayout.createSequentialGroup()
-                            .addComponent(Moldura3x4, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(112, 112, 112))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarAlunoLayout.createSequentialGroup()
-                            .addComponent(TabelaDocumentosAnexados, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(50, 50, 50)))
-                    .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(BotaoConcluirCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BotaoProcurarDocumentacao))))
+                    .addGroup(CadastrarAlunoLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotaoConcluirCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CaixaDeTextoCadastroNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7)
+                            .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(CaixaDeTextoCadastroDataNascAluno, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel1)
+                            .addComponent(CaixaDeTextoMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(CadastrarAlunoLayout.createSequentialGroup()
+                        .addGap(200, 200, 200)
+                        .addComponent(jLabel9)))
+                .addContainerGap(274, Short.MAX_VALUE))
         );
         CadastrarAlunoLayout.setVerticalGroup(
             CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastrarAlunoLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CadastrarAlunoLayout.createSequentialGroup()
-                        .addComponent(jLabel7)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoCadastroNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel11)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoCadastroDataNascAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel1))
-                    .addComponent(Moldura3x4, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
+                .addComponent(jLabel9)
+                .addGap(26, 26, 26)
+                .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(CaixaDeTextoMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(EnderecoFotoAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(21, 21, 21)
-                .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BotaoProcurarImagem3x4)
-                    .addComponent(jLabel8))
+                .addComponent(CaixaDeTextoCadastroNomeAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(CadastrarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CadastrarAlunoLayout.createSequentialGroup()
-                        .addComponent(CaixaDeTextoCadastroUsuarioAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoCadastroSenhaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(TabelaDocumentosAnexados, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(BotaoProcurarDocumentacao)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(CaixaDeTextoCadastroDataNascAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CaixaDeTextoMatriculaAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addComponent(BotaoConcluirCadastroAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(27, 27, 27))
         );
 
         MiniTelas.add(CadastrarAluno);
@@ -1298,28 +1166,7 @@ public class Tela extends javax.swing.JFrame {
         CadastrarDocente.setMaximumSize(new java.awt.Dimension(590, 470));
         CadastrarDocente.setPreferredSize(new java.awt.Dimension(520, 390));
 
-        Moldura3x5.setLayout(null);
-
-        Foto3x5.setBackground(new java.awt.Color(204, 204, 204));
-        Foto3x5.setMaximumSize(new java.awt.Dimension(100, 125));
-        Foto3x5.setMinimumSize(new java.awt.Dimension(100, 125));
-        Foto3x5.setPreferredSize(new java.awt.Dimension(100, 125));
-        Moldura3x5.add(Foto3x5);
-        Foto3x5.setBounds(0, 0, 90, 125);
-
         jLabel30.setText("Nome");
-
-        jLabel31.setText(" Usuario");
-
-        jLabel32.setText("Senha");
-
-        BotaoProcurarImagem3x5.setText("Adicionar Imagem.png (3x4)");
-        BotaoProcurarImagem3x5.setActionCommand("Adicionar Imagem (3x4)");
-        BotaoProcurarImagem3x5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoProcurarImagem3x5ActionPerformed(evt);
-            }
-        });
 
         jLabel33.setText("Data de Nascimento");
 
@@ -1330,17 +1177,6 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
-        BotaoProcurarDocumentacao1.setText("Adiconar Documentação(até 10MB)");
-        BotaoProcurarDocumentacao1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoProcurarDocumentacao1ActionPerformed(evt);
-            }
-        });
-
-        EnderecoFotoDocente.setText(" ");
-
-        TabelaDocumentosAnexados1.setViewportView(ListaDocumentosDocente);
-
         try {
             CaixaDeTextoCadastroDataNascDocente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
         } catch (java.text.ParseException ex) {
@@ -1349,84 +1185,50 @@ public class Tela extends javax.swing.JFrame {
 
         jLabel34.setText("Matrícula");
 
+        jLabel8.setText("DOCENTES");
+
         javax.swing.GroupLayout CadastrarDocenteLayout = new javax.swing.GroupLayout(CadastrarDocente);
         CadastrarDocente.setLayout(CadastrarDocenteLayout);
         CadastrarDocenteLayout.setHorizontalGroup(
             CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(CadastrarDocenteLayout.createSequentialGroup()
-                .addGap(21, 21, 21)
                 .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(CaixaDeTextoCadastroNomeDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel30)
-                    .addComponent(jLabel31)
-                    .addComponent(jLabel32)
-                    .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(CaixaDeTextoCadastroDataNascDocente, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jLabel34)
-                    .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(CaixaDeTextoCadastroSenhaDocente, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(CaixaDeTextoMatriculaDocente, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(CaixaDeTextoCadastroUsuarioDocente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarDocenteLayout.createSequentialGroup()
-                        .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(BotaoProcurarImagem3x5)
-                            .addComponent(EnderecoFotoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarDocenteLayout.createSequentialGroup()
-                        .addComponent(BotaoConcluirCadastroDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarDocenteLayout.createSequentialGroup()
-                        .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(TabelaDocumentosAnexados1, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(BotaoProcurarDocumentacao1))
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarDocenteLayout.createSequentialGroup()
-                        .addComponent(Moldura3x5, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(99, 99, 99))))
+                    .addGroup(CadastrarDocenteLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(BotaoConcluirCadastroDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(CaixaDeTextoCadastroNomeDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 197, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel30)
+                            .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(CaixaDeTextoCadastroDataNascDocente, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jLabel34)
+                            .addComponent(CaixaDeTextoMatriculaDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(CadastrarDocenteLayout.createSequentialGroup()
+                        .addGap(171, 171, 171)
+                        .addComponent(jLabel8)))
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         CadastrarDocenteLayout.setVerticalGroup(
             CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(CadastrarDocenteLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(CadastrarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(CadastrarDocenteLayout.createSequentialGroup()
-                        .addGap(0, 40, Short.MAX_VALUE)
-                        .addComponent(jLabel30)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoCadastroNomeDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoCadastroDataNascDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoMatriculaDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoCadastroUsuarioDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel32)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(CaixaDeTextoCadastroSenhaDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(76, 76, 76))
-                    .addGroup(CadastrarDocenteLayout.createSequentialGroup()
-                        .addComponent(Moldura3x5, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(EnderecoFotoDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BotaoProcurarImagem3x5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TabelaDocumentosAnexados1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(BotaoProcurarDocumentacao1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BotaoConcluirCadastroDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, CadastrarDocenteLayout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
+                .addComponent(jLabel30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CaixaDeTextoCadastroNomeDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CaixaDeTextoCadastroDataNascDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel34)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CaixaDeTextoMatriculaDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(130, 130, 130)
+                .addComponent(BotaoConcluirCadastroDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(19, 19, 19))
         );
 
         MiniTelas.add(CadastrarDocente);
@@ -1494,13 +1296,7 @@ public class Tela extends javax.swing.JFrame {
 
         jLabel58.setText("Alunos Disponíveis");
 
-        jButton3.setText("Remover");
-
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoRemoverCoisasDaDisciplinaActionPerformed(evt);
-            }
-        });
+        BotaoRemoverCoisasDaDisciplina.setText("Remover");
 
         TabelaEditarDisciplinasAluno.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -1534,11 +1330,11 @@ public class Tela extends javax.swing.JFrame {
                         .addGroup(EditarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(EditarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jLabel57)
-                                .addComponent(BarraAlunosCadastrados1, 0, 177, Short.MAX_VALUE)
+                                .addComponent(BarraAlunosCadastradosDisciplinas, 0, 177, Short.MAX_VALUE)
                                 .addComponent(BarraDocentesCadastrados1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addComponent(jLabel58)))
                     .addGroup(EditarDisciplinaLayout.createSequentialGroup()
-                        .addComponent(jButton3)
+                        .addComponent(BotaoRemoverCoisasDaDisciplina)
                         .addGap(18, 18, 18)
                         .addComponent(BotaoSalvarEditacaoDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(EditarDisciplinaLayout.createSequentialGroup()
@@ -1565,14 +1361,14 @@ public class Tela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(EditarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(CaixaDeTextoEditarNomeDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(BarraAlunosCadastrados1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(BarraAlunosCadastradosDisciplinas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(26, 26, 26)
                 .addGroup(EditarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(TabelaDisc1, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(TabelaDisc4, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25)
                 .addGroup(EditarDisciplinaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton3)
+                    .addComponent(BotaoRemoverCoisasDaDisciplina)
                     .addComponent(BotaoSalvarEditacaoDisciplina))
                 .addContainerGap())
         );
@@ -1658,11 +1454,18 @@ public class Tela extends javax.swing.JFrame {
         jLabel60.setText("Nome:");
 
         BotaoSalvarEditacaoAluno.setText("Salvar");
-        BotaoSalvarEditacaoAluno.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoSalvarEditacaoAlunoActionPerformed(evt);
-            }
-        });
+
+        try {
+            CaixaDeTextoEditarDataNascAluno.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel23.setText("Data: ");
+
+        jLabel32.setText("Matrícula:");
+
+        EditarAlunoMatricula.setText("jLabel40");
 
         javax.swing.GroupLayout EditarAlunoLayout = new javax.swing.GroupLayout(EditarAluno);
         EditarAluno.setLayout(EditarAlunoLayout);
@@ -1671,28 +1474,43 @@ public class Tela extends javax.swing.JFrame {
             .addGroup(EditarAlunoLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addGroup(EditarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CaixaDeTextoEditarDataNascAluno, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(EditarAlunoLayout.createSequentialGroup()
+                        .addGroup(EditarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraAlunosCadastradosAlunos, 0, 163, Short.MAX_VALUE)
+                            .addComponent(CaixaDeTextoNomeAlunoEditado)
+                            .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addGroup(EditarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel32)
+                            .addComponent(EditarAlunoMatricula)))
                     .addComponent(BotaoSalvarEditacaoAluno)
-                    .addGroup(EditarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel53, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BarraAlunosCadastrados, 0, 163, Short.MAX_VALUE)
-                        .addComponent(CaixaDeTextoNomeAlunoEditado)
-                        .addComponent(jLabel60, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(403, Short.MAX_VALUE))
+                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(325, Short.MAX_VALUE))
         );
         EditarAlunoLayout.setVerticalGroup(
             EditarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, EditarAlunoLayout.createSequentialGroup()
-                .addContainerGap(16, Short.MAX_VALUE)
+                .addContainerGap(10, Short.MAX_VALUE)
                 .addComponent(jLabel53)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BarraAlunosCadastrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(BarraAlunosCadastradosAlunos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel60)
+                .addGroup(EditarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel60)
+                    .addComponent(jLabel32))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CaixaDeTextoNomeAlunoEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(EditarAlunoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CaixaDeTextoNomeAlunoEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditarAlunoMatricula))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(CaixaDeTextoEditarDataNascAluno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(BotaoSalvarEditacaoAluno)
-                .addGap(290, 290, 290))
+                .addGap(240, 240, 240))
         );
 
         MiniTelas.add(EditarAluno);
@@ -1713,20 +1531,39 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        try {
+            CaixaDeTextoEditarDataNascDocente.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##/##/####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+
+        jLabel31.setText("Data:");
+
+        jLabel35.setText("Matrícula: ");
+
+        EditarDocentesMatricula.setText("jLabel32");
+
         javax.swing.GroupLayout EditarDocenteLayout = new javax.swing.GroupLayout(EditarDocente);
         EditarDocente.setLayout(EditarDocenteLayout);
         EditarDocenteLayout.setHorizontalGroup(
             EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(EditarDocenteLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
+                .addGap(27, 27, 27)
                 .addGroup(EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(CaixaDeTextoEditarDataNascDocente, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BotaoSalvarEditacaoDocente)
-                    .addGroup(EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BarraDocentesCadastrados, 0, 163, Short.MAX_VALUE)
-                        .addComponent(CaixaDeTextoNomeDocenteEditado)
-                        .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(403, Short.MAX_VALUE))
+                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(EditarDocenteLayout.createSequentialGroup()
+                        .addGroup(EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel62, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraDocentesCadastrados, 0, 163, Short.MAX_VALUE)
+                            .addComponent(CaixaDeTextoNomeDocenteEditado)
+                            .addComponent(jLabel63, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(23, 23, 23)
+                        .addGroup(EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel35, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(EditarDocentesMatricula, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(294, Short.MAX_VALUE))
         );
         EditarDocenteLayout.setVerticalGroup(
             EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1736,12 +1573,20 @@ public class Tela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BarraDocentesCadastrados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(29, 29, 29)
-                .addComponent(jLabel63)
+                .addGroup(EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel63)
+                    .addComponent(jLabel35))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(CaixaDeTextoNomeDocenteEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(EditarDocenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CaixaDeTextoNomeDocenteEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(EditarDocentesMatricula))
+                .addGap(20, 20, 20)
+                .addComponent(jLabel31)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(CaixaDeTextoEditarDataNascDocente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
                 .addComponent(BotaoSalvarEditacaoDocente)
-                .addGap(290, 290, 290))
+                .addGap(168, 168, 168))
         );
 
         MiniTelas.add(EditarDocente);
@@ -1779,6 +1624,10 @@ public class Tela extends javax.swing.JFrame {
             }
         });
 
+        BarraAlunosCadastradosTurmas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { " " }));
+
+        jLabel40.setText("Alunos");
+
         javax.swing.GroupLayout EditarTurmaLayout = new javax.swing.GroupLayout(EditarTurma);
         EditarTurma.setLayout(EditarTurmaLayout);
         EditarTurmaLayout.setHorizontalGroup(
@@ -1793,8 +1642,14 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(jLabel55)
                     .addComponent(BarraTurmasCadastradas, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(EditarTurmaLayout.createSequentialGroup()
+                        .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel66, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(35, 35, 35)
+                        .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel40, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BarraAlunosCadastradosTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(179, Short.MAX_VALUE))
         );
         EditarTurmaLayout.setVerticalGroup(
@@ -1805,9 +1660,13 @@ public class Tela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(BarraTurmasCadastradas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel66)
+                .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel66)
+                    .addComponent(jLabel40))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(EditarTurmaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(CaixaDeTextoNomeTurmaEditado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BarraAlunosCadastradosTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(28, 28, 28)
@@ -1835,30 +1694,6 @@ public class Tela extends javax.swing.JFrame {
         TabelaDisc2.setViewportView(TabelaRemoverDisciplinas);
 
         BotãoRemoverDisciplinasDoSistema.setText("Remover");
-        BotãoRemoverDisciplinasDoSistema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotãoRemoverDisciplinasDoSistemaActionPerformed(evt);
-        }
-        });
-
-        BotaoGerarRelatorioAlunos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeradorDeRelatorio.relatorioAprovados(escola);
-                GeradorDeRelatorio.relatorioReprovados(escola);
-        }
-        });
-
-        BotaoGerarRelatorioDocentes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeradorDeRelatorio.relatorioDocentes(escola);
-        }
-        });
-
-        BotaoGerarRelatorioDocentes1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                GeradorDeRelatorio.relatorioMediasTurmas(escola);
-        }
-        });
 
         jLabel80.setText("Para remover uma disciplina, selecione-a(as).");
 
@@ -2043,7 +1878,7 @@ public class Tela extends javax.swing.JFrame {
         RelatorioDisciplina.setMaximumSize(new java.awt.Dimension(590, 470));
         RelatorioDisciplina.setPreferredSize(new java.awt.Dimension(590, 470));
 
-        TabelaDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
+        TabelaRelatorioDisciplinas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -2051,7 +1886,7 @@ public class Tela extends javax.swing.JFrame {
                 "Docentes", "Alunos", "Notas"
             }
         ));
-        TabelaDisc.setViewportView(TabelaDisciplinas);
+        TabelaDisc.setViewportView(TabelaRelatorioDisciplinas);
 
         jLabel52.setText("Disciplinas");
 
@@ -2174,7 +2009,12 @@ public class Tela extends javax.swing.JFrame {
         RelatorioTurma.setMaximumSize(new java.awt.Dimension(590, 470));
         RelatorioTurma.setMinimumSize(new java.awt.Dimension(590, 470));
 
-        BotaoGerarRelatorioDocentes1.setText("Gerar Relatório");
+        BotaoGerarRelatorioTurmas.setText("Gerar Relatório");
+        BotaoGerarRelatorioTurmas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BotaoGerarRelatorioTurmasActionPerformed(evt);
+            }
+        });
 
         TabelaRelatorioTurma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2202,7 +2042,7 @@ public class Tela extends javax.swing.JFrame {
                             .addComponent(TabelaDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 528, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(RelatorioTurmaLayout.createSequentialGroup()
                         .addGap(188, 188, 188)
-                        .addComponent(BotaoGerarRelatorioDocentes1, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(BotaoGerarRelatorioTurmas, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(38, Short.MAX_VALUE))
         );
         RelatorioTurmaLayout.setVerticalGroup(
@@ -2215,7 +2055,7 @@ public class Tela extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(TabelaDoc1, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(BotaoGerarRelatorioDocentes1)
+                .addComponent(BotaoGerarRelatorioTurmas)
                 .addGap(21, 21, 21))
         );
 
@@ -2356,19 +2196,6 @@ public class Tela extends javax.swing.JFrame {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
 
-        BarraAlunosCadastrados1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BarraAlunosTelaEditarDisciplinasActionPerformed();
-        }
-        });
-
-        //aq
-
-        BarraDocentesCadastrados1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-               BarraDocentesTelaEditarDiscplinasActionPerformed();
-        }
-        });
         TelaEstudante.add(BotaoDadosPessoais);
         BotaoDadosPessoais.setBounds(70, 180, 150, 50);
 
@@ -2573,81 +2400,14 @@ public class Tela extends javax.swing.JFrame {
                     .addComponent(TelaEstudante, javax.swing.GroupLayout.PREFERRED_SIZE, 600, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
-        //TODO #16 inicializar essas porra dessas barra e linkar elas com as tabela e botar actionperformed pra inicializar a lista dela
-        BarraTurmasCadastradas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isToListen){
-                isToListen = false;
-                DefaultTableModel toAdd = new DefaultTableModel();
-                TabelaEditarAlunosEmTurma.setModel(toAdd);
-                toAdd.addColumn("Alunos");
-                String[] buffer = new String [1];
-                for(Aluno a: escola.turmas.get(BarraTurmasCadastradas.getSelectedIndex()).getAlunos()){
-                    buffer[0] = String.valueOf(a.getCodigo());
-                    buffer[0] = buffer[0] + " - " + a.getNome();
-                    toAdd.addRow(buffer);
-                }
-                TabelaEditarAlunosEmTurma.setModel(toAdd);
-                isToListen = true;
-            }
-        }
-        });
 
-        BarraDisciplinasCadastradas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isToListen){
-                    RefreshEditarDisciplina();
-                }
-        }
-        });
-        BarraDiciplinasEditarNota.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                if (isToListen){
-                    bufferForRemoval.clear();
-                    String[] buffer = new String[1];
-                    DefaultTableModel toAdd = new DefaultTableModel();
-                    DefaultTableModel toAddBravo = new DefaultTableModel();
-                    toAdd.addColumn("1ª U");
-                    toAdd.addColumn("2ª U");
-                    toAdd.addColumn("3ª U");
-                    toAdd.addColumn("4ª U");
-                    toAddBravo.addColumn("Alunos");
-                    String str = (String)BarraDiciplinasEditarNota.getSelectedItem();
-                    for(Aluno a: escola.disciplinas.get(Integer.parseInt(String.valueOf(str.charAt(0)))).getNotas().keySet()){
-                        buffer = new String[1];
-                        buffer[0] = String.valueOf(a.getCodigo());
-                        buffer[0] = buffer[0] + " - " + a.getNome();
-                        toAddBravo.addRow(buffer);
-                        Float[] teste = escola.disciplinas.get(Integer.parseInt(String.valueOf(str.charAt(0)))).getNotas().get(a);
-                        toAdd.addRow(teste);    
-                    }
-    
-                    bufferForRemoval.clear();
-                    TabelaAlunosEditarNotas.setModel(toAddBravo);
-                    TebelaParaEditarNotas.setModel(toAdd);
-                }
-        }
-        });
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void ClickMouseUsuario(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickMouseUsuario
-        loginUsuario.setText(null);
-        loginUsuario.setFont(new java.awt.Font("Arial Unicode MS", 2, 12)); // NOI18N
-        loginUsuario.setForeground(new java.awt.Color(0, 0, 0));
-
-    }//GEN-LAST:event_ClickMouseUsuario
-
-    private void ClickMouseSenha(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickMouseSenha
-        loginSenha.setText(null);
-        loginSenha.setFont(new java.awt.Font("Arial Unicode MS", 2, 12)); // NOI18N
-        loginSenha.setForeground(new java.awt.Color(0, 0, 0));
-    }//GEN-LAST:event_ClickMouseSenha
 
     private void setarTodasTabelasBarras() {
 
     }
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void BotaoAcessarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoAcessarActionPerformed
 
         Username = loginUsuario.getText();
         Password = loginSenha.getText();
@@ -2669,7 +2429,7 @@ public class Tela extends javax.swing.JFrame {
             TelaDocente.setVisible(true);
             LimparMiniTela();
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_BotaoAcessarActionPerformed
     }
 
     private void LimparMiniTela() {
@@ -2747,10 +2507,6 @@ public class Tela extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BotaoSairActionPerformed
 
-    private void loginSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_loginSenhaKeyPressed
-        getRootPane().setDefaultButton(jButton1);
-    }//GEN-LAST:event_loginSenhaKeyPressed
-
     private void ClickNoBotaoBoletim(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoBoletim
         LimparMiniTela();
         LimparCaixasDeTextos();
@@ -2779,18 +2535,6 @@ public class Tela extends javax.swing.JFrame {
         counterForPreventionBX = 0;
         
     }//GEN-LAST:event_BotaoSair1ActionPerformed
-
-    private void BotaoProcurarDocumentacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoProcurarDocumentacaoActionPerformed
-
-        JFileChooser arquivo = new JFileChooser();
-        int op = arquivo.showOpenDialog(this);
-        if (op == JFileChooser.APPROVE_OPTION) {
-            File file = new File("");
-            file = arquivo.getSelectedFile();
-            String nomedoarquivo = file.getName();
-            ListaDocumentosAluno.setText(nomedoarquivo);
-
-    }//GEN-LAST:event_BotaoProcurarDocumentacaoActionPerformed
     }
 
     private void BotaoConcluirCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoConcluirCadastroAlunoActionPerformed
@@ -2813,22 +2557,6 @@ public class Tela extends javax.swing.JFrame {
         CaixaDeTextoCadastroNomeAluno.setText("");
         x += 1;
     }//GEN-LAST:event_BotaoConcluirCadastroAlunoActionPerformed
-
-    private void BotaoProcurarImagem3x4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoProcurarImagem3x4ActionPerformed
-
-        JFileChooser arquivofoto = new JFileChooser();
-        int op = arquivofoto.showOpenDialog(this);
-        if (op == JFileChooser.APPROVE_OPTION) {
-            File file = new File("");
-            file = arquivofoto.getSelectedFile();
-            endereco = file.getAbsolutePath();
-
-            imagem = new ImageIcon(file.getPath());
-            EnderecoFotoAluno.setText(endereco);
-            Foto3x4.setIcon(new ImageIcon(imagem.getImage().getScaledInstance(Foto3x4.getWidth(), Foto3x4.getHeight(), Image.SCALE_DEFAULT)));
-
-        }
-    }//GEN-LAST:event_BotaoProcurarImagem3x4ActionPerformed
 
     private void ClickBotaoCadastrarAluno(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickBotaoCadastrarAluno
         LimparMiniTela();
@@ -2945,31 +2673,6 @@ public class Tela extends javax.swing.JFrame {
         CadastrarDisciplina.setVisible(true);
         isToListen = false;
     }//GEN-LAST:event_BotaoCadastrarDisciplinasMouseClicked
-
-    private void BotaoProcurarImagem3x5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoProcurarImagem3x5ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotaoProcurarImagem3x5ActionPerformed
-
-    private void BotaoConcluirCadastroDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoConcluirCadastroDocenteActionPerformed
-
-        JOptionPane.showMessageDialog(null, "Cadastro realizado");
-
-        Docente docente = escola.adicionarDocente(CaixaDeTextoCadastroNomeDocente.getText());
-        String[] s = {docente.getCodigo() + " - " + docente.getNome()};
-        modelDocentes = (DefaultTableModel) TabelaRemoverDocentes.getModel();
-        modelDocentes.addRow(s);
-        TabelaRemoverDocentes.setModel(modelDocentes);
-        BarraDocentesCadastrados.addItem(s[0]);
-        BarraDocentesCadastrados1.addItem(s[0]);
-        CaixaDeTextoCadastroNomeDocente.setText("");
-        //modelTurmas = (DefaultTableModel)TabelaRemoverTurmas.getModel();
-        modelTurmas.addRow(s);
-        
-    }//GEN-LAST:event_BotaoConcluirCadastroDocenteActionPerformed
-
-    private void BotaoProcurarDocumentacao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoProcurarDocumentacao1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_BotaoProcurarDocumentacao1ActionPerformed
 
     private void ClickNoBotaoEditarTurmas(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ClickNoBotaoEditarTurmas
         LimparMiniTela();
@@ -3411,6 +3114,27 @@ public class Tela extends javax.swing.JFrame {
         RefreshEditarDisciplina();
     }//GEN-LAST:event_BotaoSalvarEditacaoDisciplinaActionPerformed
 
+    private void BotaoConcluirCadastroDocenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoConcluirCadastroDocenteActionPerformed
+
+        JOptionPane.showMessageDialog(null, "Cadastro realizado");
+
+        Docente docente = escola.adicionarDocente(CaixaDeTextoCadastroNomeDocente.getText());
+        String[] s = {docente.getCodigo() + " - " + docente.getNome()};
+        modelDocentes = (DefaultTableModel) TabelaRemoverDocentes.getModel();
+        modelDocentes.addRow(s);
+        TabelaRemoverDocentes.setModel(modelDocentes);
+        BarraDocentesCadastrados.addItem(s[0]);
+        BarraDocentesCadastrados1.addItem(s[0]);
+        CaixaDeTextoCadastroNomeDocente.setText("");
+        //modelTurmas = (DefaultTableModel)TabelaRemoverTurmas.getModel();
+        modelTurmas.addRow(s);
+
+    }//GEN-LAST:event_BotaoConcluirCadastroDocenteActionPerformed
+
+    private void BotaoGerarRelatorioTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioTurmasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BotaoGerarRelatorioTurmasActionPerformed
+
     public static void main(String args[]) {
         escola = new Escola();
          escola.carregar();
@@ -3573,14 +3297,15 @@ public class Tela extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel AnoLetivoDoAluno;
-    private javax.swing.JComboBox<String> BarraAlunosCadastrados;
-    private javax.swing.JComboBox<String> BarraAlunosCadastrados1;
-    //oq é isso?
+    private javax.swing.JComboBox<String> BarraAlunosCadastradosAlunos;
+    private javax.swing.JComboBox<String> BarraAlunosCadastradosDisciplinas;
+    private javax.swing.JComboBox<String> BarraAlunosCadastradosTurmas;
     private javax.swing.JComboBox<String> BarraDiciplinasEditarNota;
     private javax.swing.JComboBox<String> BarraDisciplinasCadastradas;
     private javax.swing.JComboBox<String> BarraDocentesCadastrados;
     private javax.swing.JComboBox<String> BarraDocentesCadastrados1;
     private javax.swing.JComboBox<String> BarraTurmasCadastradas;
+    private javax.swing.JButton BotaoAcessar;
     private javax.swing.JPanel BotaoBoletim;
     private javax.swing.JPanel BotaoCadastrarAluno;
     private javax.swing.JPanel BotaoCadastrarDisciplinas;
@@ -3600,21 +3325,18 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JButton BotaoGerarRelatorioAlunos;
     private javax.swing.JButton BotaoGerarRelatorioDisciplinas;
     private javax.swing.JButton BotaoGerarRelatorioDocentes;
-    private javax.swing.JButton BotaoGerarRelatorioDocentes1;
+    private javax.swing.JButton BotaoGerarRelatorioTurmas;
     private javax.swing.JPanel BotaoMenuCadastro;
     private javax.swing.JPanel BotaoMenuEditar;
     private javax.swing.JPanel BotaoMenuRelatorio;
     private javax.swing.JPanel BotaoMenuRemover;
-    private javax.swing.JButton BotaoProcurarDocumentacao;
-    private javax.swing.JButton BotaoProcurarDocumentacao1;
-    private javax.swing.JButton BotaoProcurarImagem3x4;
-    private javax.swing.JButton BotaoProcurarImagem3x5;
     private javax.swing.JPanel BotaoRelatorioAluno;
     private javax.swing.JPanel BotaoRelatorioDisciplinas;
     private javax.swing.JPanel BotaoRelatorioDocentes;
     private javax.swing.JPanel BotaoRelatorioTurmas;
     private javax.swing.JPanel BotaoRemoverAluno;
     private javax.swing.JButton BotaoRemoverAlunoDaTurma;
+    private javax.swing.JButton BotaoRemoverCoisasDaDisciplina;
     private javax.swing.JPanel BotaoRemoverDisciplinas;
     private javax.swing.JPanel BotaoRemoverDocentes;
     private javax.swing.JPanel BotaoRemoverTurmas;
@@ -3639,12 +3361,10 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField CaixaDeTextoCadastroDataNascDocente;
     private javax.swing.JTextField CaixaDeTextoCadastroNomeAluno;
     private javax.swing.JTextField CaixaDeTextoCadastroNomeDocente;
-    private javax.swing.JTextField CaixaDeTextoCadastroSenhaAluno;
-    private javax.swing.JTextField CaixaDeTextoCadastroSenhaDocente;
     private javax.swing.JTextField CaixaDeTextoCadastroTurma;
-    private javax.swing.JTextField CaixaDeTextoCadastroUsuarioAluno;
-    private javax.swing.JTextField CaixaDeTextoCadastroUsuarioDocente;
     private javax.swing.JTextField CaixaDeTextoDisciplina;
+    private javax.swing.JFormattedTextField CaixaDeTextoEditarDataNascAluno;
+    private javax.swing.JFormattedTextField CaixaDeTextoEditarDataNascDocente;
     private javax.swing.JTextField CaixaDeTextoEditarNomeDisciplina;
     private javax.swing.JTextField CaixaDeTextoMatriculaAluno;
     private javax.swing.JTextField CaixaDeTextoMatriculaDocente;
@@ -3655,29 +3375,23 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel DataNascDoAluno;
     private javax.swing.JLabel DeslizarMenu;
     private javax.swing.JPanel EditarAluno;
+    private javax.swing.JLabel EditarAlunoMatricula;
     private javax.swing.JButton EditarDadosPessoais;
     private javax.swing.JPanel EditarDisciplina;
     private javax.swing.JPanel EditarDocente;
+    private javax.swing.JLabel EditarDocentesMatricula;
     private javax.swing.JPanel EditarNotas;
     private javax.swing.JPanel EditarTurma;
-    private javax.swing.JTextField EnderecoFotoAluno;
-    private javax.swing.JTextField EnderecoFotoDocente;
-    private javax.swing.JLabel Foto3x4;
-    private javax.swing.JLabel Foto3x5;
     private javax.swing.JLabel FotoDadosPessoais;
     private javax.swing.JLabel Imagem;
     private javax.swing.JLabel ImagemDeFundo;
     private javax.swing.JScrollPane ListaDeAlunos;
     private javax.swing.JList<String> ListaDiciplinasCadastrarDisciplinas;
-    private javax.swing.JTextPane ListaDocumentosAluno;
-    private javax.swing.JTextPane ListaDocumentosDocente;
     private javax.swing.JList<String> ListaTurmasCadastrarTurma;
     private javax.swing.JPanel MiniTelaBoletim;
     private javax.swing.JPanel MiniTelaDadosPessoais;
     private javax.swing.JPanel MiniTelas;
     private javax.swing.JPanel MiniTelasAluno;
-    private javax.swing.JPanel Moldura3x4;
-    private javax.swing.JPanel Moldura3x5;
     private javax.swing.JLabel NomeDoAluno;
     private javax.swing.JPanel PainelMenu;
     private javax.swing.JPanel PainelSubmenu;
@@ -3700,16 +3414,14 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JScrollPane TabelaDisc2;
     private javax.swing.JScrollPane TabelaDisc3;
     private javax.swing.JScrollPane TabelaDisc4;
-    private javax.swing.JTable TabelaDisciplinas;
     private javax.swing.JScrollPane TabelaDoc;
     private javax.swing.JScrollPane TabelaDoc1;
     private javax.swing.JScrollPane TabelaDoc2;
-    private javax.swing.JScrollPane TabelaDocumentosAnexados;
-    private javax.swing.JScrollPane TabelaDocumentosAnexados1;
     private javax.swing.JTable TabelaEditarAlunosEmTurma;
     private javax.swing.JTable TabelaEditarDisciplinasAluno;
     private javax.swing.JTable TabelaEditarDisciplinasDocente;
     private javax.swing.JTable TabelaRelatorioAlunos;
+    private javax.swing.JTable TabelaRelatorioDisciplinas;
     private javax.swing.JTable TabelaRelatorioDocentes;
     private javax.swing.JTable TabelaRelatorioTurma;
     private javax.swing.JTable TabelaRemoverAlunos;
@@ -3721,9 +3433,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JPanel TelaEstudante;
     private javax.swing.JPanel TelaLogin;
     private javax.swing.JLabel Título;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox5;
     private javax.swing.JComboBox<String> jComboBox6;
     private javax.swing.JComboBox<String> jComboBox9;
@@ -3732,7 +3442,6 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -3742,6 +3451,7 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
@@ -3754,11 +3464,13 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
+    private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel40;
     private javax.swing.JLabel jLabel41;
     private javax.swing.JLabel jLabel42;
     private javax.swing.JLabel jLabel43;
@@ -3806,8 +3518,6 @@ public class Tela extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JTable jTable2;
-    private javax.swing.JTextField loginSenha;
-    private javax.swing.JTextField loginUsuario;
     // End of variables declaration//GEN-END:variables
 
     private void ClickMouseUsuario1() {
