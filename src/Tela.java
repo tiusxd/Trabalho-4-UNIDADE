@@ -3302,6 +3302,13 @@ public class Tela extends javax.swing.JFrame {
 
 
     public static void main(String args[]) {
+        String[] broken = System.getProperty("user.dir").split("/");
+        for(String s : broken){
+            if(s.contains("-main")){
+                baseAdress = "Trabalho-4-UNIDADE-main/src";
+            }
+        }
+
         escola = new Escola();
         try{
          escola.carregar();
