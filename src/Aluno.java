@@ -18,6 +18,8 @@ public class Aluno extends Entidade{
     public Aluno(String nome, int codigo, String mat, String dataNas){
         super(nome, codigo);
         notas = new HashMap<Integer,Float[]>();
+        matricula = mat;
+        dataNascimento = dataNas;
     }
     
     public Aluno(String base){
@@ -40,8 +42,8 @@ public class Aluno extends Entidade{
         } catch (Exception ex){
             ex.printStackTrace();
         }
-        matricula = tierOne[3];
-        dataNascimento = tierOne[4];
+        matricula = tierOne[4];
+        dataNascimento = tierOne[5];
     }
     @Override
     public String toCsv() {

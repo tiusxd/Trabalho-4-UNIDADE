@@ -3113,8 +3113,8 @@ public class Tela extends javax.swing.JFrame {
         }
         else{
             while(TabelaEditarAlunosEmTurma.getSelectedRow()>-1){
-            bufferForRemoval.add(TabelaEditarAlunosEmTurma.getSelectedRow());
-            dtmEditarAlunosEmTurma.removeRow(TabelaEditarAlunosEmTurma.getSelectedRow()+counterForPrevention);
+            bufferForRemoval.add(TabelaEditarAlunosEmTurma.getSelectedRow()+counterForPrevention);
+            dtmEditarAlunosEmTurma.removeRow(TabelaEditarAlunosEmTurma.getSelectedRow());
             counterForPrevention++;
             }
         }
@@ -3298,7 +3298,7 @@ public class Tela extends javax.swing.JFrame {
 
     public static void main(String args[]) {
         escola = new Escola();
-        // escola.carregar();
+         escola.carregar();
          String[] toAdd = new String[1];
          String buffer;
          listTurmas = new DefaultListModel<String>();

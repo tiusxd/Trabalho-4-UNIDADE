@@ -11,6 +11,7 @@ public class GeradorDeRelatorio{
                 float sum = 0;
                 for(Float[] notas : a.getNotas().values()){
                     sum = sum + notas[0]+ notas[1]+ notas[2]+ notas[3];
+                    sum = sum /4;
                 }
                 sum = sum /a.getNotas().size();
                 mediaAlunos+=sum;
@@ -26,12 +27,14 @@ public class GeradorDeRelatorio{
             toReturn = toReturn + disciplina.getNome() + ": ";
             float media = 0;
             for(int a = 0; a<=3; a++){
-                toReturn = toReturn + a + " - ";
+                media = 0;
+                toReturn = toReturn + a + " Unidade - ";
                 for (Float[] notas : disciplina.getNotas().values()) {
                     media += notas[a];
                 }
                 media = media / disciplina.getNotas().size();
                 toReturn += media;
+                toReturn += " ; ";
             }
             toReturn+="\n";
         }

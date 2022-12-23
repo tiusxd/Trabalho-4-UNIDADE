@@ -130,6 +130,12 @@ public class GerenteDeArquivo{
             e.printStackTrace();
         }
         toWrite = escola.getNumeroRelatorios() + ";"+escola.maiorAluno+";"+escola.maiorDocente+";"+escola.maiorTurma+";"+escola.maiorDisciplina;
-        
+        try{
+            writer = new FileWriter(baseAdress+"/Dados/Meta.txt");
+            writer.write(toWrite);
+            writer.close();
+        } catch(IOException ex){
+
+        }
     } 
 }
