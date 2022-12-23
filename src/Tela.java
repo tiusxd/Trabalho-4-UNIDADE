@@ -3391,7 +3391,8 @@ public class Tela extends javax.swing.JFrame {
                 BarraDocentesCadastrados1.removeAllItems();
                 BarraAlunosCadastradosDisciplinas.removeAllItems();
                 bufferForRemoval.clear();
-                for(Docente a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getDocentes()){
+                ArrayList<Integer> keys = new ArrayList<Integer>(escola.disciplinas.keySet());
+                for(Docente a: escola.disciplinas.get(keys.get(BarraDisciplinasCadastradas.getSelectedIndex())).getDocentes()){
                     buffer[0] = String.valueOf(a.getCodigo());
                     buffer[0] = buffer[0] + " - " + a.getNome();
                     bufferForRemoval.add(a.getCodigo());
@@ -3410,8 +3411,8 @@ public class Tela extends javax.swing.JFrame {
                 DefaultTableModel toAddBravo = new DefaultTableModel();
                 TabelaEditarDisciplinasAluno.setModel(toAddBravo);
                 toAddBravo.addColumn("Alunos");
-                for(Aluno a: escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet()){
-                    System.out.println("TAMAHO" + escola.disciplinas.get(BarraDisciplinasCadastradas.getSelectedIndex()).getNotas().keySet().size());
+                for(Aluno a: escola.disciplinas.get(keys.get(BarraDisciplinasCadastradas.getSelectedIndex())).getNotas().keySet()){
+                    System.out.println("TAMAHO" + escola.disciplinas.get(keys.get(BarraDisciplinasCadastradas.getSelectedIndex())).getNotas().keySet().size());
                     buffer[0] = String.valueOf(a.getCodigo());
                     buffer[0] = buffer[0] + " - " + a.getNome();
                     bufferForRemoval.add(a.getCodigo());
@@ -3441,7 +3442,8 @@ public class Tela extends javax.swing.JFrame {
         TabelaEditarAlunosEmTurma.setModel(toAdd);
         toAdd.addColumn("Alunos");
         String[] buffer = new String [1];
-        for(Aluno a: escola.turmas.get(BarraTurmasCadastradas.getSelectedIndex()).getAlunos()){
+        ArrayList<Integer> keys = new ArrayList<Integer>(escola.turmas.keySet());
+        for(Aluno a: escola.turmas.get(keys.get(BarraTurmasCadastradas.getSelectedIndex())).getAlunos()){
             buffer[0] = String.valueOf(a.getCodigo());
             buffer[0] = buffer[0] + " - " + a.getNome();
             toAdd.addRow(buffer);
@@ -3449,7 +3451,7 @@ public class Tela extends javax.swing.JFrame {
         TabelaEditarAlunosEmTurma.setModel(toAdd);
         BarraAlunosCadastradosTurmas.removeAllItems();
         for (Aluno a: escola.alunos.values()){
-            if (!escola.turmas.get(BarraTurmasCadastradas.getSelectedIndex()).getAlunos().contains(a)){
+            if (!escola.turmas.get(keys.get(BarraTurmasCadastradas.getSelectedIndex())).getAlunos().contains(a)){
                 String innerBuffer = a.getCodigo() + " - "+ a.getNome();
                 BarraAlunosCadastradosTurmas.addItem(innerBuffer);
             }
