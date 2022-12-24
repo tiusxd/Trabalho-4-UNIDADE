@@ -3152,6 +3152,7 @@ public class Tela extends javax.swing.JFrame {
        } catch (IOException ex){
 
        }
+       JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioMediasDisciplinas"+(escola.getNumeroRelatorios()-1)+".txt");
     }//GEN-LAST:event_BotaoGerarRelatorioDisciplinasActionPerformed
 
     private void BotaoGerarRelatorioTurmasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioTurmasActionPerformed
@@ -3164,6 +3165,7 @@ public class Tela extends javax.swing.JFrame {
        } catch (IOException ex){
 
        }
+       JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioMediaTurmas"+(escola.getNumeroRelatorios()-1)+".txt");
     }//GEN-LAST:event_BotaoGerarRelatorioTurmasActionPerformed
 
     private void BotaoGerarRelatorioAlunosActionPerfomed(){
@@ -3174,8 +3176,8 @@ public class Tela extends javax.swing.JFrame {
          fw.close();
          escola.setNumeroRelatorios(escola.getNumeroRelatorios()+1);
         } catch (IOException ex){
- 
         }
+        JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioAprovadosPorTurma"+(escola.getNumeroRelatorios()-1)+".txt");
         toSave = GeradorDeRelatorio.relatorioReprovados(escola);
         try{
          FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioReprovadosPorTurma"+escola.getNumeroRelatorios()+".txt");
@@ -3185,6 +3187,8 @@ public class Tela extends javax.swing.JFrame {
         } catch (IOException ex){
  
         }
+        JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioReprovadosPorTurma"+(escola.getNumeroRelatorios()-1)+".txt");
+
     }
 
     private void BotaoGerarRelatorioDocentesActionPerformed(){
@@ -3197,6 +3201,8 @@ public class Tela extends javax.swing.JFrame {
         } catch (IOException ex){
  
         }
+        JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioDocentes"+(escola.getNumeroRelatorios()-1)+".txt");
+
     }
     //TODO #19 #20 botar minimo e maxima de nota e try catch
     private void BotaoSalvarEditacaoNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoSalvarEditacaoNotasActionPerformed
