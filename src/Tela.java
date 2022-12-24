@@ -2016,11 +2016,7 @@ public class Tela extends javax.swing.JFrame {
         RelatorioTurma.setMinimumSize(new java.awt.Dimension(590, 470));
 
         BotaoGerarRelatorioTurmas.setText("Gerar Relatório");
-        BotaoGerarRelatorioTurmas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BotaoGerarRelatorioTurmasActionPerformed(evt);
-            }
-        });
+        
 
         TabelaRelatorioTurma.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -2904,7 +2900,7 @@ public class Tela extends javax.swing.JFrame {
         }
         if (TabelaRemoverTurmas.getSelectedRow() == -1) {
             JOptionPane.showMessageDialog(null, "Selecione pelo menos um para poder excluir.");
-        } else {
+        } else if (TabelaRemoverTurmas.getSelectedRow() > 0){
             ArrayList<Integer> buffer = new ArrayList<Integer>(escola.turmas.keySet());
             try {
                 escola.removerTurma(buffer.get(TabelaRemoverTurmas.getSelectedRow()));
@@ -3184,14 +3180,14 @@ public class Tela extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioAprovadosPorTurma"+(escola.getNumeroRelatorios()-1)+".txt");
         toSave = GeradorDeRelatorio.relatorioReprovados(escola);
         try{
-         FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioReprovadosPorTurma"+escola.getNumeroRelatorios()+".txt");
+         FileWriter fw = new FileWriter(baseAdress+"/Dados/RelatorioReprovadosPorDisciplina"+escola.getNumeroRelatorios()+".txt");
          fw.write(toSave);
          fw.close();
          escola.setNumeroRelatorios(escola.getNumeroRelatorios()+1);
         } catch (IOException ex){
  
         }
-        JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioReprovadosPorTurma"+(escola.getNumeroRelatorios()-1)+".txt");
+        JOptionPane.showMessageDialog(null, "Relatório gerado em"+baseAdress+"/Dados/RelatorioReprovadosPorDisciplina"+(escola.getNumeroRelatorios()-1)+".txt");
 
     }
 
