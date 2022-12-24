@@ -15,6 +15,14 @@ import java.util.List;
 public class GerenteDeArquivo{
     public String baseAdress = "Trabalho-4-UNIDADE/src";
 
+    public GerenteDeArquivo(){
+        String[] broken = System.getProperty("user.dir").split("/");
+        for(String s : broken){
+            if(s.contains("-main")){
+                baseAdress = "Trabalho-4-UNIDADE-main/src";
+            }
+        }
+    }
     public List<String> carregarAlunos() throws InvalidPathException, NoSuchFileException{
         Path path = FileSystems.getDefault().getPath(baseAdress+"/Dados/Alunos.txt");
         List<String> toReturn = null;

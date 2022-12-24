@@ -4,6 +4,10 @@ public class Docente extends Entidade{
     private ArrayList<Disciplina> disciplinas;
     private String matricula,dataNascimento;
     
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     public String getDataNascimento() {
         return dataNascimento;
     }
