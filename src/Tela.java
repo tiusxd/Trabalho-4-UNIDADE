@@ -2889,7 +2889,7 @@ public class Tela extends javax.swing.JFrame {
         if (SubmenuEditarDadosDaDisciplina.isVisible() == true) {
             SubmenuEditarDadosDaDisciplina.setVisible(false);
             SubmenuEdicao.setVisible(true);
-        } else {
+        }else {
             LimparSubmenus();
         }
     }//GEN-LAST:event_BotãoRetornarMenuMouseClicked
@@ -3132,6 +3132,7 @@ public class Tela extends javax.swing.JFrame {
         if(!CaixaDeTextoNomeDocenteEditado.getText().isBlank() && !CaixaDeTextoNomeDocenteEditado.getText().equals(null)){
         escola.docentes.get(buffer.get(BarraDocentesCadastrados.getSelectedIndex())).setNome(CaixaDeTextoNomeDocenteEditado.getText());
         }
+        escola.docentes.get(buffer.get(BarraDocentesCadastrados.getSelectedIndex())).setDataNascimento(CaixaDeTextoEditarDataNascDocente.getText());
         ClickBotaoEditarDocentes(null);
     }//GEN-LAST:event_BotaoSalvarEditacaoDocenteActionPerformed
 
@@ -3140,6 +3141,7 @@ public class Tela extends javax.swing.JFrame {
         if(!CaixaDeTextoNomeAlunoEditado.getText().isBlank() && !CaixaDeTextoNomeAlunoEditado.getText().equals(null)){
         escola.alunos.get(buffer.get(BarraAlunosCadastradosAlunos.getSelectedIndex())).setNome(CaixaDeTextoNomeAlunoEditado.getText());
         }
+        escola.alunos.get(buffer.get(BarraAlunosCadastradosAlunos.getSelectedIndex())).setDataNascimento(CaixaDeTextoEditarDataNascAluno.getText());
         ClickBotaoEditarAlunos(null);
     }
     private void BotaoGerarRelatorioDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioDisciplinasActionPerformed

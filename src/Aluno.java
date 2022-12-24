@@ -7,6 +7,10 @@ public class Aluno extends Entidade{
     private HashMap<Integer,Float[]> notas;
     private String matricula,dataNascimento;
 
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
     public String getDataNascimento() {
         return dataNascimento;
     }
