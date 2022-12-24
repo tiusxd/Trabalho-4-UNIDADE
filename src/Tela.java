@@ -3326,7 +3326,7 @@ public class Tela extends javax.swing.JFrame {
         } catch (Exception ex){
             System.out.println("Houve um problema inesperado com o carregamento. Realizando inicialização vazia.");
         }
-        Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
+        /*Thread.UncaughtExceptionHandler h = new Thread.UncaughtExceptionHandler() {
             @Override
             public void uncaughtException(Thread th, Throwable ex) {
                 ex.printStackTrace();
@@ -3338,7 +3338,7 @@ public class Tela extends javax.swing.JFrame {
                 System.exit(0);
             }
         };
-        Thread.setDefaultUncaughtExceptionHandler(h);
+        Thread.setDefaultUncaughtExceptionHandler(h);*/
          String[] toAdd = new String[1];
          String buffer;
          listTurmas = new DefaultListModel<String>();
