@@ -124,17 +124,24 @@ public class Disciplina extends Entidade{
         String toReturn = "";
         toReturn = toReturn + getCodigo() + ";"+ getNome() +";";
         for (Docente d: docentes){
+            try{
             toReturn+= d.getCodigo();
             toReturn+= ",";
+            } catch (Exception ex){
+
+            }
         }
         toReturn+=";";
         for (Map.Entry<Aluno,Float[]> pair : notas.entrySet()) {
+            try{
             toReturn = toReturn + pair.getKey().getCodigo() + "-";
             toReturn = toReturn + Float.toString(pair.getValue()[0])+",";
             toReturn = toReturn + Float.toString(pair.getValue()[1])+",";
             toReturn = toReturn + Float.toString(pair.getValue()[2])+",";
             toReturn = toReturn + Float.toString(pair.getValue()[3])+",";
             toReturn+= "/";
+            } catch (Exception ex){
+            }
         }
         return toReturn;
     }
