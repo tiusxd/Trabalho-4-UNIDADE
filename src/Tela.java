@@ -3142,6 +3142,8 @@ public class Tela extends javax.swing.JFrame {
         escola.alunos.get(buffer.get(BarraAlunosCadastradosAlunos.getSelectedIndex())).setNome(CaixaDeTextoNomeAlunoEditado.getText());
         }
         escola.alunos.get(buffer.get(BarraAlunosCadastradosAlunos.getSelectedIndex())).setDataNascimento(CaixaDeTextoEditarDataNascAluno.getText());
+        CaixaDeTextoEditarDataNascAluno.setText("");
+        CaixaDeTextoNomeAlunoEditado.setText("");
         ClickBotaoEditarAlunos(null);
     }
     private void BotaoGerarRelatorioDisciplinasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotaoGerarRelatorioDisciplinasActionPerformed
@@ -3514,7 +3516,7 @@ public class Tela extends javax.swing.JFrame {
             dtm.addRow(buffer);
             bufferForAdition.add(Integer.parseInt(Character.toString(buffer[0].charAt(0))));
             isToListen = false;
-            BarraAlunosCadastradosTurmas.removeItemAt(BarraAlunosCadastradosDisciplinas.getSelectedIndex());//
+            BarraAlunosCadastradosTurmas.removeItemAt(BarraAlunosCadastradosTurmas.getSelectedIndex());//
             isToListen = true;
             TabelaEditarAlunosEmTurma.setModel(dtm);
         }

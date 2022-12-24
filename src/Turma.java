@@ -66,8 +66,12 @@ public class Turma extends Entidade{
         String toReturn = "";
         toReturn = toReturn + getCodigo() + ";"+ getNome() +";";
         for(Aluno a : alunos){
+            try{
             toReturn+=a.getCodigo();
             toReturn+=",";
+            } catch(Exception ex){
+                
+            }
         }
         return toReturn;
     }
