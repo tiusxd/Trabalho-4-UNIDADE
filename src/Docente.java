@@ -21,6 +21,13 @@ public class Docente extends Entidade{
         disciplinas = new ArrayList<Disciplina>();
         matricula = mat;
         dataNascimento = dataNas;
+        if(mat == null){
+            mat = "#9999";
+        }
+
+        if (dataNascimento == null){
+            dataNascimento = "01/01/1111";
+        }
     }
 
     public Docente(String base) {

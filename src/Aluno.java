@@ -24,6 +24,13 @@ public class Aluno extends Entidade{
         notas = new HashMap<Integer,Float[]>();
         matricula = mat;
         dataNascimento = dataNas;
+        if(mat == null){
+            mat = "#9999";
+        }
+
+        if (dataNascimento == null){
+            dataNascimento = "01/01/1111";
+        }
     }
     
     public Aluno(String base){
